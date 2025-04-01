@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Mic, Loader, AlertCircle, StopCircle, MessageSquare, Globe, Languages, Volume2, VolumeX, Clock } from 'lucide-react';
 import { AudioStream } from './Audio/AudioStream';
+import Cookies from 'js-cookie';
 
 const VoiceInteraction = () => {
   const [isRecording, setIsRecording] = useState(false);
@@ -52,16 +53,34 @@ const VoiceInteraction = () => {
 
   const fetchVoiceHistory = async () => {
     try {
-      const response = await fetch('https://auriter-backen.onrender.com/api/chat/voice-history/user123', {
+      const token = Cookies.get('token');
+      if (!token) {
+        setError('Authentication required');
+        return;
+      }
+
+      const response = await fetch('https://auriter-backen.onrender.com/api/chat/voice-history', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
         credentials: 'include'
       });
+
+      if (response.status === 401) {
+        setError('Session expired. Please login again.');
+        // Optionally redirect to login page
+        return;
+      }
+
       if (!response.ok) throw new Error('Failed to fetch voice history');
+      
       const data = await response.json();
       if (data.length > 0) {
         setConversationHistory(data[0].messages);
       }
     } catch (error) {
       setError('Failed to load voice history');
+      console.error('Voice history error:', error);
     }
   };
 
@@ -147,19 +166,33 @@ const VoiceInteraction = () => {
       setLoading(true);
       setError(null);
 
+      const token = Cookies.get('token');
+      if (!token) {
+        setError('Authentication required');
+        return;
+      }
+
       const chatResponse = await fetch('https://auriter-backen.onrender.com/api/chat/voice-message', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         credentials: 'include',
         body: JSON.stringify({
-          userId: 'user123',
           message: transcript,
           language: language,
           isVoiceInteraction: true
         })
       });
 
+      if (chatResponse.status === 401) {
+        setError('Session expired. Please login again.');
+        return;
+      }
+
       if (!chatResponse.ok) throw new Error(`Chat error! status: ${chatResponse.status}`);
+      
       const chatData = await chatResponse.json();
       
       if (chatData.chatHistory) {
@@ -172,6 +205,7 @@ const VoiceInteraction = () => {
 
     } catch (error) {
       setError('Failed to process voice interaction. Please try again.');
+      console.error('Process transcript error:', error);
     } finally {
       setLoading(false);
       processingRef.current = false;

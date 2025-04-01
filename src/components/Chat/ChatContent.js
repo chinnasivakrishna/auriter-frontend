@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, Send, Paperclip, Mic, Volume2, VolumeX, Loader, Clock, Search, Settings, Globe, Languages } from 'lucide-react';
 import { AudioStream } from '../Audio/AudioStream';
+import Cookies from 'js-cookie';
 
 const ChatContent = () => {
   const [messages, setMessages] = useState([]);
@@ -74,19 +75,31 @@ const ChatContent = () => {
   };
 
   const fetchChatHistory = async () => {
-    console.log('Fetching chat history for user:', userId);
+    console.log('Fetching chat history');
     try {
-      const response = await fetch(`https://auriter-backen.onrender.com/api/chat/history/${userId}`, {
+      const token = Cookies.get('token');
+      if (!token) {
+        setError('Authentication required');
+        return;
+      }
+
+      const response = await fetch('https://auriter-backen.onrender.com/api/chat/history', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
         credentials: 'include'
       });
       
+      if (response.status === 401) {
+        setError('Session expired. Please login again.');
+        return;
+      }
+
       if (!response.ok) {
-        console.error('HTTP error when fetching history:', response.status);
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
       const data = await response.json();
-      console.log('Received chat history:', data);
       if (data.length > 0) {
         setMessages(data[0].messages);
       }
@@ -168,10 +181,12 @@ const ChatContent = () => {
     setTranscriptMessage("");
 
     try {
+      const token = Cookies.get('token');
       const response = await fetch('https://auriter-backen.onrender.com/api/chat/message', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         credentials: 'include',
         body: JSON.stringify({
@@ -204,6 +219,7 @@ const ChatContent = () => {
     } finally {
       setLoading(false);
       if (isRecording) {
+        console.log('Auto-stopping recording after sending message');
         stopRecording();
       }
     }
@@ -317,7 +333,6 @@ const ChatContent = () => {
     const messageText = input;
     if (!messageText.trim() || loading) return;
 
-    console.log('Sending message:', messageText);
     setLoading(true);
     setError(null);
     
@@ -332,41 +347,39 @@ const ChatContent = () => {
     setTranscriptMessage("");
 
     try {
-      console.log('Making API request with data:', {
-        userId,
-        message: messageText,
-        language,
-        isVoiceInteraction: isRecording || messageText === transcriptMessage
-      });
-      
+      const token = Cookies.get('token');
+      if (!token) {
+        setError('Authentication required');
+        return;
+      }
+
       const response = await fetch('https://auriter-backen.onrender.com/api/chat/message', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
         credentials: 'include',
         body: JSON.stringify({
-          userId,
           message: messageText,
           language: language,
           isVoiceInteraction: isRecording || messageText === transcriptMessage
         })
       });
 
-      if (!response.ok) {
-        console.error('API response not OK:', response.status);
-        throw new Error(`HTTP error! status: ${response.status}`);
+      if (response.status === 401) {
+        setError('Session expired. Please login again.');
+        return;
       }
 
-      const data = await response.json();
-      console.log('Received response from API:', data);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       
+      const data = await response.json();
       if (data.chatHistory) {
         setMessages(data.chatHistory);
-        if ((isRecording || messageText === transcriptMessage) && data.chatHistory.length > 0) {
+        if (isRecording || messageText === transcriptMessage) {
           const lastMessage = data.chatHistory[data.chatHistory.length - 1];
           if (!lastMessage.isUser) {
-            console.log('Auto-speaking assistant response');
             await speakText(lastMessage.content, data.chatHistory.length - 1);
           }
         }
@@ -377,11 +390,6 @@ const ChatContent = () => {
       setMessages(prev => prev.filter(msg => msg !== userMessage));
     } finally {
       setLoading(false);
-      
-      if (isRecording) {
-        console.log('Auto-stopping recording after sending message');
-        stopRecording();
-      }
     }
   };
 
