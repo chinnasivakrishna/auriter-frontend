@@ -1,1 +1,1 @@
-# auriter-frontend
+# auriter-front
