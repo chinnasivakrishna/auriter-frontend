@@ -21,7 +21,7 @@ export default function Navigation() {
       <nav className="nav">
         <div className="nav-content">
           <div className="logo">
-            <span>Final Round</span>
+            <span>Airuter</span>
             <span className="ai-badge">AI</span>
           </div>
           <nav className="desktopNav">

@@ -1,5 +1,5 @@
 import "../utils/globals.css";
-import demoImage from "../assets/demo-image.png";
+import demoImage from "./wmremove-transformed.png";
 
 export default function ProductDemo() {
   return (
