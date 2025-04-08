@@ -83,9 +83,8 @@ export default function Home() {
       <section className="hero">
         <div className="hero-content">
           <h1>
-            Unlock Your Interview Superpowers with AI,
-            <br />
-            Your AI-Powered Interview Copilot
+          AI-Driven Hiring. Smarter. Faster.
+          Meet your AI hiring assistant – from resume creation to real-time video interview, Airuter empowers you to stand out and get hired.
           </h1>
 
           <div className="metrics">

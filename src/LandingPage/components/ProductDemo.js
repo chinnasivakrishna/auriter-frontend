@@ -2,6 +2,7 @@ import "../utils/globals.css";
 import demoImage from "./wmremove-transformed.png";
 
 export default function ProductDemo() {
+  console.log(demoImage);
   return (
     <section className="product-demo">
       <div className="demo-content">
