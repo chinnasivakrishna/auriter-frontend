@@ -1,4 +1,6 @@
 import "../utils/globals.css";
+import demoImage from "../assets/demo-image.png";
+
 export default function ProductDemo() {
   return (
     <section className="product-demo">
@@ -16,7 +18,7 @@ export default function ProductDemo() {
         </div> */}
         <div className="demo-image">
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-03BmhKbukEVuYlqt0rEFJMwrvhbuu4.png"
+            src={demoImage}
             alt="Interview interface demo"
           />
         </div>

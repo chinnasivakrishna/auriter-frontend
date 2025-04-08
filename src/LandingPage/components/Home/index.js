@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-// import "../utils/globals.css";
-import Companies from "../Companies";
+import React from "react";
 import "./Home.css";
+import Companies from "../Companies";
 import Faq from "../Faq";
 import InovationTestimonial from "../InnovationTestimonial";
 import SuperpowerTestimonial from "../SuperpowerTestimonial";
