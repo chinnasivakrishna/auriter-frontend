@@ -4,8 +4,10 @@ import LinkedInForm from './LinkedInForm';
 import ResumeUpload from './ResumeUpload';
 import MultiStepForm from './MultiStepForm';
 import Cookies from 'js-cookie';
+import { useThemeStyles } from '../hooks/useThemeStyles'; // Adjust the import path if needed
 
 const ProfileSetup = ({ onComplete, onSkip }) => {
+  const { colors, styles, cx, isDark } = useThemeStyles();
   const [selectedMethod, setSelectedMethod] = useState(null);
   const [profileData, setProfileData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -88,27 +90,28 @@ const ProfileSetup = ({ onComplete, onSkip }) => {
     }
   };
 
+  // Define method cards with theme-aware colors
   const methods = [
     {
       id: 'linkedin',
       title: 'Import from LinkedIn',
       icon: Linkedin,
       description: 'Quick import using your LinkedIn profile',
-      color: 'bg-blue-500'
+      color: isDark ? 'bg-blue-800' : 'bg-blue-500'
     },
     {
       id: 'resume',
       title: 'Upload Resume',
       icon: ClipboardList,
       description: 'Extract details from your resume',
-      color: 'bg-green-500'
+      color: isDark ? 'bg-green-800' : 'bg-green-500'
     },
     {
       id: 'form',
       title: 'Fill Form Manually',
       icon: FileText,
       description: 'Enter your details step by step',
-      color: 'bg-purple-500'
+      color: isDark ? 'bg-purple-800' : 'bg-purple-500'
     }
   ];
 
@@ -126,11 +129,20 @@ const ProfileSetup = ({ onComplete, onSkip }) => {
   };
 
   if (loading) {
-    return <div className="text-center p-8">Loading...</div>;
+    return (
+      <div className={cx("text-center p-8", colors.bg)}>
+        <div className={cx("animate-spin rounded-full h-12 w-12 border-b-2 mx-auto", 
+          isDark ? "border-purple-400" : "border-purple-600")}></div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="text-red-500 p-8">Error: {error}</div>;
+    return (
+      <div className={cx("p-8", colors.bg)}>
+        <div className={cx("text-red-500 p-8", colors.errorText)}>Error: {error}</div>
+      </div>
+    );
   }
 
   if (selectedMethod) {
@@ -138,17 +150,18 @@ const ProfileSetup = ({ onComplete, onSkip }) => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-8">
+    <div className={cx("max-w-4xl mx-auto p-8", colors.bg)}>
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">Complete Your Profile</h1>
-          <p className="text-gray-600 mt-2">
+          <h1 className={cx("text-3xl font-bold", colors.text)}>Complete Your Profile</h1>
+          <p className={cx("mt-2", colors.textSecondary)}>
             Choose how you'd like to set up your AI Recruiter profile
           </p>
         </div>
         <button
           onClick={handleSkip}
-          className="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors"
+          className={cx("px-4 py-2 transition-colors", 
+            isDark ? "text-gray-400 hover:text-gray-200" : "text-gray-600 hover:text-gray-800")}
         >
           Skip for now
         </button>
@@ -159,14 +172,14 @@ const ProfileSetup = ({ onComplete, onSkip }) => {
           <button
             key={method.id}
             onClick={() => setSelectedMethod(method.id)}
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
+            className={cx("p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200", colors.bgCard)}
           >
             <div className={`${method.color} w-12 h-12 rounded-full flex items-center justify-center mb-4`}>
               <method.icon className="text-white" size={24} />
             </div>
-            <h3 className="text-xl font-semibold mb-2">{method.title}</h3>
-            <p className="text-gray-600 mb-4">{method.description}</p>
-            <div className="flex items-center text-blue-600">
+            <h3 className={cx("text-xl font-semibold mb-2", colors.text)}>{method.title}</h3>
+            <p className={cx("mb-4", colors.textSecondary)}>{method.description}</p>
+            <div className={cx("flex items-center", colors.primary)}>
               <span>Get Started</span>
               <ArrowRight size={16} className="ml-2" />
             </div>

@@ -1,0 +1,130 @@
+.testimonials-containers {
+  background:purple;
+  color: white;
+  padding: 64px 32px;
+  min-height: 600px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.testimonials-contents {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonials-headers {
+  text-align: center;
+  margin-bottom: 64px;
+  width: 50%;
+}
+
+.subtitles {
+  font-size: 18px;
+  opacity: 0.8;
+  margin-bottom: 16px;
+
+}
+
+.titles {
+  font-size: 40px;
+  font-family: serif;
+  line-height: 1.2;
+  margin: 0;
+
+}
+
+.carousels-wrappers {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.carousels-tracks {
+  display: flex;
+  animation: scroll 10s linear infinite;
+}
+
+.carousels-tracks.paused {
+  animation-play-state: paused;
+}
+
+.testimonials-cards {
+  flex: 0 0 400px;
+  margin: 0 20px;
+  padding: 32px;
+  color: white;
+  /* background: white; */
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+}
+
+.testimonials-quotes {
+  font-size: 24px;
+  font-family: serif;
+  margin: 0 0 24px 0;
+  line-height: 1.4;
+}
+
+.testimonials-authors {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.authors-infos {
+  flex: 1;
+}
+
+.authors-names {
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.authors-companys {
+  opacity: 0.8;
+  margin: 0;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .testimonials-containers {
+    padding: 32px 16px;
+  }
+
+  .titles {
+    font-size: 22px;
+  }
+
+  .testimonials-cards {
+    flex: 0 0 300px;
+    padding: 24px;
+  }
+
+  .testimonials-quotes {
+    font-size: 20px;
+  }
+}
+
+/* Ensure smooth transitions */
+.carousels-tracks {
+  transition: all 0.3s ease-out;
+}
+
+/* Optional: Add hover effect on cards */
+.testimonials-cards:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}

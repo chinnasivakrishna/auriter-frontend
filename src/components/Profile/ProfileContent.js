@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import ProfileDisplay from './ProfileDisplay';
 import ProfileUpdateForm from './ProfileUpdate';
+import { useThemeStyles } from '../hooks/useThemeStyles'; // Adjust the import path if needed
 
 const ProfileContent = () => {
+  const { colors, styles, cx, isDark } = useThemeStyles();
   const [profileData, setProfileData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -60,19 +62,21 @@ const ProfileContent = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-full">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+      <div className={cx("flex items-center justify-center h-full", colors.bg)}>
+        <div className={cx("animate-spin rounded-full h-12 w-12 border-b-2", 
+          isDark ? "border-purple-400" : "border-purple-600")}></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="text-center p-8">
-        <div className="text-red-500 text-lg mb-4">Error: {error}</div>
+      <div className={cx("text-center p-8", colors.bg)}>
+        <div className={cx("text-lg mb-4", colors.errorText)}>Error: {error}</div>
         <button
           onClick={fetchProfileData}
-          className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+          className={cx("px-4 py-2 text-white rounded-lg hover:bg-purple-700 transition-colors", 
+            isDark ? "bg-purple-700" : "bg-purple-600")}
         >
           Retry
         </button>
@@ -82,11 +86,12 @@ const ProfileContent = () => {
 
   if (!profileData) {
     return (
-      <div className="text-center p-8">
-        <div className="text-gray-600 text-lg mb-4">No profile data found</div>
+      <div className={cx("text-center p-8", colors.bg)}>
+        <div className={cx("text-lg mb-4", colors.textMuted)}>No profile data found</div>
         <button
           onClick={() => setIsEditing(true)}
-          className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+          className={cx("px-4 py-2 text-white rounded-lg hover:bg-purple-700 transition-colors", 
+            isDark ? "bg-purple-700" : "bg-purple-600")}
         >
           Create Profile
         </button>

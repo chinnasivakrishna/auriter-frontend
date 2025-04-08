@@ -13,23 +13,30 @@ import {
 } from '../Alerts/AlertDialog';
 import { Card, CardHeader, CardTitle, CardContent } from '../UI/Card';
 import Cookies from 'js-cookie';
+import { useTheme } from '../../context/ThemeContext';
+import { useThemeStyles } from '../hooks/useThemeStyles';
 
 const StatusBadge = ({ status }) => {
+  const { isDark } = useTheme();
+  
   const statusStyles = {
-    active: 'bg-green-100 text-green-800',
-    draft: 'bg-gray-100 text-gray-800',
-    closed: 'bg-red-100 text-red-800',
-    expired: 'bg-yellow-100 text-yellow-800'
+    active: isDark ? 'bg-green-800 text-green-200' : 'bg-green-100 text-green-800',
+    draft: isDark ? 'bg-gray-700 text-gray-200' : 'bg-gray-100 text-gray-800',
+    closed: isDark ? 'bg-red-800 text-red-200' : 'bg-red-100 text-red-800',
+    expired: isDark ? 'bg-yellow-800 text-yellow-200' : 'bg-yellow-100 text-yellow-800'
   };
 
   return (
-    <span className={`px-2 py-1 text-xs font-semibold rounded-full ${statusStyles[status] || 'bg-gray-100 text-gray-800'}`}>
+    <span className={`px-2 py-1 text-xs font-semibold rounded-full ${statusStyles[status] || (isDark ? 'bg-gray-700 text-gray-200' : 'bg-gray-100 text-gray-800')}`}>
       {status.charAt(0).toUpperCase() + status.slice(1)}
     </span>
   );
 };
 
 const JobCard = ({ job, onView, onEdit, onDelete, onViewApplications }) => {
+  const { isDark } = useTheme();
+  const { colors, styles } = useThemeStyles();
+  
   const date = new Date(job.createdAt).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
@@ -37,16 +44,16 @@ const JobCard = ({ job, onView, onEdit, onDelete, onViewApplications }) => {
   });
 
   return (
-    <Card className="mb-4 hover:shadow-md transition-shadow">
+    <Card className="mb-4 hover:shadow-xl transition-all duration-300">
       <CardContent className="p-6">
         <div className="flex justify-between items-start">
           <div>
-            <h3 className="text-xl font-bold text-purple-700 mb-2">{job.title}</h3>
-            <div className="flex items-center text-gray-500 mb-1">
+            <h3 className={`text-xl font-bold ${isDark ? 'text-purple-400' : 'text-purple-700'} mb-2`}>{job.title}</h3>
+            <div className={`flex items-center ${colors.textMuted} mb-1`}>
               <Calendar className="h-4 w-4 mr-2" />
               <span className="text-sm">Posted on {date}</span>
             </div>
-            <div className="flex items-center text-gray-500 mb-3">
+            <div className={`flex items-center ${colors.textMuted} mb-3`}>
               <Tag className="h-4 w-4 mr-2" />
               <StatusBadge status={job.status} />
             </div>
@@ -54,21 +61,33 @@ const JobCard = ({ job, onView, onEdit, onDelete, onViewApplications }) => {
           <div className="flex space-x-3">
             <button 
               onClick={() => onView(job._id)}
-              className="flex items-center justify-center h-8 w-8 rounded-full bg-blue-50 text-blue-500 hover:bg-blue-100 transition-colors"
+              className={`flex items-center justify-center h-8 w-8 rounded-full ${
+                isDark 
+                  ? 'bg-blue-900 text-blue-300 hover:bg-blue-800 hover:text-blue-200 active:bg-blue-950' 
+                  : 'bg-blue-50 text-blue-500 hover:bg-blue-100 hover:text-blue-600 active:bg-blue-200'
+              } transition-all shadow-sm hover:shadow-md`}
               title="View Job"
             >
               <Eye className="h-4 w-4" />
             </button>
             <button 
               onClick={() => onEdit(job._id)}
-              className="flex items-center justify-center h-8 w-8 rounded-full bg-green-50 text-green-500 hover:bg-green-100 transition-colors"
+              className={`flex items-center justify-center h-8 w-8 rounded-full ${
+                isDark 
+                  ? 'bg-green-900 text-green-300 hover:bg-green-800 hover:text-green-200 active:bg-green-950' 
+                  : 'bg-green-50 text-green-500 hover:bg-green-100 hover:text-green-600 active:bg-green-200'
+              } transition-all shadow-sm hover:shadow-md`}
               title="Edit Job"
             >
               <Edit2 className="h-4 w-4" />
             </button>
             <button 
               onClick={() => onDelete(job._id)}
-              className="flex items-center justify-center h-8 w-8 rounded-full bg-red-50 text-red-500 hover:bg-red-100 transition-colors"
+              className={`flex items-center justify-center h-8 w-8 rounded-full ${
+                isDark 
+                  ? 'bg-red-900 text-red-300 hover:bg-red-800 hover:text-red-200 active:bg-red-950' 
+                  : 'bg-red-50 text-red-500 hover:bg-red-100 hover:text-red-600 active:bg-red-200'
+              } transition-all shadow-sm hover:shadow-md`}
               title="Delete Job"
             >
               <Trash2 className="h-4 w-4" />
@@ -77,7 +96,11 @@ const JobCard = ({ job, onView, onEdit, onDelete, onViewApplications }) => {
         </div>
         <button 
           onClick={() => onViewApplications(job._id)}
-          className="mt-4 flex items-center text-purple-600 hover:text-purple-800 font-medium"
+          className={`mt-4 flex items-center ${
+            isDark 
+              ? 'text-purple-400 hover:text-purple-300 hover:bg-purple-900/20 active:bg-purple-900/30' 
+              : 'text-purple-600 hover:text-purple-800 hover:bg-purple-50 active:bg-purple-100'
+          } font-medium py-1 px-2 rounded transition-all`}
         >
           <Users className="h-4 w-4 mr-2" />
           View Applicants
@@ -94,6 +117,8 @@ const MyListingsContent = () => {
   const [deleteJobId, setDeleteJobId] = useState(null);
   const [viewType, setViewType] = useState('cards'); // 'cards' or 'table'
   const navigate = useNavigate();
+  const { isDark } = useTheme();
+  const { colors, styles } = useThemeStyles();
 
   useEffect(() => {
     fetchListings();
@@ -169,25 +194,29 @@ const MyListingsContent = () => {
     <div className="space-y-6">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
-          <CardTitle className="text-2xl font-bold text-gray-800">My Job Listings</CardTitle>
+          <CardTitle className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-800'}`}>My Job Listings</CardTitle>
           <div className="flex items-center space-x-2">
             <button 
               onClick={handlePostJob} 
-              className="flex items-center px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors"
+              className={`flex items-center px-4 py-2 ${colors.buttonPrimary} text-white rounded-md transition-colors`}
             >
               <Plus className="h-4 w-4 mr-2" />
               Post a Job
             </button>
             <button 
               onClick={() => setViewType('cards')} 
-              className={`p-2.5 rounded-md ${viewType === 'cards' ? 'bg-purple-100 text-purple-700' : 'text-gray-500 hover:bg-gray-100'}`}
+              className={`p-2.5 rounded-md ${viewType === 'cards' 
+                ? (isDark ? 'bg-purple-900 text-purple-300' : 'bg-purple-100 text-purple-700') 
+                : (isDark ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-500 hover:bg-gray-100')}`}
               title="Card View"
             >
               <List className="h-5 w-5" />
             </button>
             <button 
               onClick={() => setViewType('table')} 
-              className={`p-2.5 rounded-md ${viewType === 'table' ? 'bg-purple-100 text-purple-700' : 'text-gray-500 hover:bg-gray-100'}`}
+              className={`p-2.5 rounded-md ${viewType === 'table' 
+                ? (isDark ? 'bg-purple-900 text-purple-300' : 'bg-purple-100 text-purple-700') 
+                : (isDark ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-500 hover:bg-gray-100')}`}
               title="Table View"
             >
               <Users className="h-5 w-5" />
@@ -197,11 +226,11 @@ const MyListingsContent = () => {
         
         <CardContent>
           {error && (
-            <div className="mb-6 p-4 bg-red-50 text-red-800 rounded-lg border border-red-200">
+            <div className={`mb-6 p-4 ${isDark ? 'bg-red-900 text-red-200 border-red-700' : 'bg-red-50 text-red-800 border-red-200'} rounded-lg border`}>
               <p className="font-medium">{error}</p>
               <button 
                 onClick={() => setError('')} 
-                className="mt-2 text-sm text-red-600 hover:text-red-800 underline"
+                className={`mt-2 text-sm ${isDark ? 'text-red-300 hover:text-red-200' : 'text-red-600 hover:text-red-800'} underline`}
               >
                 Dismiss
               </button>
@@ -210,11 +239,11 @@ const MyListingsContent = () => {
 
           {listings.length === 0 ? (
             <div className="text-center py-10">
-              <h3 className="text-lg font-medium text-gray-700 mb-2">No job listings yet</h3>
-              <p className="text-gray-500 mb-4">Post your first job to get started</p>
+              <h3 className={`text-lg font-medium ${isDark ? 'text-white' : 'text-gray-700'} mb-2`}>No job listings yet</h3>
+              <p className={`${colors.textMuted} mb-4`}>Post your first job to get started</p>
               <button 
                 onClick={handlePostJob} 
-                className="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700"
+                className={`px-4 py-2 ${colors.buttonPrimary} text-white rounded-md`}
               >
                 Post a Job
               </button>
@@ -234,32 +263,32 @@ const MyListingsContent = () => {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+              <table className={`min-w-full divide-y ${isDark ? 'divide-gray-700' : 'divide-gray-200'}`}>
+                <thead className={isDark ? 'bg-gray-800' : 'bg-gray-50'}>
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Job Title</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Posted Date</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Applicants</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                    <th className={`px-6 py-3 text-left text-xs font-medium ${isDark ? 'text-gray-300' : 'text-gray-500'} uppercase tracking-wider`}>Job Title</th>
+                    <th className={`px-6 py-3 text-left text-xs font-medium ${isDark ? 'text-gray-300' : 'text-gray-500'} uppercase tracking-wider`}>Status</th>
+                    <th className={`px-6 py-3 text-left text-xs font-medium ${isDark ? 'text-gray-300' : 'text-gray-500'} uppercase tracking-wider`}>Posted Date</th>
+                    <th className={`px-6 py-3 text-left text-xs font-medium ${isDark ? 'text-gray-300' : 'text-gray-500'} uppercase tracking-wider`}>Applicants</th>
+                    <th className={`px-6 py-3 text-left text-xs font-medium ${isDark ? 'text-gray-300' : 'text-gray-500'} uppercase tracking-wider`}>Actions</th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className={`${isDark ? 'bg-gray-800' : 'bg-white'} divide-y ${isDark ? 'divide-gray-700' : 'divide-gray-200'}`}>
                   {listings.map((job) => (
-                    <tr key={job._id} className="hover:bg-gray-50">
+                    <tr key={job._id} className={isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-50'}>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="font-medium text-purple-700">{job.title}</span>
+                        <span className={`font-medium ${isDark ? 'text-purple-400' : 'text-purple-700'}`}>{job.title}</span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <StatusBadge status={job.status} />
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className={`px-6 py-4 whitespace-nowrap text-sm ${colors.textMuted}`}>
                         {new Date(job.createdAt).toLocaleDateString()}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <button 
                           onClick={() => handleViewApplications(job._id)}
-                          className="flex items-center text-purple-600 hover:text-purple-800"
+                          className={`flex items-center ${isDark ? 'text-purple-400 hover:text-purple-300' : 'text-purple-600 hover:text-purple-800'}`}
                         >
                           <Users className="h-4 w-4 mr-1" />
                           View Applicants
@@ -268,15 +297,15 @@ const MyListingsContent = () => {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex space-x-3">
                           <Eye 
-                            className="h-5 w-5 text-blue-500 cursor-pointer hover:text-blue-700" 
+                            className={`h-5 w-5 ${isDark ? 'text-blue-400 cursor-pointer hover:text-blue-300' : 'text-blue-500 cursor-pointer hover:text-blue-700'}`} 
                             onClick={() => handleViewJob(job._id)}
                           />
                           <Edit2 
-                            className="h-5 w-5 text-green-500 cursor-pointer hover:text-green-700" 
+                            className={`h-5 w-5 ${isDark ? 'text-green-400 cursor-pointer hover:text-green-300' : 'text-green-500 cursor-pointer hover:text-green-700'}`} 
                             onClick={() => handleEditJob(job._id)}
                           />
                           <Trash2 
-                            className="h-5 w-5 text-red-500 cursor-pointer hover:text-red-700" 
+                            className={`h-5 w-5 ${isDark ? 'text-red-400 cursor-pointer hover:text-red-300' : 'text-red-500 cursor-pointer hover:text-red-700'}`} 
                             onClick={() => setDeleteJobId(job._id)}
                           />
                         </div>
@@ -301,7 +330,7 @@ const MyListingsContent = () => {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleDelete} className="bg-red-500 hover:bg-red-600 text-white">
+            <AlertDialogAction onClick={handleDelete} className={isDark ? 'bg-red-700 hover:bg-red-600 text-white' : 'bg-red-500 hover:bg-red-600 text-white'}>
               Delete
             </AlertDialogAction>
           </AlertDialogFooter>

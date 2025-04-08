@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { Save, Clock, DollarSign, Star, Briefcase, MapPin, AlertTriangle } from 'lucide-react';
+import { Save, Clock, DollarSign, Star, Briefcase, MapPin, AlertTriangle, ArrowLeft } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent } from '../UI/Card';
+import { useThemeStyles } from '../hooks/useThemeStyles';
 
-const EditJobContent = ({ jobId }) => {
+const EditJobContent = () => {
+  const { jobId } = useParams();
   const navigate = useNavigate();
+  const { isDark, colors, styles } = useThemeStyles();
   const [job, setJob] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,6 +41,7 @@ const EditJobContent = ({ jobId }) => {
         setLoading(true);
         const token = Cookies.get('token');
         const response = await fetch(`https://auriter-backen.onrender.com/api/jobs/${jobId}`, {
+          method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -116,7 +120,7 @@ const EditJobContent = ({ jobId }) => {
       
       const token = Cookies.get('token');
       const response = await fetch(`https://auriter-backen.onrender.com/api/jobs/${jobId}`, {
-        method: 'PUT',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -161,21 +165,32 @@ const EditJobContent = ({ jobId }) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-purple-500 border-t-transparent"></div>
+        <div className={`animate-spin rounded-full h-12 w-12 border-4 border-purple-500 border-t-transparent ${styles.transition}`}></div>
       </div>
     );
   }
 
   return (
     <div className="space-y-6">
-      <Card>
+      {/* Back button at top left */}
+      <div className="mb-4">
+        <button
+          onClick={() => navigate('/my-listings')}
+          className={`flex items-center ${isDark ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'} ${styles.transition}`}
+        >
+          <ArrowLeft className="h-5 w-5 mr-2" />
+          Back to Job Listings
+        </button>
+      </div>
+      
+      <Card className={isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}>
         <CardHeader className="pb-4">
-          <CardTitle className="text-2xl font-bold text-gray-800">Edit Job: {job?.title}</CardTitle>
+          <CardTitle className={`text-2xl font-bold ${colors.text}`}>Edit Job: {job?.title}</CardTitle>
         </CardHeader>
         
         <CardContent>
           {error && (
-            <div className="mb-6 p-4 bg-red-50 text-red-800 rounded-lg border border-red-200 flex items-start">
+            <div className={`mb-6 p-4 ${colors.error} rounded-lg border flex items-start ${styles.transition}`}>
               <AlertTriangle className="h-5 w-5 mr-2 mt-0.5" />
               <div>
                 <p className="font-medium">Error</p>
@@ -185,7 +200,7 @@ const EditJobContent = ({ jobId }) => {
           )}
 
           {successMessage && (
-            <div className="mb-6 p-4 bg-green-50 text-green-800 rounded-lg border border-green-200">
+            <div className={`mb-6 p-4 ${colors.success} rounded-lg border ${styles.transition}`}>
               <p className="font-medium">{successMessage}</p>
             </div>
           )}
@@ -194,7 +209,7 @@ const EditJobContent = ({ jobId }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Job Title */}
               <div className="col-span-2 md:col-span-1">
-                <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="title" className={styles.label}>
                   Job Title*
                 </label>
                 <input
@@ -203,14 +218,14 @@ const EditJobContent = ({ jobId }) => {
                   name="title"
                   value={formState.title}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing}`}
                   required
                 />
               </div>
 
               {/* Company */}
               <div className="col-span-2 md:col-span-1">
-                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="company" className={styles.label}>
                   Company*
                 </label>
                 <input
@@ -219,14 +234,14 @@ const EditJobContent = ({ jobId }) => {
                   name="company"
                   value={formState.company}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing}`}
                   required
                 />
               </div>
 
               {/* Job Type */}
               <div>
-                <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="type" className={styles.label}>
                   <Briefcase className="h-4 w-4 inline mr-1" />
                   Job Type*
                 </label>
@@ -235,7 +250,7 @@ const EditJobContent = ({ jobId }) => {
                   name="type"
                   value={formState.type}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+                  className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing} bg-opacity-100`}
                   required
                 >
                   {jobTypes.map(type => (
@@ -246,7 +261,7 @@ const EditJobContent = ({ jobId }) => {
 
               {/* Location */}
               <div>
-                <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="location" className={styles.label}>
                   <MapPin className="h-4 w-4 inline mr-1" />
                   Location*
                 </label>
@@ -256,7 +271,7 @@ const EditJobContent = ({ jobId }) => {
                   name="location"
                   value={formState.location}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing}`}
                   placeholder="City, Country or Remote"
                   required
                 />
@@ -264,7 +279,7 @@ const EditJobContent = ({ jobId }) => {
 
               {/* Status */}
               <div>
-                <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="status" className={styles.label}>
                   Status*
                 </label>
                 <select
@@ -272,7 +287,7 @@ const EditJobContent = ({ jobId }) => {
                   name="status"
                   value={formState.status}
                   onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+                  className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing} bg-opacity-100`}
                   required
                 >
                   {statusOptions.map(option => (
@@ -283,13 +298,13 @@ const EditJobContent = ({ jobId }) => {
 
               {/* Experience */}
               <div className="col-span-2 md:col-span-1">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className={styles.label}>
                   <Clock className="h-4 w-4 inline mr-1" />
                   Experience (years)
                 </label>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="experience.min" className="block text-xs text-gray-500 mb-1">
+                    <label htmlFor="experience.min" className={`block text-xs ${colors.textMuted} mb-1`}>
                       Minimum
                     </label>
                     <input
@@ -299,11 +314,11 @@ const EditJobContent = ({ jobId }) => {
                       value={formState.experience.min}
                       onChange={handleInputChange}
                       min="0"
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing}`}
                     />
                   </div>
                   <div>
-                    <label htmlFor="experience.max" className="block text-xs text-gray-500 mb-1">
+                    <label htmlFor="experience.max" className={`block text-xs ${colors.textMuted} mb-1`}>
                       Maximum
                     </label>
                     <input
@@ -313,7 +328,7 @@ const EditJobContent = ({ jobId }) => {
                       value={formState.experience.max}
                       onChange={handleInputChange}
                       min="0"
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing}`}
                     />
                   </div>
                 </div>
@@ -321,13 +336,13 @@ const EditJobContent = ({ jobId }) => {
 
               {/* Salary */}
               <div className="col-span-2 md:col-span-1">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className={styles.label}>
                   <DollarSign className="h-4 w-4 inline mr-1" />
                   Salary Range (USD)
                 </label>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="salary.min" className="block text-xs text-gray-500 mb-1">
+                    <label htmlFor="salary.min" className={`block text-xs ${colors.textMuted} mb-1`}>
                       Minimum
                     </label>
                     <input
@@ -337,11 +352,11 @@ const EditJobContent = ({ jobId }) => {
                       value={formState.salary.min}
                       onChange={handleInputChange}
                       min="0"
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing}`}
                     />
                   </div>
                   <div>
-                    <label htmlFor="salary.max" className="block text-xs text-gray-500 mb-1">
+                    <label htmlFor="salary.max" className={`block text-xs ${colors.textMuted} mb-1`}>
                       Maximum
                     </label>
                     <input
@@ -351,7 +366,7 @@ const EditJobContent = ({ jobId }) => {
                       value={formState.salary.max}
                       onChange={handleInputChange}
                       min="0"
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                      className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing}`}
                     />
                   </div>
                 </div>
@@ -359,7 +374,7 @@ const EditJobContent = ({ jobId }) => {
 
               {/* Description */}
               <div className="col-span-2">
-                <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="description" className={styles.label}>
                   Job Description*
                 </label>
                 <textarea
@@ -368,17 +383,17 @@ const EditJobContent = ({ jobId }) => {
                   value={formState.description}
                   onChange={handleInputChange}
                   rows="5"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing}`}
                   required
                 ></textarea>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className={`mt-1 text-sm ${colors.textMuted}`}>
                   Provide a detailed description of the role and responsibilities.
                 </p>
               </div>
 
               {/* Requirements */}
               <div className="col-span-2 md:col-span-1">
-                <label htmlFor="requirements" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="requirements" className={styles.label}>
                   Requirements
                 </label>
                 <textarea
@@ -387,17 +402,17 @@ const EditJobContent = ({ jobId }) => {
                   value={formState.requirements}
                   onChange={handleInputChange}
                   rows="5"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing}`}
                   placeholder="Enter each requirement on a new line"
                 ></textarea>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className={`mt-1 text-sm ${colors.textMuted}`}>
                   List each requirement on a new line.
                 </p>
               </div>
 
               {/* Responsibilities */}
               <div className="col-span-2 md:col-span-1">
-                <label htmlFor="responsibilities" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="responsibilities" className={styles.label}>
                   Responsibilities
                 </label>
                 <textarea
@@ -406,17 +421,17 @@ const EditJobContent = ({ jobId }) => {
                   value={formState.responsibilities}
                   onChange={handleInputChange}
                   rows="5"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing}`}
                   placeholder="Enter each responsibility on a new line"
                 ></textarea>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className={`mt-1 text-sm ${colors.textMuted}`}>
                   List each responsibility on a new line.
                 </p>
               </div>
 
               {/* Skills */}
               <div className="col-span-2 md:col-span-1">
-                <label htmlFor="skills" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="skills" className={styles.label}>
                   <Star className="h-4 w-4 inline mr-1" />
                   Skills
                 </label>
@@ -426,17 +441,17 @@ const EditJobContent = ({ jobId }) => {
                   value={formState.skills}
                   onChange={handleInputChange}
                   rows="3"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing}`}
                   placeholder="e.g. JavaScript, React, Node.js"
                 ></textarea>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className={`mt-1 text-sm ${colors.textMuted}`}>
                   Enter skills separated by commas.
                 </p>
               </div>
 
               {/* Benefits */}
               <div className="col-span-2 md:col-span-1">
-                <label htmlFor="benefits" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="benefits" className={styles.label}>
                   Benefits
                 </label>
                 <textarea
@@ -445,27 +460,27 @@ const EditJobContent = ({ jobId }) => {
                   value={formState.benefits}
                   onChange={handleInputChange}
                   rows="3"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className={`w-full p-3 border rounded-md ${styles.input} ${styles.focusRing}`}
                   placeholder="Enter each benefit on a new line"
                 ></textarea>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className={`mt-1 text-sm ${colors.textMuted}`}>
                   List each benefit on a new line.
                 </p>
               </div>
             </div>
 
-            <div className="flex justify-end space-x-4 pt-4 border-t">
+            <div className={`flex justify-end space-x-4 pt-4 border-t ${colors.border} ${styles.transition}`}>
               <button
                 type="button"
                 onClick={() => navigate('/my-listings')}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className={`px-4 py-2 border ${colors.border} ${colors.textSecondary} rounded-md ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-50'} ${styles.focusRing} ${styles.transition}`}
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={submitLoading}
-                className="px-6 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 flex items-center"
+                className={`px-6 py-2 ${colors.buttonPrimary} text-white rounded-md ${styles.focusRing} flex items-center ${styles.transition}`}
               >
                 {submitLoading ? (
                   <>

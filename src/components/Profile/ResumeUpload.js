@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Upload, Check, Loader } from 'lucide-react';
 import Cookies from 'js-cookie';
+import { useTheme } from '../../context/ThemeContext';
+import { useThemeStyles } from '../hooks/useThemeStyles';
 
 const ResumeUpload = ({ onBack }) => {
+  const { theme } = useTheme();
+  const { colors, styles } = useThemeStyles();
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(null);
@@ -83,24 +87,24 @@ const ResumeUpload = ({ onBack }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-8">
+    <div className={`max-w-md mx-auto p-8 ${colors.bgCard} rounded-xl`}>
       <button
         onClick={onBack}
-        className="flex items-center text-gray-600 mb-8 hover:text-gray-800"
+        className={`flex items-center ${colors.textSecondary} mb-8 hover:${colors.text}`}
       >
         <ArrowLeft size={20} className="mr-2" />
         Back to options
       </button>
 
-      <h2 className="text-2xl font-bold mb-6">Upload Your Resume</h2>
+      <h2 className={`text-2xl font-bold mb-6 ${colors.text}`}>Upload Your Resume</h2>
 
       {error && (
-        <div className="bg-red-50 text-red-600 p-4 rounded-lg mb-6">
+        <div className={styles.error + " p-4 rounded-lg mb-6"}>
           {error}
         </div>
       )}
 
-      <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+      <div className={`border-2 border-dashed ${colors.border} rounded-lg p-8 text-center ${colors.bgCard}`}>
         <input
           type="file"
           onChange={handleFileChange}
@@ -111,21 +115,21 @@ const ResumeUpload = ({ onBack }) => {
         
         {!file ? (
           <div>
-            <Upload className="mx-auto text-gray-400 mb-4" size={48} />
+            <Upload className={`mx-auto ${colors.textMuted} mb-4`} size={48} />
             <label
               htmlFor="resume-upload"
-              className="cursor-pointer text-blue-600 hover:text-blue-700"
+              className={`cursor-pointer ${colors.primary} ${colors.primaryHover}`}
             >
               Click to upload
             </label>
-            <p className="text-gray-500 mt-2">
+            <p className={`${colors.textMuted} mt-2`}>
               Supported formats: PDF, DOC, DOCX (max 10MB)
             </p>
           </div>
         ) : (
           <div>
             <Check className="mx-auto text-green-500 mb-4" size={48} />
-            <p className="text-gray-800 font-medium">{file.name}</p>
+            <p className={`${colors.text} font-medium`}>{file.name}</p>
             <button
               onClick={() => {
                 setFile(null);
@@ -141,7 +145,7 @@ const ResumeUpload = ({ onBack }) => {
       </div>
 
       {progress > 0 && progress < 100 && (
-        <div className="w-full bg-gray-200 rounded-full h-2.5 mt-4">
+        <div className={`w-full ${colors.bgSection} rounded-full h-2.5 mt-4`}>
           <div 
             className="bg-purple-600 h-2.5 rounded-full transition-all duration-300"
             style={{ width: `${progress}%` }}
@@ -154,7 +158,7 @@ const ResumeUpload = ({ onBack }) => {
           onClick={handleUpload}
           disabled={uploading}
           className={`w-full mt-6 ${
-            uploading ? 'bg-purple-400' : 'bg-purple-600 hover:bg-purple-700'
+            uploading ? 'bg-purple-400' : colors.buttonPrimary
           } text-white py-3 rounded-lg transition-colors duration-200 flex items-center justify-center`}
         >
           {uploading ? (

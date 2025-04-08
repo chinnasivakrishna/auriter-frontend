@@ -2,8 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Mic, Loader, AlertCircle, StopCircle, MessageSquare, Globe, Languages, Volume2, VolumeX, Clock } from 'lucide-react';
 import { AudioStream } from './Audio/AudioStream';
 import Cookies from 'js-cookie';
+import { useTheme } from '../context/ThemeContext';
+import { useThemeStyles } from './hooks/useThemeStyles';
 
 const VoiceInteraction = () => {
+  const { theme, isDark } = useTheme();
+  const { colors, styles, cx } = useThemeStyles();
+  
   const [isRecording, setIsRecording] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -309,25 +314,44 @@ const VoiceInteraction = () => {
 
   const MessageComponent = ({ message, index }) => (
     <div className={`mb-6 flex ${message.isUser ? 'justify-end' : 'justify-start'} group`}>
-      <div className={`max-w-[70%] rounded-2xl p-4 shadow-sm transition-all duration-200 ${
+      <div className={cx(
+        'max-w-[70%] rounded-2xl p-4 shadow-sm transition-all duration-200',
         message.isUser
-          ? 'bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:shadow-md'
-          : 'bg-gradient-to-r from-gray-50 to-gray-100 text-gray-800 hover:shadow-md'
-      }`}>
+          ? isDark 
+            ? 'bg-gradient-to-r from-purple-800 to-purple-900 text-white hover:shadow-md hover:shadow-purple-900/30' 
+            : 'bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:shadow-md'
+          : isDark
+            ? 'bg-gradient-to-r from-gray-700 to-gray-800 text-gray-200 hover:shadow-md hover:shadow-black/20'
+            : 'bg-gradient-to-r from-gray-50 to-gray-100 text-gray-800 hover:shadow-md'
+      )}>
         <div className="break-words whitespace-pre-wrap text-[15px] leading-relaxed">
           {message.content}
         </div>
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center gap-2">
-            <Clock size={14} className={message.isUser ? 'text-purple-200' : 'text-gray-400'} />
-            <span className={`text-xs ${message.isUser ? 'text-purple-200' : 'text-gray-500'}`}>
+            <Clock size={14} className={cx(
+              message.isUser 
+                ? isDark ? 'text-purple-300' : 'text-purple-200'
+                : isDark ? 'text-gray-400' : 'text-gray-400'
+            )} />
+            <span className={cx(
+              'text-xs',
+              message.isUser 
+                ? isDark ? 'text-purple-300' : 'text-purple-200'
+                : isDark ? 'text-gray-400' : 'text-gray-500'
+            )}>
               {formatTimestamp(message.timestamp)}
             </span>
           </div>
           {!message.isUser && (
             <button
               onClick={() => speakText(message.content, index)}
-              className="text-gray-400 hover:text-purple-600 transition-all duration-200 flex items-center gap-1"
+              className={cx(
+                'transition-all duration-200 flex items-center gap-1',
+                isDark
+                  ? 'text-gray-300 hover:text-purple-400'
+                  : 'text-gray-400 hover:text-purple-600'
+              )}
               disabled={isSpeaking && currentPlayingId !== index}
             >
               {isSpeaking && currentPlayingId === index ? (
@@ -349,31 +373,62 @@ const VoiceInteraction = () => {
   );
 
   return (
-    <div className="flex h-[600px] bg-white rounded-2xl shadow-lg overflow-hidden">
-      <div className="w-1/3 bg-gradient-to-br from-purple-50 to-purple-100 p-6 flex flex-col justify-between">
+    <div className={cx(
+      'flex h-[600px] rounded-2xl shadow-lg overflow-hidden',
+      styles.transition,
+      isDark ? 'bg-gray-800' : 'bg-white'
+    )}>
+      <div className={cx(
+        'w-1/3 p-6 flex flex-col justify-between',
+        isDark
+          ? 'bg-gradient-to-br from-gray-800 to-gray-900'
+          : 'bg-gradient-to-br from-purple-50 to-purple-100'
+      )}>
         <div>
           <div className="flex items-center gap-2 mb-6">
-            <Mic className="text-purple-600" />
-            <h2 className="text-xl font-semibold text-purple-800">Voice AI Companion</h2>
+            <Mic className={isDark ? 'text-purple-400' : 'text-purple-600'} />
+            <h2 className={cx(
+              'text-xl font-semibold',
+              isDark ? 'text-purple-300' : 'text-purple-800'
+            )}>Voice AI Companion</h2>
           </div>
 
           <div className="mb-4">
             <div className="flex items-center gap-2 mb-2">
-              <Globe className="text-purple-600" size={20} />
-              <label className="text-sm font-medium text-gray-700">Language</label>
+              <Globe className={isDark ? 'text-purple-400' : 'text-purple-600'} size={20} />
+              <label className={cx(
+                'text-sm font-medium',
+                isDark ? 'text-gray-300' : 'text-gray-700'
+              )}>Language</label>
             </div>
             <div className="flex gap-2">
               <button
                 onClick={() => setLanguage('en')}
-                className={`px-3 py-2 rounded-lg transition-all duration-300 flex items-center gap-2
-                  ${language === 'en' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border hover:bg-purple-50'}`}
+                className={cx(
+                  'px-3 py-2 rounded-lg transition-all duration-300 flex items-center gap-2',
+                  language === 'en' 
+                    ? isDark
+                      ? 'bg-purple-700 text-white shadow-md shadow-black/30'
+                      : 'bg-purple-500 text-white shadow-md'
+                    : isDark
+                      ? 'bg-gray-700 text-gray-300 border border-gray-600 hover:bg-gray-600'
+                      : 'bg-white text-gray-700 border hover:bg-purple-50'
+                )}
               >
                 🇺🇸 English
               </button>
               <button
                 onClick={() => setLanguage('hi')}
-                className={`px-3 py-2 rounded-lg transition-all duration-300 flex items-center gap-2
-                  ${language === 'hi' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border hover:bg-purple-50'}`}
+                className={cx(
+                  'px-3 py-2 rounded-lg transition-all duration-300 flex items-center gap-2',
+                  language === 'hi' 
+                    ? isDark
+                      ? 'bg-purple-700 text-white shadow-md shadow-black/30'
+                      : 'bg-purple-500 text-white shadow-md'
+                    : isDark
+                      ? 'bg-gray-700 text-gray-300 border border-gray-600 hover:bg-gray-600'
+                      : 'bg-white text-gray-700 border hover:bg-purple-50'
+                )}
               >
                 🇮🇳 Hindi
               </button>
@@ -382,13 +437,21 @@ const VoiceInteraction = () => {
 
           <div className="mb-4">
             <div className="flex items-center gap-2 mb-2">
-              <Volume2 className="text-purple-600" size={20} />
-              <label className="text-sm font-medium text-gray-700">Voice</label>
+              <Volume2 className={isDark ? 'text-purple-400' : 'text-purple-600'} size={20} />
+              <label className={cx(
+                'text-sm font-medium',
+                isDark ? 'text-gray-300' : 'text-gray-700'
+              )}>Voice</label>
             </div>
             <select
               value={selectedVoice}
               onChange={(e) => setSelectedVoice(e.target.value)}
-              className="w-full p-2 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-500"
+              className={cx(
+                'w-full p-2 rounded-lg border',
+                isDark
+                  ? 'bg-gray-700 border-gray-600 text-white focus:border-purple-400 focus:ring-1 focus:ring-purple-400'
+                  : 'border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-500'
+              )}
             >
               {getVoiceOptions(language).map((voice) => (
                 <option key={voice} value={voice}>
@@ -401,10 +464,16 @@ const VoiceInteraction = () => {
           <div className="mb-4">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <Languages className="text-purple-600" size={20} />
-                <label className="text-sm font-medium text-gray-700">Speech Speed</label>
+                <Languages className={isDark ? 'text-purple-400' : 'text-purple-600'} size={20} />
+                <label className={cx(
+                  'text-sm font-medium',
+                  isDark ? 'text-gray-300' : 'text-gray-700'
+                )}>Speech Speed</label>
               </div>
-              <div className="text-sm text-gray-600">{ttsSpeed.toFixed(1)}x</div>
+              <div className={cx(
+                'text-sm',
+                isDark ? 'text-gray-400' : 'text-gray-600'
+              )}>{ttsSpeed.toFixed(1)}x</div>
             </div>
             <input 
               type="range" 
@@ -413,16 +482,30 @@ const VoiceInteraction = () => {
               step="0.1" 
               value={ttsSpeed}
               onChange={(e) => setTtsSpeed(parseFloat(e.target.value))}
-              className="w-full h-2 bg-purple-200 rounded-lg appearance-none cursor-pointer"
+              className={cx(
+                'w-full h-2 rounded-lg appearance-none cursor-pointer',
+                isDark ? 'bg-purple-900' : 'bg-purple-200'
+              )}
             />
           </div>
 
           <div className="space-y-2">
             <button
               onClick={() => isRecording ? stopRecording() : startRecording()}
-              className={`w-full py-3 rounded-lg transition-all duration-300 flex items-center justify-center
-                ${isRecording ? 'bg-red-500 hover:bg-red-600 text-white' : 'bg-purple-500 hover:bg-purple-600 text-white'}
-                ${loading ? 'opacity-70 cursor-not-allowed' : ''} shadow-lg hover:shadow-lg hover:shadow-xl`}
+              className={cx(
+                'w-full py-3 rounded-lg transition-all duration-300 flex items-center justify-center',
+                isRecording
+                  ? isDark
+                    ? 'bg-red-700 hover:bg-red-600 text-white'
+                    : 'bg-red-500 hover:bg-red-600 text-white'
+                  : isDark
+                    ? 'bg-purple-700 hover:bg-purple-600 text-white'
+                    : 'bg-purple-500 hover:bg-purple-600 text-white',
+                loading ? 'opacity-70 cursor-not-allowed' : '',
+                isDark
+                  ? 'shadow-lg shadow-black/30 hover:shadow-lg hover:shadow-black/40'
+                  : 'shadow-lg hover:shadow-lg hover:shadow-xl'
+              )}
               disabled={loading}
             >
               {loading ? (
@@ -441,7 +524,12 @@ const VoiceInteraction = () => {
             </button>
 
             {error && (
-              <div className="mt-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm flex items-center">
+              <div className={cx(
+                'mt-4 p-3 rounded-lg text-sm flex items-center',
+                isDark
+                  ? 'bg-red-900 border border-red-700 text-red-300'
+                  : 'bg-red-50 border border-red-200 text-red-700'
+              )}>
                 <AlertCircle size={16} className="mr-2" />
                 {error}
               </div>
@@ -450,18 +538,30 @@ const VoiceInteraction = () => {
         </div>
       </div>
 
-      <div className="w-2/3 p-6 bg-gray-50 flex flex-col">
+      <div className={cx(
+        'w-2/3 p-6 flex flex-col',
+        isDark ? 'bg-gray-800' : 'bg-gray-50'
+      )}>
         <div className="flex items-center gap-2 mb-4">
-          <MessageSquare className="text-blue-600" />
-          <h2 className="text-xl font-semibold text-blue-800">Voice Conversation</h2>
+          <MessageSquare className={isDark ? 'text-blue-400' : 'text-blue-600'} />
+          <h2 className={cx(
+            'text-xl font-semibold',
+            isDark ? 'text-blue-300' : 'text-blue-800'
+          )}>Voice Conversation</h2>
         </div>
 
         <div 
           ref={conversationContainerRef}
-          className="flex-grow bg-white p-4 rounded-lg shadow-sm overflow-y-auto"
+          className={cx(
+            'flex-grow p-4 rounded-lg shadow-sm overflow-y-auto',
+            isDark ? 'bg-gray-900' : 'bg-white'
+          )}
         >
           {conversationHistory.length === 0 ? (
-            <div className="text-gray-500 text-center py-10 italic">
+            <div className={cx(
+              'text-center py-10 italic',
+              isDark ? 'text-gray-400' : 'text-gray-500'
+            )}>
               Your multilingual conversation will appear here
             </div>
           ) : (

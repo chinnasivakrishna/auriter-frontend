@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { ArrowLeft, ArrowRight, Plus, X } from 'lucide-react';
 import Cookies from 'js-cookie';
+import { useTheme } from '../../context/ThemeContext';
+import { useThemeStyles } from '../hooks/useThemeStyles';
 
 const MultiStepForm = ({ onBack }) => {
+  const { theme } = useTheme();
+  const { colors, styles } = useThemeStyles();
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
     // Personal Information
@@ -93,63 +97,63 @@ const MultiStepForm = ({ onBack }) => {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                   First Name
                 </label>
                 <input
                   type="text"
                   value={formData.firstName}
                   onChange={(e) => setFormData({...formData, firstName: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                   Last Name
                 </label>
                 <input
                   type="text"
                   value={formData.lastName}
                   onChange={(e) => setFormData({...formData, lastName: e.target.value})}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                   required
                 />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                 Email
               </label>
               <input
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                 Phone
               </label>
               <input
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                 Location
               </label>
               <input
                 type="text"
                 value={formData.location}
                 onChange={(e) => setFormData({...formData, location: e.target.value})}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                 required
               />
             </div>
@@ -160,37 +164,37 @@ const MultiStepForm = ({ onBack }) => {
         return (
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                 Professional Title
               </label>
               <input
                 type="text"
                 value={formData.title}
                 onChange={(e) => setFormData({...formData, title: e.target.value})}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                 Years of Experience
               </label>
               <input
                 type="number"
                 value={formData.yearsOfExperience}
                 onChange={(e) => setFormData({...formData, yearsOfExperience: e.target.value})}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                 Professional Summary
               </label>
               <textarea
                 value={formData.summary}
                 onChange={(e) => setFormData({...formData, summary: e.target.value})}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                 rows={4}
                 required
               />
@@ -202,9 +206,9 @@ const MultiStepForm = ({ onBack }) => {
         return (
           <div className="space-y-6">
             {formData.education.map((edu, index) => (
-              <div key={index} className="p-4 border border-gray-200 rounded-lg space-y-4">
+              <div key={index} className={`p-4 border ${colors.border} rounded-lg space-y-4 ${colors.bgCard}`}>
                 <div className="flex justify-between items-center">
-                  <h3 className="font-medium">Education #{index + 1}</h3>
+                  <h3 className={`font-medium ${colors.text}`}>Education #{index + 1}</h3>
                   {index > 0 && (
                     <button
                       type="button"
@@ -217,7 +221,7 @@ const MultiStepForm = ({ onBack }) => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                       Degree
                     </label>
                     <input
@@ -228,12 +232,12 @@ const MultiStepForm = ({ onBack }) => {
                         newEducation[index] = { ...edu, degree: e.target.value };
                         setFormData({ ...formData, education: newEducation });
                       }}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                       Field of Study
                     </label>
                     <input
@@ -244,13 +248,13 @@ const MultiStepForm = ({ onBack }) => {
                         newEducation[index] = { ...edu, field: e.target.value };
                         setFormData({ ...formData, education: newEducation });
                       }}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                       required
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                     Institution
                   </label>
                   <input
@@ -261,12 +265,12 @@ const MultiStepForm = ({ onBack }) => {
                       newEducation[index] = { ...edu, institution: e.target.value };
                       setFormData({ ...formData, education: newEducation });
                     }}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                     Year of Completion
                   </label>
                   <input
@@ -277,7 +281,7 @@ const MultiStepForm = ({ onBack }) => {
                       newEducation[index] = { ...edu, yearOfCompletion: e.target.value };
                       setFormData({ ...formData, education: newEducation });
                     }}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                     required
                   />
                 </div>
@@ -286,7 +290,7 @@ const MultiStepForm = ({ onBack }) => {
             <button
               type="button"
               onClick={() => addArrayField('education')}
-              className="flex items-center text-purple-600 hover:text-purple-700"
+              className={`flex items-center ${colors.primary}`}
             >
               <Plus size={20} className="mr-2" />
               Add Education
@@ -298,9 +302,9 @@ const MultiStepForm = ({ onBack }) => {
         return (
           <div className="space-y-6">
             {formData.experience.map((exp, index) => (
-              <div key={index} className="p-4 border border-gray-200 rounded-lg space-y-4">
+              <div key={index} className={`p-4 border ${colors.border} rounded-lg space-y-4 ${colors.bgCard}`}>
                 <div className="flex justify-between items-center">
-                  <h3 className="font-medium">Experience #{index + 1}</h3>
+                  <h3 className={`font-medium ${colors.text}`}>Experience #{index + 1}</h3>
                   {index > 0 && (
                     <button
                       type="button"
@@ -312,7 +316,7 @@ const MultiStepForm = ({ onBack }) => {
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                     Company
                   </label>
                   <input
@@ -323,12 +327,12 @@ const MultiStepForm = ({ onBack }) => {
                       newExperience[index] = { ...exp, company: e.target.value };
                       setFormData({ ...formData, experience: newExperience });
                     }}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                     Position
                   </label>
                   <input
@@ -339,13 +343,13 @@ const MultiStepForm = ({ onBack }) => {
                       newExperience[index] = { ...exp, position: e.target.value };
                       setFormData({ ...formData, experience: newExperience });
                     }}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                     required
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                       Start Date
                     </label>
                     <input
@@ -356,12 +360,12 @@ const MultiStepForm = ({ onBack }) => {
                         newExperience[index] = { ...exp, startDate: e.target.value };
                         setFormData({ ...formData, experience: newExperience });
                       }}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                       End Date
                     </label>
                     <input
@@ -372,12 +376,12 @@ const MultiStepForm = ({ onBack }) => {
                         newExperience[index] = { ...exp, endDate: e.target.value };
                         setFormData({ ...formData, experience: newExperience });
                       }}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className={`block text-sm font-medium ${colors.text} mb-2`}>
                     Description
                   </label>
                   <textarea
@@ -387,7 +391,7 @@ const MultiStepForm = ({ onBack }) => {
                       newExperience[index] = { ...exp, description: e.target.value };
                       setFormData({ ...formData, experience: newExperience });
                     }}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    className={`w-full px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                     rows={4}
                     required
                   />
@@ -397,7 +401,7 @@ const MultiStepForm = ({ onBack }) => {
             <button
               type="button"
               onClick={() => addArrayField('experience')}
-              className="flex items-center text-purple-600 hover:text-purple-700"
+              className={`flex items-center ${colors.primary}`}
             >
               <Plus size={20} className="mr-2" />
               Add Experience
@@ -414,7 +418,7 @@ const MultiStepForm = ({ onBack }) => {
                   type="text"
                   value={skill}
                   onChange={(e) => updateArrayField('skills', index, e.target.value)}
-                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg"
+                  className={`flex-1 px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                   placeholder="Enter a skill"
                   required
                 />
@@ -432,7 +436,7 @@ const MultiStepForm = ({ onBack }) => {
             <button
               type="button"
               onClick={() => addArrayField('skills')}
-              className="flex items-center text-purple-600 hover:text-purple-700"
+              className={`flex items-center ${colors.primary}`}
             >
               <Plus size={20} className="mr-2" />
               Add Skill
@@ -445,14 +449,14 @@ const MultiStepForm = ({ onBack }) => {
           <div className="space-y-6">
             {/* Languages */}
             <div className="space-y-4">
-              <h3 className="font-medium">Languages</h3>
+              <h3 className={`font-medium ${colors.text}`}>Languages</h3>
               {formData.languages.map((language, index) => (
                 <div key={index} className="flex gap-2">
                   <input
                     type="text"
                     value={language}
                     onChange={(e) => updateArrayField('languages', index, e.target.value)}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg"
+                    className={`flex-1 px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                     placeholder="Enter a language"
                     required
                   />
@@ -470,7 +474,7 @@ const MultiStepForm = ({ onBack }) => {
               <button
                 type="button"
                 onClick={() => addArrayField('languages')}
-                className="flex items-center text-purple-600 hover:text-purple-700"
+                className={`flex items-center ${colors.primary}`}
               >
                 <Plus size={20} className="mr-2" />
                 Add Language
@@ -479,14 +483,14 @@ const MultiStepForm = ({ onBack }) => {
 
             {/* Certifications */}
             <div className="space-y-4">
-              <h3 className="font-medium">Certifications</h3>
+              <h3 className={`font-medium ${colors.text}`}>Certifications</h3>
               {formData.certifications.map((cert, index) => (
                 <div key={index} className="flex gap-2">
                   <input
                     type="text"
                     value={cert}
                     onChange={(e) => updateArrayField('certifications', index, e.target.value)}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg"
+                    className={`flex-1 px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                     placeholder="Enter a certification"
                   />
                   {index > 0 && (
@@ -503,7 +507,7 @@ const MultiStepForm = ({ onBack }) => {
               <button
                 type="button"
                 onClick={() => addArrayField('certifications')}
-                className="flex items-center text-purple-600 hover:text-purple-700"
+                className={`flex items-center ${colors.primary}`}
               >
                 <Plus size={20} className="mr-2" />
                 Add Certification
@@ -512,14 +516,14 @@ const MultiStepForm = ({ onBack }) => {
 
             {/* Achievements */}
             <div className="space-y-4">
-              <h3 className="font-medium">Achievements</h3>
+              <h3 className={`font-medium ${colors.text}`}>Achievements</h3>
               {formData.achievements.map((achievement, index) => (
                 <div key={index} className="flex gap-2">
                   <input
                     type="text"
                     value={achievement}
                     onChange={(e) => updateArrayField('achievements', index, e.target.value)}
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg"
+                    className={`flex-1 px-4 py-2 border ${colors.inputBorder} rounded-lg ${colors.inputBg} ${colors.text}`}
                     placeholder="Enter an achievement"
                   />
                   {index > 0 && (
@@ -536,7 +540,7 @@ const MultiStepForm = ({ onBack }) => {
               <button
                 type="button"
                 onClick={() => addArrayField('achievements')}
-                className="flex items-center text-purple-600 hover:text-purple-700"
+                className={`flex items-center ${colors.primary}`}
               >
                 <Plus size={20} className="mr-2" />
                 Add Achievement
@@ -560,23 +564,23 @@ const MultiStepForm = ({ onBack }) => {
   ];
 
   return (
-    <div className="max-w-2xl mx-auto p-8">
+    <div className={`max-w-2xl mx-auto p-8 ${colors.bgCard} rounded-xl`}>
       <button
         onClick={onBack}
-        className="flex items-center text-gray-600 mb-8 hover:text-gray-800"
+        className={`flex items-center ${colors.textSecondary} mb-8 hover:${colors.text}`}
       >
         <ArrowLeft size={20} className="mr-2" />
         Back to options
       </button>
 
       <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-2">{steps[step]}</h2>
+        <h2 className={`text-2xl font-bold mb-2 ${colors.text}`}>{steps[step]}</h2>
         <div className="flex gap-2">
           {steps.map((_, index) => (
             <div
               key={index}
               className={`h-2 flex-1 rounded-full ${
-                index <= step ? 'bg-purple-600' : 'bg-gray-200'
+                index <= step ? 'bg-purple-600' : colors.bgSection
               }`}
             />
           ))}
@@ -591,7 +595,7 @@ const MultiStepForm = ({ onBack }) => {
             <button
               type="button"
               onClick={() => setStep(step - 1)}
-              className="flex items-center text-gray-600 hover:text-gray-800"
+              className={`flex items-center ${colors.textSecondary} hover:${colors.text}`}
             >
               <ArrowLeft size={20} className="mr-2" />
               Previous
@@ -606,7 +610,7 @@ const MultiStepForm = ({ onBack }) => {
                 setStep(step + 1);
               }
             }}
-            className="flex items-center bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 ml-auto"
+            className={`flex items-center ${colors.buttonPrimary} px-6 py-2 rounded-lg ml-auto`}
           >
             {step === steps.length - 1 ? 'Submit' : 'Next'}
             {step !== steps.length - 1 && <ArrowRight size={20} className="ml-2" />}

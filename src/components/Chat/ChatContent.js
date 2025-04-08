@@ -2,8 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, Send, Paperclip, Mic, Volume2, VolumeX, Loader, Clock, Search, Settings, Globe, Languages } from 'lucide-react';
 import { AudioStream } from '../Audio/AudioStream';
 import Cookies from 'js-cookie';
+import { useTheme } from '../../context/ThemeContext';
+import { useThemeStyles } from '../hooks/useThemeStyles';
 
 const ChatContent = () => {
+  const { theme } = useTheme();
+  const { colors, styles, isDark } = useThemeStyles();
+  
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -493,22 +498,40 @@ const ChatContent = () => {
       <div className={`max-w-[70%] rounded-2xl p-4 shadow-sm transition-all duration-200 ${
         message.isUser
           ? 'bg-gradient-to-r from-purple-600 to-purple-700 text-white hover:shadow-md'
-          : 'bg-gradient-to-r from-gray-50 to-gray-100 text-gray-800 hover:shadow-md'
+          : isDark
+            ? 'bg-gray-700 text-gray-200 hover:shadow-md'
+            : 'bg-gradient-to-r from-gray-50 to-gray-100 text-gray-800 hover:shadow-md'
       }`}>
         <div className="break-words whitespace-pre-wrap text-[15px] leading-relaxed">
           {message.content}
         </div>
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center gap-2">
-            <Clock size={14} className={message.isUser ? 'text-purple-200' : 'text-gray-400'} />
-            <span className={`text-xs ${message.isUser ? 'text-purple-200' : 'text-gray-500'}`}>
+            <Clock size={14} className={
+              message.isUser 
+                ? 'text-purple-200' 
+                : isDark
+                  ? 'text-gray-500'
+                  : 'text-gray-400'
+            } />
+            <span className={`text-xs ${
+              message.isUser 
+                ? 'text-purple-200' 
+                : isDark
+                  ? 'text-gray-400'
+                  : 'text-gray-500'
+            }`}>
               {formatTimestamp(message.timestamp)}
             </span>
           </div>
           {!message.isUser && (
             <button
               onClick={() => speakText(message.content, index)}
-              className="text-gray-400 hover:text-purple-600 transition-all duration-200 flex items-center gap-1"
+              className={`${
+                isDark
+                  ? 'text-gray-400 hover:text-purple-400'
+                  : 'text-gray-400 hover:text-purple-600'
+              } transition-all duration-200 flex items-center gap-1`}
               disabled={isPlaying && currentPlayingId !== index}
             >
               {isPlaying && currentPlayingId === index ? (
@@ -530,24 +553,24 @@ const ChatContent = () => {
   );
 
   const SettingsPanel = () => (
-    <div className="absolute top-16 right-4 bg-white p-4 rounded-xl shadow-lg z-10 border border-gray-200 w-80">
+    <div className={`absolute top-16 right-4 ${isDark ? 'bg-gray-800' : 'bg-white'} p-4 rounded-xl shadow-lg z-10 border ${colors.border} w-80`}>
       <div className="mb-4">
         <div className="flex items-center gap-2 mb-2">
-          <Globe className="text-purple-600" size={18} />
-          <label className="text-sm font-medium text-gray-700">Language</label>
+          <Globe className={colors.primary} size={18} />
+          <label className={`text-sm font-medium ${colors.text}`}>Language</label>
         </div>
         <div className="flex gap-2">
           <button
             onClick={() => setLanguage('en')}
             className={`px-3 py-2 rounded-lg transition-all duration-300 flex items-center gap-2 text-sm
-              ${language === 'en' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border hover:bg-purple-50'}`}
+              ${language === 'en' ? 'bg-purple-500 text-white shadow-md' : isDark ? 'bg-gray-700 text-gray-300 border-gray-600 hover:bg-gray-600' : 'bg-white text-gray-700 border hover:bg-purple-50'}`}
           >
             🇺🇸 English
           </button>
           <button
             onClick={() => setLanguage('hi')}
             className={`px-3 py-2 rounded-lg transition-all duration-300 flex items-center gap-2 text-sm
-              ${language === 'hi' ? 'bg-purple-500 text-white shadow-md' : 'bg-white text-gray-700 border hover:bg-purple-50'}`}
+              ${language === 'hi' ? 'bg-purple-500 text-white shadow-md' : isDark ? 'bg-gray-700 text-gray-300 border-gray-600 hover:bg-gray-600' : 'bg-white text-gray-700 border hover:bg-purple-50'}`}
           >
             🇮🇳 Hindi
           </button>
@@ -556,13 +579,13 @@ const ChatContent = () => {
 
       <div className="mb-4">
         <div className="flex items-center gap-2 mb-2">
-          <Volume2 className="text-purple-600" size={18} />
-          <label className="text-sm font-medium text-gray-700">Voice</label>
+          <Volume2 className={colors.primary} size={18} />
+          <label className={`text-sm font-medium ${colors.text}`}>Voice</label>
         </div>
         <select
           value={selectedVoice}
           onChange={(e) => setSelectedVoice(e.target.value)}
-          className="w-full p-2 rounded-lg border border-gray-300 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 text-sm"
+          className={`w-full p-2 rounded-lg border ${colors.border} ${styles.input}`}
         >
           {getVoiceOptions(language).map((voice) => (
             <option key={voice} value={voice}>
@@ -575,10 +598,10 @@ const ChatContent = () => {
       <div className="mb-4">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
-            <Languages className="text-purple-600" size={18} />
-            <label className="text-sm font-medium text-gray-700">Speech Speed</label>
+            <Languages className={colors.primary} size={18} />
+            <label className={`text-sm font-medium ${colors.text}`}>Speech Speed</label>
           </div>
-          <div className="text-sm text-gray-600">{ttsSpeed.toFixed(1)}x</div>
+          <div className={`text-sm ${colors.textSecondary}`}>{ttsSpeed.toFixed(1)}x</div>
         </div>
         <input 
           type="range" 
@@ -587,27 +610,27 @@ const ChatContent = () => {
           step="0.1" 
           value={ttsSpeed}
           onChange={(e) => setTtsSpeed(parseFloat(e.target.value))}
-          className="w-full h-2 bg-purple-200 rounded-lg appearance-none cursor-pointer"
+          className={`w-full h-2 ${isDark ? 'bg-purple-900' : 'bg-purple-200'} rounded-lg appearance-none cursor-pointer`}
         />
       </div>
     </div>
   );
 
   return (
-    <div className="flex h-full gap-6 p-4 bg-gray-50">
-      <div className="flex-1 flex flex-col bg-white rounded-xl shadow-lg overflow-hidden">
-        <div className="border-b bg-white p-4">
+    <div className={`flex h-full gap-6 p-4 ${colors.bg}`}>
+      <div className={`flex-1 flex flex-col ${colors.bgCard} rounded-xl shadow-lg overflow-hidden`}>
+        <div className={`border-b ${colors.border} ${colors.bgCard} p-4`}>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <MessageSquare className="text-purple-600" size={24} />
-              <h2 className="text-xl font-semibold">Chat Assistant</h2>
+              <MessageSquare className={colors.primary} size={24} />
+              <h2 className={`text-xl font-semibold ${colors.text}`}>Chat Assistant</h2>
             </div>
             <div className="relative">
               <button 
                 onClick={() => setShowSettings(!showSettings)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200"
+                className={`p-2 ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} rounded-full transition-all duration-200`}
               >
-                <Settings size={20} className="text-gray-500" />
+                <Settings size={20} className={colors.textMuted} />
               </button>
               {showSettings && <SettingsPanel />}
             </div>
@@ -615,12 +638,12 @@ const ChatContent = () => {
         </div>
 
         {error && (
-          <div className="p-4 mx-4 mt-4 text-red-700 bg-red-100 rounded-lg border border-red-200">
+          <div className={`p-4 mx-4 mt-4 ${styles.error} rounded-lg border`}>
             {error}
           </div>
         )}
 
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className={`flex-1 overflow-y-auto p-6 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
           {messages.map((message, index) => (
             <MessageComponent 
               key={index} 
@@ -631,10 +654,10 @@ const ChatContent = () => {
           <div ref={messagesEndRef} />
         </div>
 
-        <div className="border-t p-4 bg-white">
+        <div className={`border-t ${colors.border} p-4 ${colors.bgCard}`}>
           <div className="flex items-center gap-3">
-            <button className="p-2.5 hover:bg-gray-100 rounded-full transition-all duration-200 hover:scale-110">
-              <Paperclip size={20} className="text-gray-500" />
+            <button className={`p-2.5 ${isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-100'} rounded-full transition-all duration-200 hover:scale-110`}>
+              <Paperclip size={20} className={colors.textMuted} />
             </button>
             
             <textarea
@@ -643,7 +666,11 @@ const ChatContent = () => {
               onKeyPress={handleKeyPress}
               placeholder={isRecording ? "Listening..." : "Type your message..."}
               className={`flex-1 p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-100 max-h-32 resize-y transition-shadow duration-200 ${
-                isRecording ? 'border-purple-500 bg-purple-50' : 'focus:border-purple-600'
+                isRecording 
+                  ? 'border-purple-500 bg-purple-50' 
+                  : isDark 
+                    ? 'border-gray-600 bg-gray-700 text-white focus:border-purple-400' 
+                    : 'bg-white text-gray-900 focus:border-purple-600'
               }`}
               disabled={loading}
               rows={1}
@@ -652,14 +679,14 @@ const ChatContent = () => {
             <button
               onClick={() => isRecording ? stopRecording() : startRecording()}
               className={`p-2.5 rounded-full transition-all duration-200 hover:scale-110 ${
-                isRecording ? 'bg-red-500 hover:bg-red-600' : 'hover:bg-gray-100'
+                isRecording ? 'bg-red-500 hover:bg-red-600' : isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-100'
               }`}
               disabled={loading}
             >
               {isRecording ? (
                 <Mic size={20} className="text-white animate-pulse" />
               ) : (
-                <Mic size={20} className="text-gray-500" />
+                <Mic size={20} className={colors.textMuted} />
               )}
             </button>
             
@@ -692,9 +719,9 @@ const ChatContent = () => {
         </div>
       </div>
 
-      <div className="w-80 bg-white rounded-xl shadow-lg flex flex-col">
-        <div className="p-4 border-b">
-          <h2 className="text-lg font-semibold">Chat History</h2>
+      <div className={`w-80 ${colors.bgCard} rounded-xl shadow-lg flex flex-col`}>
+        <div className={`p-4 border-b ${colors.border}`}>
+          <h2 className={`text-lg font-semibold ${colors.text}`}>Chat History</h2>
           <div className="relative mt-2">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             <input
@@ -702,30 +729,38 @@ const ChatContent = () => {
               placeholder="Search messages..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:border-purple-600 focus:ring-2 focus:ring-purple-100"
+              className={`w-full pl-10 pr-4 py-2 border rounded-lg ${
+                isDark 
+                  ? 'bg-gray-700 border-gray-600 text-white focus:ring-purple-400 focus:border-purple-400' 
+                  : 'bg-white border-gray-300 text-gray-900 focus:ring-purple-500 focus:border-purple-500'
+              }`}
             />
           </div>
         </div>
-        <div className="flex-1 overflow-y-auto p-4">
+        <div className={`flex-1 overflow-y-auto p-4 ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
           <div className="space-y-4">
             {messages.filter(m => !m.isUser).map((message, index) => (
               <div
                 key={index}
-                className="group p-4 bg-gray-50 rounded-xl hover:bg-white hover:shadow-md cursor-pointer transition-all duration-200"
+                className={`group p-4 ${
+                  isDark 
+                    ? 'bg-gray-700 hover:bg-gray-600' 
+                    : 'bg-gray-50 hover:bg-white'
+                } rounded-xl hover:shadow-md cursor-pointer transition-all duration-200`}
               >
-                <p className="text-sm text-gray-800 line-clamp-2 leading-relaxed">
+                <p className={`text-sm ${colors.text} line-clamp-2 leading-relaxed`}>
                   {message.content}
                 </p>
                 <div className="flex items-center justify-between mt-3">
                   <div className="flex items-center gap-2">
-                    <Clock size={14} className="text-gray-400" />
-                    <span className="text-xs text-gray-500">
+                    <Clock size={14} className={colors.textMuted} />
+                    <span className={`text-xs ${colors.textMuted}`}>
                       {formatTimestamp(message.timestamp)}
                     </span>
                   </div>
                   <button
                     onClick={() => speakText(message.content, `history-${index}`)}
-                    className="text-gray-400 hover:text-purple-600 transition-all duration-200 flex items-center gap-1"
+                    className={`${isDark ? 'text-gray-400 hover:text-purple-400' : 'text-gray-400 hover:text-purple-600'} transition-all duration-200 flex items-center gap-1`}
                     disabled={isPlaying && currentPlayingId !== `history-${index}`}
                     title={isPlaying && currentPlayingId === `history-${index}` ? "Stop" : "Listen"}
                   >

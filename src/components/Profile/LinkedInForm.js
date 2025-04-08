@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import Cookies from 'js-cookie';
+import { useThemeStyles } from '../hooks/useThemeStyles'; // Adjust the import path if needed
 
 const LinkedInForm = ({ onBack }) => {
+  const { colors, styles, cx } = useThemeStyles();
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
@@ -36,40 +38,42 @@ const LinkedInForm = ({ onBack }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-8">
+    <div className={cx("max-w-md mx-auto p-8", colors.bgCard)}>
       <button
         onClick={onBack}
-        className="flex items-center text-gray-600 mb-8 hover:text-gray-800"
+        className={cx("flex items-center hover:text-gray-800 mb-8", colors.textSecondary)}
       >
         <ArrowLeft size={20} className="mr-2" />
         Back to options
       </button>
 
-      <h2 className="text-2xl font-bold mb-6">Connect LinkedIn</h2>
+      <h2 className={cx("text-2xl font-bold mb-6", colors.text)}>Connect LinkedIn</h2>
       
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className={cx("block text-sm font-medium mb-2", colors.text)}>
             LinkedIn Email
           </label>
           <input
             type="email"
             value={credentials.email}
             onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            className={cx("w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent",
+              colors.inputBg, colors.inputBorder, colors.inputText)}
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className={cx("block text-sm font-medium mb-2", colors.text)}>
             LinkedIn Password
           </label>
           <input
             type="password"
             value={credentials.password}
             onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+            className={cx("w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent",
+              colors.inputBg, colors.inputBorder, colors.inputText)}
             required
           />
         </div>
@@ -77,7 +81,9 @@ const LinkedInForm = ({ onBack }) => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center"
+          className={cx("w-full text-white py-3 rounded-lg transition-colors duration-200 flex items-center justify-center",
+            loading ? "opacity-70 cursor-not-allowed" : "",
+            colors.buttonPrimary)}
         >
           {loading ? 'Importing...' : 'Import Profile'}
         </button>

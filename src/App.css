@@ -1,3 +1,4 @@
+/* App.css - Updated */
 .App {
   text-align: center;
 }
@@ -37,7 +38,6 @@
   }
 }
 
-
 @keyframes fadeInOut {
   0% { opacity: 0; transform: translateY(10px); }
   10% { opacity: 1; transform: translateY(0); }
@@ -49,4 +49,49 @@
   animation-name: fadeInOut;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+}
+
+/* Theme transition settings */
+:root {
+  --background-light: #ffffff;
+  --background-dark: #1a1a1a;
+  --text-light: #000000;
+  --text-dark: #ffffff;
+  --sidebar-bg-light: #ffffff;
+  --sidebar-bg-dark: #1f2937; /* gray-800 */
+  --header-bg-light: #ffffff;
+  --header-bg-dark: #1f2937; /* gray-800 */
+  --border-light: #e5e7eb; /* gray-200 */
+  --border-dark: #374151; /* gray-700 */
+  --content-bg-light: #f3f4f6; /* gray-100 */
+  --content-bg-dark: #111827; /* gray-900 */
+}
+
+/* Base styles that will change with theme */
+body {
+  background-color: var(--background-light);
+  color: var(--text-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark theme overrides */
+.dark body {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+
+/* Apply transitions to common elements */
+body, 
+button, 
+div, 
+p, 
+h1, h2, h3, h4, h5, h6,
+input, 
+select, 
+textarea {
+  transition: 
+    color 0.3s ease, 
+    background-color 0.3s ease, 
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }

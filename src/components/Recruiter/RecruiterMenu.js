@@ -1,10 +1,13 @@
-// RecruiterMenu.js
 import React from 'react';
-import { Home, Briefcase, Users, FileText, MessageSquare, Settings } from 'lucide-react';
+import { Home, Briefcase, Users, FileText, MessageSquare } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
 const RecruiterMenu = ({ isExpanded, currentPath, handleNavigate }) => {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   const menuItems = [
-    { icon: Home, label: 'Dashboard', path: '/' },
+    { icon: Home, label: 'Dashboard', path: '/dashboard' },
     { icon: FileText, label: 'My Job Listings', path: '/my-listings' },
     { icon: Users, label: 'Candidates', path: '/candidates' },
     { icon: MessageSquare, label: 'Chat', path: '/chat' }
@@ -24,8 +27,12 @@ const RecruiterMenu = ({ isExpanded, currentPath, handleNavigate }) => {
               flex items-center px-4 py-3 cursor-pointer
               transition-colors duration-200
               ${isActive
-                ? 'bg-purple-50 border-r-4 border-purple-600 text-purple-600'
-                : 'text-gray-600 hover:bg-gray-50'
+                ? isDark 
+                  ? 'bg-purple-900/20 border-r-4 border-purple-500 text-purple-400'
+                  : 'bg-purple-50 border-r-4 border-purple-600 text-purple-600'
+                : isDark
+                  ? 'text-gray-300 hover:bg-gray-700/50'
+                  : 'text-gray-600 hover:bg-gray-50'
               }
             `}
           >

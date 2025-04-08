@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from 'react-router-dom';
 import { HMSRoomProvider } from '@100mslive/react-sdk';
 import Cookies from 'js-cookie';
-import './App.css'
+import { ThemeProvider, useTheme } from './context/ThemeContext';
+
+// Landing Page Component
+import LandingPage from './LandingPage';
 
 // Auth Components
 import AuthFlow from './components/Auth/AuthFlow';
@@ -34,9 +37,9 @@ import PostJobsContent from './components/Jobs/PostJobsContent';
 import MyListingsContent from './components/Listings/MyListingsContent';
 import CandidatesContent from './components/Candidates/CandidatesContent';
 import MessagesContent from './components/Messages/MessagesContent';
-import InterviewResultsPage from './components/Candidates/InterviewResultsPage'; // Import the new component
+import InterviewResultsPage from './components/Candidates/InterviewResultsPage'; 
 import InterviewResults from './components/InterviewResults/InterviewResults';
-
+import CandidateProfile from './components/Candidates/CandidateProfile';
 // Job-related Components
 import JobDetail from './components/Jobs/JobDetail';
 import EditJobContent from './components/Jobs/EditJobContent';
@@ -45,6 +48,7 @@ import JobCandidatesContent from './components/Candidates/JobCandidatesContent';
 import CompanyProfile from './components/Recruiter/CompanyProfile';
 
 const App = () => {
+  const { theme } = useTheme();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userRole, setUserRole] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -114,91 +118,99 @@ const App = () => {
   }
 
   return (
-    <Router>
-      <HMSRoomProvider>
-        <Routes>
-          {/* Public Interview Room route - accessible without authentication */}
-          <Route path="/interview/:roomId" element={<InterviewRoom />} />
-          
-          {/* Auth callback route for Google OAuth */}
-          <Route path="/auth/callback" element={
-            isAuthenticated 
-              ? <Navigate to="/" replace /> 
-              : <AuthFlow onAuthSuccess={handleAuthSuccess} />
-          } />
-          
-          {isAuthenticated ? (
-            <>
-              {/* Main layout with sidebar for authenticated users */}
-              <Route element={<SidebarLayout onLogout={handleLogout} userRole={userRole} />}>
-                {/* Common Routes for All Users */}
-                <Route index element={<Navigate to="/dashboard" replace />} />
-                <Route path="dashboard" element={<DashboardContent />} />
-                <Route path="jobs" element={<JobsContent />} />
-                <Route path="jobs-applied" element={<JobsAppliedContent />} />
-                <Route path="resume-analyzer" element={<ResumeAnalyzerPage />} />
-                <Route path="profile-setup" element={<ProfileSetup />} />
-                <Route path="ai-telephonic" element={<AiTelephonic />} />
-                <Route path="ai-video" element={<AiVideo />} />
-                <Route path="expert-video" element={<ExpertVideo />} />
-                <Route path="courses" element={<CoursesContent />} />
-                <Route path="chat" element={<ChatContent />} />
-                <Route path="profile" element={<ProfileContent />} />
-                <Route path="settings" element={<SettingsContent />} />
-                <Route path="help" element={<HelpContent />} />
-                <Route path="notifications" element={<NotificationsContent />} />
-                <Route path="voice-assistant" element={<VoiceInteraction />} />
+    <div className={`app-container ${theme}`}>
+      <Router>
+        <HMSRoomProvider>
+          <Routes>
+            {/* Landing Page route with authentication check */}
+            <Route path="/" element={
+              isAuthenticated 
+                ? <Navigate to="/dashboard" replace /> 
+                : <LandingPage />
+            } />
+            
+            {/* Public Interview Room route - accessible without authentication */}
+            <Route path="/interview/:roomId" element={<InterviewRoom />} />
+            
+            {/* Auth callback route for Google OAuth */}
+            <Route path="/auth/callback" element={
+              isAuthenticated 
+                ? <Navigate to="/dashboard" replace /> 
+                : <AuthFlow onAuthSuccess={handleAuthSuccess} />
+            } />
+            
+            {isAuthenticated ? (
+              <>
+                {/* Main layout with sidebar for authenticated users */}
+                <Route element={<SidebarLayout onLogout={handleLogout} userRole={userRole} />}>
+                  <Route path="/dashboard" element={<DashboardContent />} />
+                  <Route path="jobs" element={<JobsContent />} />
+                  <Route path="jobs-applied" element={<JobsAppliedContent />} />
+                  <Route path="resume-analyzer" element={<ResumeAnalyzerPage />} />
+                  <Route path="profile-setup" element={<ProfileSetup />} />
+                  <Route path="ai-telephonic" element={<AiTelephonic />} />
+                  <Route path="ai-video" element={<AiVideo />} />
+                  <Route path="expert-video" element={<ExpertVideo />} />
+                  <Route path="courses" element={<CoursesContent />} />
+                  <Route path="chat" element={<ChatContent />} />
+                  <Route path="profile" element={<ProfileContent />} />
+                  <Route path="settings" element={<SettingsContent />} />
+                  <Route path="help" element={<HelpContent />} />
+                  <Route path="notifications" element={<NotificationsContent />} />
+                  <Route path="voice-assistant" element={<VoiceInteraction />} />
 
-                {/* Job-related Dynamic Routes */}
-                <Route path="jobs/detail/:jobId" element={<JobDetail />} />
-                <Route path="detail/:jobId" element={<JobDetail />} />
-                <Route path="edit-job/:jobId" element={<EditJobContent />} />
-                <Route path="applications/:jobId" element={<JobApplicationsContent />} />
-                <Route path="/interview-results/:applicantId" element={<InterviewResultsPage />} />
+                  {/* Job-related Dynamic Routes */}
+                  <Route path="jobs/detail/:jobId" element={<JobDetail />} />
+                  <Route path="detail/:jobId" element={<JobDetail />} />
+                  <Route path="edit-job/:jobId" element={<EditJobContent />} />
+                  <Route path="applications/:jobId" element={<JobApplicationsContent />} />
+                  <Route path="/interview-results/:applicantId" element={<InterviewResultsPage />} />
 
-                {/* Recruiter-specific Routes */}
-                {userRole === 'recruiter' && (
-                  <>
-                    <Route path="post-jobs" element={<PostJobsContent />} />
-                    <Route path="my-listings" element={<MyListingsContent />} />
-                    <Route path="candidates" element={<CandidatesContent />} />
-                    <Route path="messages" element={<MessagesContent />} />
-                    <Route path="candidates/:jobId" element={<CandidatesContent />} />
-                    <Route path="/interview-resultss/:applicationId" element={<InterviewResults />} />
-                    <Route path="/job-candidates/:jobId" element={<JobCandidatesContent />} />
-                    <Route path="/company-profile" element={<CompanyProfile />} />
-                  </>
-                )}
-              </Route>
-              
-              {/* Role selection route */}
-              <Route 
-                path="/role-selection" 
-                element={<RoleSelectionPage onAuthSuccess={handleAuthSuccess} />} 
-              />
-              
-              {/* Redirect authenticated users from /auth to dashboard */}
-              <Route path="/auth" element={<Navigate to="/dashboard" replace />} />
-            </>
-          ) : (
-            <>
-              {/* Unauthenticated Routes */}
-              <Route path="/auth" element={<AuthFlow onAuthSuccess={handleAuthSuccess} />} />
-              <Route path="/role-selection" element={<RoleSelectionPage onAuthSuccess={handleAuthSuccess} />} />
-              
-              {/* Job Details route for unauthenticated users */}
-              <Route path="/jobs/detail/:jobId" element={<JobDetail />} />
-              <Route path="/detail/:jobId" element={<JobDetail />} />
-              
-              {/* Redirect all other routes to auth when not authenticated */}
-              <Route path="*" element={<Navigate to="/auth" replace />} />
-            </>
-          )}
-          
-          <Route path="/company-profile" element={<CompanyProfile />} />
-        </Routes>
-      </HMSRoomProvider>
-    </Router>
+                  {/* Recruiter-specific Routes */}
+                  {userRole === 'recruiter' && (
+                    <>
+                      <Route path="post-jobs" element={<PostJobsContent />} />
+                      <Route path="my-listings" element={<MyListingsContent />} />
+                      <Route path="candidates" element={<CandidatesContent />} />
+                      <Route path="candidates/:applicationId" element={<CandidateProfile />} />
+                      <Route path="candidates/:jobId" element={<CandidatesContent />} />
+                      <Route path="messages" element={<MessagesContent />} />
+                      <Route path="/interview-resultss/:applicationId" element={<InterviewResults />} />
+                      <Route path="/job-candidates/:jobId" element={<JobCandidatesContent />} />
+                      <Route path="/company-profile" element={<CompanyProfile />} />
+                    </>
+                  )}
+                </Route>
+                
+                {/* Role selection route */}
+                <Route 
+                  path="/role-selection" 
+                  element={<RoleSelectionPage onAuthSuccess={handleAuthSuccess} />} 
+                />
+                
+                {/* Redirect authenticated users from /auth to dashboard */}
+                <Route path="/auth" element={<Navigate to="/dashboard" replace />} />
+              </>
+            ) : (
+              <>
+                {/* Unauthenticated Routes */}
+                <Route path="/auth" element={<AuthFlow onAuthSuccess={handleAuthSuccess} />} />
+                <Route path="/role-selection" element={<RoleSelectionPage onAuthSuccess={handleAuthSuccess} />} />
+                
+                {/* Job Details route for unauthenticated users */}
+                <Route path="/jobs/detail/:jobId" element={<JobDetail />} />
+                <Route path="/detail/:jobId" element={<JobDetail />} />
+                
+                {/* Redirect all other routes to auth when not authenticated */}
+                <Route path="*" element={<Navigate to="/auth" replace />} />
+              </>
+            )}
+            
+            <Route path="/company-profile" element={<CompanyProfile />} />
+          </Routes>
+        </HMSRoomProvider>
+      </Router>
+    </div>
   );
 };
 

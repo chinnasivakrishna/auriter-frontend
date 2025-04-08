@@ -1,7 +1,10 @@
 import React from 'react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
+import { useThemeStyles } from '../hooks/useThemeStyles';
 
 const ScoreTooltip = ({ analysis }) => {
+  const { isDark, colors } = useThemeStyles();
+  
   if (!analysis || !analysis.feedback) return null;
 
   const data = analysis.feedback.map(item => ({
@@ -10,10 +13,13 @@ const ScoreTooltip = ({ analysis }) => {
     message: item.message
   }));
 
-  const COLORS = ['#4ade80', '#60a5fa', '#f472b6'];
+  // Theme-aware colors for the pie chart
+  const COLORS = isDark 
+    ? ['#4ade80', '#60a5fa', '#f472b6'] // Original colors for dark mode
+    : ['#22c55e', '#3b82f6', '#ec4899']; // Slightly darker for light mode for better contrast
 
   return (
-    <div className="absolute z-50 bg-white rounded-lg shadow-lg p-4 w-64">
+    <div className={`absolute z-50 ${isDark ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-lg p-4 w-64 border ${colors.border} transition-colors duration-300`}>
       <div className="h-48">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
@@ -35,7 +41,7 @@ const ScoreTooltip = ({ analysis }) => {
                 if (payload && payload.length) {
                   const item = payload[0].payload;
                   return (
-                    <div className="bg-gray-800 text-white p-2 rounded">
+                    <div className={`${isDark ? 'bg-gray-900' : 'bg-gray-800'} text-white p-2 rounded`}>
                       <p className="font-medium">{item.name}</p>
                       <p className="text-sm">{item.value}%</p>
                       <p className="text-xs mt-1">{item.message}</p>
@@ -55,8 +61,8 @@ const ScoreTooltip = ({ analysis }) => {
               className="w-3 h-3 rounded-full mr-2"
               style={{ backgroundColor: COLORS[index % COLORS.length] }}
             />
-            <span className="font-medium">{item.name}:</span>
-            <span className="ml-1">{item.value}%</span>
+            <span className={`font-medium ${colors.text}`}>{item.name}:</span>
+            <span className={`ml-1 ${colors.textSecondary}`}>{item.value}%</span>
           </div>
         ))}
       </div>

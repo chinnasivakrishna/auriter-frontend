@@ -1,0 +1,440 @@
+.hero {
+  /* text-align: center; */
+  padding: 6rem 10px;
+  display: flex;
+  margin: 0px auto;
+  max-width: 1200px;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+  font-size: 2.25rem;
+}
+
+.metrics {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  /* margin: 2rem 0; */
+}
+
+.metric {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.metric-label {
+  color: #666;
+}
+
+.separator {
+  width: 1px;
+  height: 40px;
+  background: #ddd;
+}
+
+.cta-button {
+  background: purple;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 1.7rem 0;
+}
+
+.cta-button:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  color: #666;
+  font-size: 1.125rem;
+}
+
+.demo-content {
+  height: auto;
+}
+
+.demo-image {
+  /* margin-top: 3rem; */
+  width: 704px;
+  height: auto;
+}
+
+.demo-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.InterviewProcessContainerSection {
+  position: sticky;
+  top: 80px;
+  height: 100vh;
+  padding: 10px;
+}
+
+.InterviewProcessContainer {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 15px;
+  background-color: white;
+  border-radius: 30px;
+  margin-bottom: 60px;
+}
+
+.InterviewProcessHeader {
+  max-width: 34.8125rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  /* gap: 4rem; */
+}
+
+.InterviewProcessHeader p {
+  font-size: 1.125rem;
+  color: rgba(28, 29, 32, 0.3);
+}
+
+.InterviewProcessContainer h2 {
+  font-size: 2.375rem;
+  letter-spacing: -0.0475rem;
+  line-height: 110%;
+  font-weight: 400;
+}
+
+.InterviewProcess {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.separators {
+  max-width: 11vw;
+  height: 0.125rem;
+  width: 100%;
+  background-color: rgb(107 114 128 / 0.5);
+  margin-top: 50px;
+}
+
+.InterviewProcessList {
+  list-style: none;
+}
+
+.InterviewProcessList li:first-child {
+  font-size: 1.875rem;
+  letter-spacing: -0.0475rem;
+  line-height: 112%;
+  margin-bottom: 3rem;
+  font-weight: 400;
+  background: none;
+  text-align: center;
+}
+
+.InterviewProcessList li {
+  margin-bottom: 0.25rem;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  background: #fff;
+  text-align: center;
+}
+
+.InterviewProcessContainer2 {
+  position: sticky;
+  top: 80px;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  background-color: white;
+  border-radius: 30px;
+}
+
+.InterviewProcessLeft2 {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 35.4rem;
+}
+
+.InterviewProcessHeaderContainer2 h2 {
+  margin-bottom: 30px;
+  font-size: 2.375rem;
+  letter-spacing: -.0475rem;
+}
+
+.InterviewProcessHeader2 {
+  border-radius: 2rem;
+  background: purple;
+  display: flex;
+  justify-self: flex-start;
+  margin-bottom: 40px;
+}
+
+.InterviewProcessHeader2 h3 {
+  padding: 10px 20px;
+}
+
+.InterviewProcessList2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  list-style: none;
+}
+
+.InterviewProcessList2 li {
+  margin-top: 20px;
+}
+
+.cta-button2 {
+  padding: 15px 20px;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+
+}
+
+.InterviewProcessRight2 {
+  height: 100%;
+  width: 50%;
+  max-width: 35.4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.InterviewProcessRight2 img {
+  position: absolute;
+  bottom: -4%;
+  left: 16.255%;
+  width: 100%;
+  height: 100%;
+  translate: none;
+  rotate: none;
+  scale: none;
+  translate: none;
+  rotate: none;
+  scale: none;
+  transform: translate(0px, -1.437px) rotate(-13.4768deg) skew(0.000557182deg, 0deg);
+}
+
+.testimonialsContainers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.InterviewProcessHeader p {
+  margin-bottom: 20px;
+}
+
+.testimonials-container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Scrollable area styling */
+.testimonials-scroll-wrapper {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+.testimonials-scroll-container {
+  display: flex;
+  gap: 1rem;
+  animation: scroll 10s linear infinite;
+}
+
+/* Individual card styles */
+.testimonial-cards {
+  flex-shrink: 0;
+  width: 400px;
+  height: 380px;
+  background: #f8f9fa;
+  border-radius: 20px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.testimonial-cards:hover {
+  transform: translateY(-5px);
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-header-tag {
+  border-radius: 2rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: purple;
+  justify-self: flex-start;
+  color: white;
+  font-size: 10px;
+}
+
+.testimonial-content {
+  margin-top: 20px;
+}
+
+.testimonial-name {
+  line-height: 134%;
+  letter-spacing: -0.02rem;
+  opacity: 0.4;
+  margin-top: 20px;
+}
+
+.testimonial-text {
+  font-size: 1.125rem;
+  color: #333;
+  line-height: 1.5;
+  height: 100%;
+  text-wrap: wrap;
+}
+
+.company-logo {
+  height: 60px;
+  width: 100px;
+}
+
+/* Scroll animation (optional) */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Hide scrollbar */
+.testimonials-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonials-scroll-wrapper {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+@media (max-width: 768px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 456px;
+  }
+
+  .metrics {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .demo-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .InterviewProcessContainerSection {
+    position: static;
+    height: 100%;
+    padding: 10px;
+  }
+
+  .InterviewProcessContainer {
+    height: 100%;
+  }
+
+  .InterviewProcessContainer2 {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .InterviewProcessLeft2 {
+    width: 100%;
+  }
+
+  .InterviewProcessRight2 {
+    width: 100%;
+    height: 50vh;
+    margin-top: 60px;
+  }
+
+  .InterviewProcessHeader {
+    margin-bottom: 20px;
+  }
+
+  .InterviewProcess {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .separators {
+    height: 3rem;
+    width: 0.125rem;
+    background-color: rgb(107 114 128 / 0.5);
+    margin-top: 10px;
+  }
+
+  .InterviewProcessList li:first-child {
+    margin-bottom: 1rem;
+  }
+}
