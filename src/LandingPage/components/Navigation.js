@@ -35,7 +35,7 @@ export default function Navigation() {
                 >
                   Home
                 </Link> */}
-                    Interview Copilot
+                    About 
                   </li>
                   <li>
                     {/* <Link
@@ -44,7 +44,7 @@ export default function Navigation() {
                 >
                   Course
                 </Link> */}
-                    AI Resume Builder
+                    AI Interview 
                   </li>
                   <li>
                     {/* <Link
@@ -55,7 +55,7 @@ export default function Navigation() {
                 >
                   Instructors
                 </Link> */}
-                    AI Mock Interview
+                    Blog 
                   </li>
                   <li>
                     {/* <Link
@@ -73,7 +73,7 @@ export default function Navigation() {
                 >
                   CONTACT
                 </Link> */}
-                    Resources
+                    Tutorials
                   </li>
                 </ul>
               </div>
