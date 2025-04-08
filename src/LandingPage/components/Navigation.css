@@ -23,22 +23,35 @@
   gap: 0.5rem;
   font-size: 1.25rem;
   font-weight: 600;
+  color: #6B46C1;
 }
 
 .ai-badge {
-  background: purple;
+  background: #6B46C1;
   color: white;
   padding: 0.1rem 0.3rem;
   border-radius: 4px;
   font-size: 0.8rem;
 }
+
 .desktopNavList {
   display: flex;
   list-style: none;
   gap: 2rem;
 }
+
+.desktopNavList li {
+  color: #4A5568;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.desktopNavList li:hover {
+  color: #6B46C1;
+}
+
 .sign-up-btn {
-  background: purple;
+  background: #6B46C1;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -49,7 +62,7 @@
 }
 
 .sign-up-btn:hover {
-  background: #ff3300;
+  background: #553C9A;
 }
 
 .menu-btn {

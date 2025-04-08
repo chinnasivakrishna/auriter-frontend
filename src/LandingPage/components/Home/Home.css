@@ -18,7 +18,7 @@
   font-size: 3rem;
   line-height: 1.2;
   margin-bottom: 2rem;
-  color: #1a1a1a;
+  color: #2D3748; /* Dark gray */
   font-size: 2.25rem;
 }
 
@@ -39,21 +39,21 @@
 .metric-value {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #6B46C1; /* Purple color */
 }
 
 .metric-label {
-  color: #666;
+  color: #4A5568; /* Medium gray */
 }
 
 .separator {
   width: 1px;
   height: 40px;
-  background: #ddd;
+  background: #E2E8F0; /* Light gray */
 }
 
 .cta-button {
-  background: purple;
+  background: #6B46C1; /* Purple color */
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -66,11 +66,12 @@
 }
 
 .cta-button:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #553C9A; /* Darker purple */
+  box-shadow: 0 4px 6px rgba(107, 70, 193, 0.2);
 }
 
 .subtitle {
-  color: #666;
+  color: #4A5568; /* Medium gray */
   font-size: 1.125rem;
 }
 
@@ -192,7 +193,7 @@
 
 .InterviewProcessHeader2 {
   border-radius: 2rem;
-  background: purple;
+  background: #6B46C1; /* Purple color */
   display: flex;
   justify-self: flex-start;
   margin-bottom: 40px;
@@ -216,11 +217,15 @@
 
 .cta-button2 {
   padding: 15px 20px;
-  background-color: black;
+  background-color: #6B46C1; /* Purple color */
   color: white;
   text-decoration: none;
   border-radius: 10px;
+  transition: background 0.2s;
+}
 
+.cta-button2:hover {
+  background: #553C9A; /* Darker purple */
 }
 
 .InterviewProcessRight2 {

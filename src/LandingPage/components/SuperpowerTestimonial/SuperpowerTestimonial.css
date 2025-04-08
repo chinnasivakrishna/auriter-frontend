@@ -1,5 +1,5 @@
 .SuperpowerTestimonial-containers {
-  color: black;
+  color: #2D3748; /* Dark gray */
   padding: 64px 32px;
   min-height: 600px;
   overflow: hidden;
@@ -56,6 +56,8 @@
   backdrop-filter: blur(10px);
   border-radius: 20px;
   height: 450px;
+  border: 1px solid #E2E8F0; /* Light gray border */
+  box-shadow: 0 4px 6px rgba(107, 70, 193, 0.1); /* Purple shadow */
 }
 .superpower-image {
   max-height: 10.125rem;
@@ -66,13 +68,15 @@
   font-family: serif;
   margin: 10px 0 10px 0;
   line-height: 1.4;
+  color: #2D3748; /* Dark gray */
 }
 .SuperpowerTestimonial-quotes:hover{
   cursor: pointer;
-  color: purple;
+  color: #6B46C1; /* Purple color */
 }
 .SuperpowerTestimonial-dates{
   margin: 20px 0px;
+  color: #4A5568; /* Medium gray */
   opacity: 0.4;
 }
 

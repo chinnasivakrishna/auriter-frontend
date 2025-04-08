@@ -1,5 +1,5 @@
 .testimonials-containers {
-  background:purple;
+  background: #6B46C1; /* Purple color */
   color: white;
   padding: 64px 32px;
   min-height: 600px;
@@ -57,9 +57,10 @@
   margin: 0 20px;
   padding: 32px;
   color: white;
-  /* background: white; */
   backdrop-filter: blur(10px);
   border-radius: 8px;
+  background: rgba(107, 70, 193, 0.1); /* Light purple background */
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .testimonials-quotes {
@@ -126,5 +127,6 @@
 /* Optional: Add hover effect on cards */
 .testimonials-cards:hover {
   transform: translateY(-5px);
-  transition: transform 0.3s ease;
+  background: rgba(107, 70, 193, 0.2); /* Slightly darker purple on hover */
+  transition: all 0.3s ease;
 }
