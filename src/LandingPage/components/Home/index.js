@@ -91,22 +91,18 @@ export default function Home() {
 
           <div className="metrics">
             <div className="metric">
-              <span className="metric-value">250K+</span>
+              <span className="metric-value">2K+</span>
               <span className="metric-label">Offers Received</span>
             </div>
             <div className="separator"></div>
             <div className="metric">
-              <span className="metric-value">1.2M+</span>
+              <span className="metric-value">12K+</span>
               <span className="metric-label">Interviews Aced</span>
             </div>
           </div>
 
-          <button className="cta-button">Activate AI Interview Mode Now</button>
+          <button className="cta-button">Get In Touch</button>
 
-          <p className="subtitle">
-            Interview Copilot™ generating actionable guidance for interviews in
-            real-time
-          </p>
         </div>
         <div className="demo-content">
           {/* <div className="demo-features">
