@@ -84,7 +84,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-content">
           <h1>
-          Airuter: Screening Talent with AI,
+          Screening Talent with AI,
             <br />
             Matching Potential with Opportunity.
           </h1>
@@ -102,6 +102,11 @@ export default function Home() {
           </div>
 
           <button className="cta-button">Get In Touch</button>
+
+          
+          <p className="subtitle">
+          Meet your AI hiring assistant – from resume creation to real-time video interview, Airuter empowers you to stand out and get hired.
+          </p>
 
         </div>
         <div className="demo-content">
