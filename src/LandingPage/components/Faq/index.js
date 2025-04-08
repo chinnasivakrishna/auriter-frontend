@@ -90,7 +90,7 @@ export default function Faq() {
     {
       question: "Is interview transcription available?",
       answer:
-        "In adherence to data privacy protection standards, Final Round AI does not retain interview transcriptions. However, users have the option to access an Interview Report immediately following each session. It is important to note that if the 'View Interview Report' option is not selected upon session completion, retrieval of the report will not be possible at a later time.",
+        "In adherence to data privacy protection standards, Airuter does not retain interview transcriptions. However, users have the option to access an Interview Report immediately following each session. It is important to note that if the 'View Interview Report' option is not selected upon session completion, retrieval of the report will not be possible at a later time.",
     },
     {
       question: "What is the cancellation and refund policy?",
@@ -103,9 +103,9 @@ export default function Faq() {
         "The free trial gives you full access to all features for 14 days with no credit card required.",
     },
     {
-      question: "Which domains/industries are supported by Final Round AI?",
+      question: "Which domains/industries are supported by Airuter?",
       answer:
-        "Final Round AI supports a wide range of industries including technology, finance, healthcare, and more.",
+        "Airuter supports a wide range of industries including technology, finance, healthcare, and more.",
     },
     {
       question: "What is the cancellation and refund policy?",
@@ -118,9 +118,9 @@ export default function Faq() {
         "The free trial gives you full access to all features for 14 days with no credit card required.",
     },
     {
-      question: "Which domains/industries are supported by Final Round AI?",
+      question: "Which domains/industries are supported by Airuter?",
       answer:
-        "Final Round AI supports a wide range of industries including technology, finance, healthcare, and more.",
+        "Airuter supports a wide range of industries including technology, finance, healthcare, and more.",
     },
   ];
 
@@ -132,7 +132,6 @@ export default function Faq() {
     <>
       <div style={{ margin: "0px auto" }} className="InterviewProcessHeader">
         <p>From Day One to Final Rounds</p>
-
         <h2>
           A suite of AI tools to navigate through this difficult recruiting
           season

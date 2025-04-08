@@ -5,78 +5,80 @@ import Faq from "../Faq";
 import InovationTestimonial from "../InnovationTestimonial";
 import SuperpowerTestimonial from "../SuperpowerTestimonial";
 import demoImage from "../wmremove-transformed.png";
+import demoVideo from "../Airuter.mp4";
 const testimonials = [
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
   {
-    description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
+    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
     name: "James Matthews, Project Manager at IBM",
     businessType: "software",
   },
 ];
+
 export default function Home() {
   // const [searchQuery, setSearchQuery] = useState("");
   return (
@@ -179,27 +181,24 @@ export default function Home() {
                 <div className="InterviewProcessHeader2">
                   <h3>AI Resume Builder</h3>
                 </div>
-                <h2>Generate a hireable resume with ease in one-click</h2>
+                <h2>AI-powered partner for every step of the hiring journey</h2>
               </div>
               <div>
                 <ul className="InterviewProcessList2">
                   <li>
                     <div>
-                      <h3>ATS Optimized</h3>
+                      <h3>Ace Every Step of Your Interview Journey with AI </h3>
                       <p>
-                        Designed to ensure ATS optimization so your credentials
-                        stand out to top employers and pass machine screening
-                        process.
+                      From building standout resumes and preparing smarter to acing interviews with real-time guidance and post-interview insights.
+                      
                       </p>
                     </div>
                   </li>
                   <li>
                     <div>
-                      <h3>ATS Optimized</h3>
+                      <h3>Always Interview-Ready, Whether You’re a Fresher or a Pro</h3>
                       <p>
-                        Designed to ensure ATS optimization so your credentials
-                        stand out to top employers and pass machine screening
-                        process.
+                      Airuter is your AI-powered companion designed to help you succeed in today’s competitive job market.
                       </p>
                     </div>
                   </li>
@@ -212,7 +211,8 @@ export default function Home() {
               </div>
             </div>
             <div className="InterviewProcessRight2">
-              <img src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/sticky-tabs/ats-optimized.webp" />
+              <video src={demoVideo} autoPlay loop muted />
+              
             </div>
           </div>
         </section>

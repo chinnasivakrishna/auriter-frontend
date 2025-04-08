@@ -20,7 +20,7 @@ export default function InnovationTestimonial() {
     },
     {
       quote:
-        "Revolutionize your hiring process with cutting-edge technology like Final Round AI!",
+        "Revolutionize your hiring process with cutting-edge technology like Airuter!",
       author: "Mohini S.",
       company: "LinkedIn",
     },

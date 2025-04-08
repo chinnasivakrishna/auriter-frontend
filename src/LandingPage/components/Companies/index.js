@@ -18,7 +18,7 @@ export default function CompanyShowcase() {
   return (
     <div className="heros-container">
       <h1 className="heros-heading">
-        300,000+ offers from the most exciting companies and organizations
+      Trusted by 15,000+ candidates, Appreciated by 30+ Top Companies.
       </h1>
 
       {/* <div className="logo-scroll" ref={containerRef}> */}

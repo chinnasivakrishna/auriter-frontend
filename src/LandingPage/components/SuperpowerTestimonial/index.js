@@ -13,7 +13,7 @@ export default function SuperpowerTestimonial() {
       author: "Alaina Demopoulos",
       company: "The Guardian",
       description:
-        "Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. ",
+        "Using Auriter, I felt much more confident in my interview approach, which led to my offer in project management. ",
     },
     {
       quote: "How to use AI Material Generator",
@@ -21,7 +21,7 @@ export default function SuperpowerTestimonial() {
       author: "Alaina Demopoulos",
       company: "The Guardian",
       description:
-        "Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. ",
+        "Using Auriter, I felt much more confident in my interview approach, which led to my offer in project management. ",
     },
     {
       quote: "How to use AI Material Generator",
@@ -29,7 +29,7 @@ export default function SuperpowerTestimonial() {
       author: "Alaina Demopoulos",
       company: "The Guardian",
       description:
-        "Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. ",
+        "Using Auriter, I felt much more confident in my interview approach, which led to my offer in project management. ",
     },
     {
       quote: "How to use AI Material Generator",
@@ -37,7 +37,7 @@ export default function SuperpowerTestimonial() {
       author: "Alaina Demopoulos",
       company: "The Guardian",
       description:
-        "Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. ",
+        "Using Auriter, I felt much more confident in my interview approach, which led to my offer in project management. ",
     },
     {
       quote: "How to use AI Material Generator",
@@ -45,7 +45,7 @@ export default function SuperpowerTestimonial() {
       author: "Alaina Demopoulos",
       company: "The Guardian",
       description:
-        "Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. ",
+        "Using Auriter, I felt much more confident in my interview approach, which led to my offer in project management. ",
     },
   ];
 

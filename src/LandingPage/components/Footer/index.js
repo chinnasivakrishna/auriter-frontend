@@ -13,7 +13,7 @@ const Footer = () => {
     <footer className="footer-container">
       {/* KitabAI Container */}
       <div className="footer-section aishaala">
-        <h2 className="footer_heading">Final Round</h2>
+        <h2 className="footer_heading">Airuter</h2>
         <p className="about-us">Vision</p>
         <p className="about-us-text">
           Empower Institutions & Teachers with state of the art digital
