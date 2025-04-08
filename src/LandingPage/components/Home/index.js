@@ -4,6 +4,7 @@ import Companies from "../Companies";
 import Faq from "../Faq";
 import InovationTestimonial from "../InnovationTestimonial";
 import SuperpowerTestimonial from "../SuperpowerTestimonial";
+import demoImage from "../wmremove-transformed.png";
 const testimonials = [
   {
     description: `Using Final Round AI, I felt much more confident in my interview approach, which led to my offer in project management. `,
@@ -83,8 +84,9 @@ export default function Home() {
       <section className="hero">
         <div className="hero-content">
           <h1>
-          AI-Driven Hiring. Smarter. Faster.
-          Meet your AI hiring assistant – from resume creation to real-time video interview, Airuter empowers you to stand out and get hired.
+          Airuter: Screening Talent with AI,
+            <br />
+            Matching Potential with Opportunity.
           </h1>
 
           <div className="metrics">
@@ -120,7 +122,7 @@ export default function Home() {
           </div> */}
           <div className="demo-image">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-03BmhKbukEVuYlqt0rEFJMwrvhbuu4.png"
+              src={demoImage}
               alt="Interview interface demo"
             />
           </div>
