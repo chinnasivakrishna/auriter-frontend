@@ -1,8 +1,10 @@
 .testimonials-containers {
-  color: #2D3748; /* Dark gray */
+  background: #6B46C1; /* Purple color */
+  color: white;
   padding: 64px 32px;
   min-height: 600px;
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .testimonials-contents {
@@ -16,7 +18,7 @@
 
 .testimonials-headers {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
   width: 80%;
 }
 
@@ -29,10 +31,10 @@
 
 .titles {
   font-size: 2.25rem;
+  font-weight: 700;
   line-height: 1.2;
   margin: 0;
-  font-weight: 700;
-  color: #2D3748;
+  color: white;
 }
 
 .carousels-wrappers {
@@ -51,31 +53,29 @@
 }
 
 .testimonials-cards {
-  flex: 0 0 400px;
+  flex: 0 0 400px; /* Slightly reduced width from 450px */
   margin: 0 20px;
-  padding: 22px;
-  background: white;
+  padding: 24px; /* Slightly reduced padding from 32px */
+  color: white;
   backdrop-filter: blur(10px);
-  border-radius: 20px;
-  height: 450px;
-  border: 1px solid #E2E8F0; /* Light gray border */
-  box-shadow: 0 4px 6px rgba(107, 70, 193, 0.1); /* Purple shadow */
+  border-radius: 12px;
+  background: rgba(107, 70, 193, 0.2); /* Light purple background */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  height: 350px; /* Fixed height reduced from 380px */
   display: flex;
   flex-direction: column;
 }
 
 .feature-tag {
-  font-size: 1.25rem;
-  margin: 0 0 10px 0;
-  line-height: 1.4;
-  color: #2D3748;
   font-weight: 700;
+  font-size: 1.125rem;
+  margin-bottom: 12px; /* Reduced from 16px */
+  color: #FFF176; /* Light yellow for visibility */
 }
 
-.feature-tag:hover {
-  cursor: pointer;
-  color: #6B46C1; /* Purple color */
-}
+
 
 .testimonials-quotes {
   font-weight: 500;
@@ -85,20 +85,15 @@
   flex: 1;
 }
 
-.testimonials-dates {
-  margin: 20px 0px;
-  color: #4A5568; /* Medium gray */
-  opacity: 0.4;
-  font-weight: 500;
-}
+
 
 .testimonials-authors {
   display: flex;
   align-items: center;
   gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 12px; /* Reduced from 16px */
   margin-top: auto;
-  padding-top: 15px;
-  border-top: 1px solid #EDF2F7;
 }
 
 .authors-infos {
@@ -106,9 +101,8 @@
 }
 
 .authors-names {
-  font-weight: 600;
-  color: #6B46C1;
-  margin: 0 0 4px 0;
+  font-weight: 700;
+  margin: 0 0 2px 0;
   font-size: 1rem;
 }
 
@@ -116,14 +110,12 @@
   font-weight: 500;
   margin: 0 0 4px 0;
   font-size: 0.95rem;
-  color: #4A5568;
 }
 
 .authors-location {
   font-weight: 500;
   margin: 0;
   font-size: 0.95rem;
-  color: #718096;
 }
 
 @keyframes scroll {
@@ -154,9 +146,7 @@
     font-size: 1.125rem;
   }
   
-  .testimonials-headers {
-    width: 90%;
-  }
+  
 }
 
 /* Ensure smooth transitions */
@@ -166,7 +156,7 @@
 
 /* Optional: Add hover effect on cards */
 .testimonials-cards:hover {
-  transform: translateY(-5px);
-  transition: transform 0.3s ease;
-  box-shadow: 0 10px 15px rgba(107, 70, 193, 0.15); /* Enhanced shadow on hover */
+  transform: translateY(-8px);
+  background: rgba(107, 70, 193, 0.3);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
