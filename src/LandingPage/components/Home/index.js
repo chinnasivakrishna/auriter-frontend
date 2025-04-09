@@ -9,76 +9,53 @@ import demoVideo from "../Airuter.mp4";
 import interviewProcess from "../images/Airuter-Support-Interview Journey.png";
 const testimonials = [
   {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
+    description: `🎯 Airuter’s AI Resume Builder didn’t just format my resume—it optimized it! The AI analyzed industry trends and tailored suggestions to make my application stand out. Within weeks, I landed my dream job!`,
+    name: "Priya – Digital Marketing (Bangalore, India)",
+    businessType: "AI Resume Builder",
   },
   {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
+    description: `🎥 I had never faced a video interview before, but Airuter’s AI-powered mock interviews changed everything! The system analyzed my tone, body language, and response structure, giving me real-time insights. Thanks to this, I aced my interview!`,
+    name: "Aditya – Software Developer (Hyderabad, India)",
+    businessType: "AI Video Interview",
   },
   {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
+    description: `🧠 Airuter’s AI-driven mock interviews pinpointed my weak spots with laser accuracy. Whether it was improving my communication or technical responses, the platform’s feedback was incredibly precise. This personalized approach helped me secure my role!`,
+    name: "Neelam – Data Analyst (Pune, India)",
+    businessType: "AI-Powered Mock Interviews",
   },
   {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
+    description: `⚡ Searching for jobs used to be frustrating, but Airuter’s AI Profile Matching changed the game! It scanned my skills and career goals, instantly connecting me with relevant job opportunities. The result? A perfect job match in no time!`,
+    name: "Vaibhav – Full-Stack Developer (Mumbai, India)",
+    businessType: "AI Profile Matching",
   },
   {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
+    description: `📈 Airuter’s AI-powered learning system identified gaps in my skills and recommended focused upskilling. This targeted approach helped me refine my UX/UI expertise quickly, leading to my dream job!`,
+    name: "Sushma – UX/UI Designer (Delhi, India)",
+    businessType: "AI-Driven Skill Enhancement",
   },
   {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
+    description: `🔍 After each mock interview, Airuter’s AI-generated feedback was incredibly detailed. It didn’t just highlight mistakes—it provided actionable solutions! This made it easy to improve and boosted my confidence for real interviews.`,
+    name: "Khushboo – Content Strategist (Kolkata, India)",
+    businessType: "Smart AI Feedback",
   },
   {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
+    description: `📊 Airuter’s AI went beyond generic advice—it gave me data-backed insights on how to refine my resume, improve my interview technique, and showcase leadership skills. The AI-driven guidance made all the difference in landing my product management role!`,
+    name: "Samarjeet – Product Manager (Chennai, India)",
+    businessType: "AI Career Guidance",
   },
   {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
+    description: `🔗 Traditional job searches felt overwhelming, but Airuter’s AI streamlined the process! It analyzed my strengths, preferences, and market trends to match me with the right companies. This smart matching system helped me land my ideal job quickly!`,
+    name: "Preeti – Marketing Strategist (Jaipur, India)",
+    businessType: "AI-Powered Networking",
   },
   {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
-  },
-  {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
-  },
-  {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
-  },
-  {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
-  },
-  {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
-  },
-  {
-    description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
-    name: "James Matthews, Project Manager at IBM",
-    businessType: "software",
+    description: `🚀 The AI mock interviews were next-level! They didn’t just assess my answers—they provided in-depth analysis of my problem-solving approach and communication. This real-time feedback gave me a competitive edge and helped me secure my data scientist role!`,
+    name: "Shubham – Data Scientist (Ahmedabad, India)",
+    businessType: "Real-Time AI Feedback",
   },
 ];
+
+
 
 export default function Home() {
   // For video unmute functionality
@@ -139,41 +116,55 @@ export default function Home() {
       </section>
       <Companies />
       <div style={{ position: "relative" }}>
-        <section className="InterviewProcessContainerSection">
-          <div className="InterviewProcessContainer">
-            <div className="InterviewProcessText">
-              <div className="InterviewProcessHeader">
-                <h3>Your Interview Journey, Supercharged by AI 🚀</h3>
-              </div>
-              
-              <div className="InterviewProcessContent">
-                <div className="InterviewProcessContentBox">
-                  <h4>Resume Optimization</h4>
-                  <p>AI-powered resume tailoring that matches job descriptions and highlights your key skills, increasing your chances of getting noticed.</p>
-                </div>
-                
-                <div className="InterviewProcessContentBox">
-                  <h4>Interview Preparation</h4>
-                  <p>Personalized practice sessions with industry-specific questions and real-time feedback to boost your confidence.</p>
-                </div>
-                
-                <div className="InterviewProcessContentBox">
-                  <h4>Real-time Guidance</h4>
-                  <p>During interviews, receive subtle suggestions and talking points that help you deliver compelling, structured answers.</p>
-                </div>
-                
-                <div className="InterviewProcessContentBox">
-                  <h4>Post-Interview Analysis</h4>
-                  <p>Detailed performance insights and follow-up templates to help you improve and stand out after each interview.</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="InterviewProcess">
-              <img src={interviewProcess} alt="Interview journey visualization" />
-            </div>
-          </div>
-        </section>
+      <section className="InterviewProcessContainerSection">
+  <div className="InterviewProcessContainer">
+    <div className="InterviewProcessText">
+      <div className="InterviewProcessHeader">
+        <p>AI-POWERED SOLUTION</p>
+        <h3>How AI Supports the Interview Journey</h3>
+        <div className="subtitle">Complete support throughout your job search process</div>
+      </div>
+      
+      <div className="InterviewProcessContent">
+        <div className="InterviewProcessContentBox">
+          <h4>
+            <i className="fas fa-search" style={{marginRight: '10px', color: '#6B46C1'}}></i>
+            Discovering Opportunities
+          </h4>
+          <p>Job matching based on your resume and preferences, with alerts for roles that fit your skillset.</p>
+        </div>
+        
+        <div className="InterviewProcessContentBox">
+          <h4>
+            <i className="fas fa-file-alt" style={{marginRight: '10px', color: '#6B46C1'}}></i>
+            Resume & Profile Building
+          </h4>
+          <p>AI suggestions to refine your CV and showcase your qualifications and achievements.</p>
+        </div>
+        
+        <div className="InterviewProcessContentBox">
+          <h4>
+            <i className="fas fa-comments" style={{marginRight: '10px', color: '#6B46C1'}}></i>
+            Pre-Interview Confidence Boost
+          </h4>
+          <p>Voice and body language guidance with last-minute confidence tips for preparation.</p>
+        </div>
+        
+        <div className="InterviewProcessContentBox">
+          <h4>
+            <i className="fas fa-video" style={{marginRight: '10px', color: '#6B46C1'}}></i>
+            Live-Interview Support
+          </h4>
+          <p>Subtle real-time nudges during video interviews and on-screen transcription for accurate tracking.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div className="InterviewProcess">
+      <img src={interviewProcess} alt="Interview journey visualization" />
+    </div>
+  </div>
+</section>
         
         {/* Add spacing between sections */}
         <div style={{ margin: "20px 0" }}></div>
@@ -185,13 +176,13 @@ export default function Home() {
           <div className="InterviewProcessContainer2">
             <div className="InterviewProcessLeft2">
               <div className="InterviewProcessHeaderContainer2">
-                <h2>AI-powered partner for every step of the hiring journey</h2>
+                <h2><strong>AI-powered partner for every step of the hiring journey</strong></h2>
               </div>
               <div>
                 <ul className="InterviewProcessList2">
                   <li>
                     <div>
-                      <h3>Ace Every Step of Your Interview Journey with AI </h3>
+                      <h3><strong>Ace Every Step of Your Interview Journey with AI</strong></h3>
                       <p>
                         From building standout resumes and preparing smarter to acing interviews with real-time guidance and post-interview insights.
                       </p>
@@ -199,7 +190,7 @@ export default function Home() {
                   </li>
                   <li>
                     <div>
-                      <h3>Always Interview-Ready, Whether You're a Fresher or a Pro</h3>
+                      <h3><strong>Always Interview-Ready, Whether You're a Fresher or a Pro</strong></h3>
                       <p>
                         Airuter is your AI-powered companion designed to help you succeed in today's competitive job market.
                       </p>
@@ -230,9 +221,7 @@ export default function Home() {
       </div>
       {/* testimonial */}
       <section className="testimonialsContainers">
-        <div className="InterviewProcessHeader">
-          
-        </div>
+       
         <div className="testimonials-container">
           <div className="testimonials-scroll-wrapper">
             <div className="testimonials-scroll-container">
