@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
 }
 
 .heros-heading {
@@ -11,7 +10,8 @@
   text-align: center;
   color: #1a1a1a;
   max-width: 900px;
-  margin: 0 auto 4rem;
+  /* Reduced margin-bottom from 4rem to 2rem */
+  margin: 0 auto 2rem;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -24,11 +24,11 @@
 
 .logos-container {
   display: flex;
-  /* Increase animation duration from 20s to 300s for much slower scrolling */
-  animation: scroll 400s linear infinite;
-  gap: 4rem;
+  /* Increased animation duration from 600s to 1200s for even slower scrolling */
+  animation: scroll 1200s linear infinite;
+  /* Reduced gap from 4rem to 2rem */
+  gap: 2rem;
   padding: 2rem 0;
-  /* Make sure there's no extra space causing delays */
   width: fit-content;
 }
 
@@ -75,6 +75,8 @@
   .heros-heading {
     font-size: 2rem;
     padding: 0 1rem;
+    /* Also reduced margin for mobile */
+    margin-bottom: 1.5rem;
   }
 
   .logo {
@@ -82,7 +84,8 @@
   }
 
   .logos-container {
-    gap: 2rem;
+    /* Also reduced gap for mobile */
+    gap: 1.5rem;
   }
   
   .company-name {

@@ -2,20 +2,19 @@
 .footer-container {
   display: flex;
   flex-direction: row;
-  padding: 40px 20px;
-  /* width: 100%; */
-  /* margin-top: 50px; */
+  padding: 60px 40px;
   justify-content: space-between;
-  background-color: white;
-  color: black;
-  margin: 0px 10px 10px 10px;
+  background-color: #1E293B; /* Dark blue background */
+  color: white;
+  margin: 30px 20px 20px 20px;
   border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 /* Styling for each section in the footer */
 .footer-section {
   flex: 1;
-  padding: 10px;
+  padding: 20px;
   text-align: left;
 }
 
@@ -23,30 +22,47 @@
 .footer-section h2 {
   font-weight: bold;
   font-size: 1.5rem;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  color: #f3f4f6; /* Light gray text */
 }
 
 /* Styling for the "About Us" section under Aishaala */
 .aishaala .about-us {
-  color: white;
-  margin-top: 10px;
+  color: #94a3b8; /* Muted blue text */
+  margin-top: 15px;
+  font-weight: 600;
 }
 
 /* Styling for the office section */
 .office p {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  color: #cbd5e1; /* Light blue-gray text */
 }
 
 /* Styling for the quick links section */
 .quick-links p {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 5px 0;
+  color: #cbd5e1;
+}
+
+.quick-links p:hover {
+  color: #8b5cf6; /* Purple highlight on hover */
 }
 
 /* Styling for the legal stuff section */
 .legal-stuff p {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 5px 0;
+  color: #cbd5e1;
+}
+
+.legal-stuff p:hover {
+  color: #8b5cf6; /* Purple highlight on hover */
 }
 
 .social-icons {
@@ -54,20 +70,39 @@
   padding: 0px;
   display: flex;
   justify-content: flex-start;
+  margin-top: 25px;
 }
 
 .social-icons li {
-  margin-right: 10px;
+  margin-right: 20px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 22px;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
 }
+
+.social-icons li:hover {
+  background-color: #8b5cf6;
+  transform: translateY(-3px);
+}
+
 .about-us-text {
   width: 350px;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin-top: 15px;
 }
+
 /* Responsive Design for smaller screens */
 @media (max-width: 1200px) {
   .footer-section {
-    margin-bottom: 20px; /* Add some space between sections */
+    margin-bottom: 30px; /* Add some space between sections */
   }
   .office {
     display: flex;
@@ -87,9 +122,10 @@
 @media (max-width: 800px) {
   .footer-container {
     flex-direction: column;
-    padding: 20px 10px; /* Further reduce padding on very small screens */
+    padding: 40px 20px; /* Further reduce padding on very small screens */
     justify-content: flex-start;
     align-items: center;
+    margin: 20px 15px 15px 15px;
     /* flex-direction: row; */
   }
 
@@ -114,16 +150,18 @@
   .social-icons {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .footer-container {
-    padding: 20px 10px; /* Further reduce padding on very small screens */
+    padding: 30px 15px; /* Further reduce padding on very small screens */
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     text-align: center;
+    margin: 15px 10px 10px 10px;
   }
   .office {
     text-align: center;
@@ -145,15 +183,26 @@
   .footer-section {
     justify-content: flex-start;
     align-items: center;
+    padding: 15px 10px;
+  }
+  
+  .social-icons li {
+    margin-right: 15px;
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
   }
 }
+
 .links {
   text-decoration: none !important;
   cursor: pointer;
-  color: black;
+  color: #cbd5e1;
+  transition: color 0.2s ease;
 }
 
 .links:hover,
 .links:focus {
   text-decoration: none !important;
+  color: #8b5cf6;
 }
