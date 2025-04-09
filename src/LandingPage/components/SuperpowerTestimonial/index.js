@@ -81,6 +81,7 @@ export default function SuperpowerTestimonial() {
             {[...testimonials, ...testimonials].map((testimonial, index) => (
               <div key={index} className="SuperpowerTestimonial-cards">
                 <img
+                  alt="superpower-image"
                   className="superpower-image"
                   src={testimonial.image}
                 />

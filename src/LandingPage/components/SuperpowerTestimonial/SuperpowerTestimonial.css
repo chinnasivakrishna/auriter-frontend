@@ -61,6 +61,8 @@
 }
 .superpower-image {
   max-height: 10.125rem;
+  width: 100%;
+  object-fit: cover;
 }
 
 .SuperpowerTestimonial-quotes {
