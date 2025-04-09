@@ -8,16 +8,17 @@ import demoImage from "../wmremove-transformed.png";
 import demoVideo from "../Airuter.mp4";
 import interviewProcess from "../images/Airuter-Support-Interview Journey.png";
 import { Search, FileText, MessageCircle, Video } from 'lucide-react';
+import aitotaLogo from "../images/aitota__logo.png";
+
 
 // Import company logos
-import aitotaLogo from "../images/company-logos/aitota-logo.png";
-import dailaiLogo from "../images/company-logos/dailai-logo.png";
-import kitabaiLogo from "../images/company-logos/kitabai-logo.png";
-import linguaaiLogo from "../images/company-logos/linguaai-logo.png";
-import egclassesLogo from "../images/company-logos/egclasses-logo.png";
-import mobishaalaLogo from "../images/company-logos/mobishaala-logo.png";
-import prayogteaLogo from "../images/company-logos/prayogtea-logo.png";
-import goldpotLogo from "../images/company-logos/goldpot-logo.png";
+import dailaiLogo from "../images/DailAi_Logo.png";
+import kitabaiLogo from "../images/KitabAI.png";
+import linguaaiLogo from "../images/LinguaAI.png";
+import egclassesLogo from "../images/EG CLASSES.png";
+import mobishaalaLogo from "../images/Mobishaala White.png";
+import prayogteaLogo from "../images/PRAYOG TEA LOGO.png";
+import goldpotLogo from "../images/GotPot-Logo.jpg";
 
 const testimonials = [
   {
