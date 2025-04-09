@@ -8,7 +8,7 @@ import britishLingua from "../images/British Lingua.png";
 import dailAi from "../images/DailAi_Logo.png";
 import kitabAI from "../images/KitabAI.png";
 import mobishaala from "../images/Mobishaala White.png";
-import GitPot from "../images/GitPot-LOGO.jpg";
+import GitPot from "../images/GotPot-LOGO.jpg";
 import wizzmedia from "../images/WIZZMEDIA_Logo.png";
 
 export default function CompanyShowcase() {
@@ -20,7 +20,7 @@ export default function CompanyShowcase() {
     { logo: dailAi, name: "Dail AI", alt: "Dail AI Logo" },
     { logo: kitabAI, name: "Kitab AI", alt: "Kitab AI Logo" },
     { logo: mobishaala, name: "Mobishaala", alt: "Mobishaala Logo" },
-    { logo: GitPot, name: "GitPot", alt: "GitPot Logo" },
+    { logo: GitPot, name: "GitPot", alt: "GotPot Logo" },
     { logo: wizzmedia, name: "Wizzmedia", alt: "Wizzmedia Logo" },
   ];
 
