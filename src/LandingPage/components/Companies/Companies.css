@@ -24,7 +24,7 @@
 .logos-container {
   display: flex;
   animation: scroll 1200s linear infinite;
-  gap: 2rem;
+  gap: 5.5rem;
   padding: 2rem 0;
   width: fit-content;
 }
