@@ -210,13 +210,7 @@ export default function Home() {
                 loop
                 controls
               />
-              <button 
-                onClick={toggleMute} 
-                className="unmute-button"
-                aria-label={isMuted ? "Unmute video" : "Mute video"}
-              >
-                {isMuted ? "Unmute" : "Mute"}
-              </button>
+              
             </div>
           </div>
         </section>
