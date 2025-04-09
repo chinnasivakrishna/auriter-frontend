@@ -16,7 +16,7 @@ import PRAYOGTEA from "../images/PRAYOG TEA LOGO.png";
 import KNOWLEDGEINDIA from "../images/KNOWLEDGE INDIA.png";
 import FUTURESEEDS from "../images/FUTURE SEEDS LOGO.png";
 import CPSLOGO from "../images/CPS LOGO.png";
-import EGCLASSES from "../images/EG CLASSES LOGO.png";
+import EGCLASSES from "../images/EG CLASSES.png";
 export default function CompanyShowcase() {
   // Define company data with logos and names
   const companies = [
