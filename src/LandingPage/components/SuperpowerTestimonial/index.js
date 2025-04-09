@@ -8,7 +8,7 @@ import Healthcare from "../images/image-Healthcare.jpeg";
 import FinancialServices from "../images/image-finance.jpeg";
 import Education from "../images/image-education.jpeg";
 import LogisticsTransportation from "../images/image-logistic.jpeg";
-import Manufacturing from "../images/image-manufacturing.jpeg";
+import Manufacturing from "../images/image-manufacturing .jpeg";
 
 export default function SuperpowerTestimonial() {
   const [isPaused, setIsPaused] = useState(false);
