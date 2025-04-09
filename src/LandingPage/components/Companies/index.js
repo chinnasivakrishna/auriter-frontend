@@ -11,7 +11,7 @@ import mobishaala from "../images/Mobishaala White.png";
 import GitPot from "../images/GotPot-Logo.jpg";
 import wizzmedia from "../images/WIZZMEDIA_LOGO.png";
 import LinguaAI from "../images/LinguaAI.png";
-import SURE60 from "../images/SURE60LOGO.png";
+import SURE60 from "../images/SURE 60 LOGO.png";
 import PRAYOGTEA from "../images/PRAYOG TEA LOGO.png";
 import KNOWLEDGEINDIA from "../images/KNOWLEDGE INDIA.png";
 import FUTURESEEDS from "../images/FUTURE SEEDS LOGO.png";
