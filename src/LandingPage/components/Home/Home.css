@@ -484,7 +484,7 @@
 .testimonials-scroll-container {
   display: flex;
   gap: 2.5rem; /* Increased gap between cards */
-  animation: scroll 300s linear infinite;
+  animation: scroll 1200s linear infinite;
   width: fit-content;
 }
 
