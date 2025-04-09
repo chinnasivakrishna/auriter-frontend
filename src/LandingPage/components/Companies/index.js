@@ -32,7 +32,7 @@ export default function CompanyShowcase() {
     if (container) {
       // This ensures the container width is properly calculated
       const firstGroupWidth = container.children[0].offsetWidth * companies.length + 
-                              (4 * (companies.length - 1)); // account for gap
+                              (6 * (companies.length - 1)); // account for gap
       
       // Set a custom property that can be used in the CSS
       document.documentElement.style.setProperty('--scroll-width', `${firstGroupWidth}px`);
