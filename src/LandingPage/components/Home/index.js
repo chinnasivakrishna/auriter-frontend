@@ -7,6 +7,8 @@ import SuperpowerTestimonial from "../SuperpowerTestimonial";
 import demoImage from "../wmremove-transformed.png";
 import demoVideo from "../Airuter.mp4";
 import interviewProcess from "../images/Airuter-Support-Interview Journey.png";
+import { Search, FileText, MessageCircle, Video } from 'lucide-react';
+
 const testimonials = [
   {
     description: `🎯 Airuter’s AI Resume Builder didn’t just format my resume—it optimized it! The AI analyzed industry trends and tailored suggestions to make my application stand out. Within weeks, I landed my dream job!`,
