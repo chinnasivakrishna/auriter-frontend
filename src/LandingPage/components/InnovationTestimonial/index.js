@@ -72,8 +72,8 @@ export default function InnovationTestimonial() {
     }
   ];
 
-  // Create a large array of repeated testimonials
-  const REPETITIONS = 100;
+  // Create a repeated array but with fewer repetitions for faster scrolling
+  const REPETITIONS = 20; // Reduced from 100 to make animation faster
   const repeatedTestimonials = Array(REPETITIONS).fill().flatMap(() => testimonials);
 
   return (

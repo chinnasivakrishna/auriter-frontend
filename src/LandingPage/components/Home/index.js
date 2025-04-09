@@ -25,56 +25,56 @@ import goldpotLogo from "../images/GotPot-Logo.jpg";
 
 const testimonials = [
   {
-    description: `🎯 "Finding top AI talent was a challenge—until we used Airuter! Its AI-powered candidate matching ensured we hired **highly skilled professionals** who were the perfect fit for our team."`,
+    description: `🎯 "Finding top AI talent was a challenge—until we used Airuter! Its AI-powered candidate matching ensured we hired <b>highly skilled professionals</b> who were the perfect fit for our team."`,
     name: "Aitota",
     location: "Bengaluru, India",
     businessType: "AI Talent Matching",
     logo: aitotaLogo
   },
   {
-    description: `📊 "Airuter's AI-driven **mock interviews** helped us identify candidates with **strong analytical skills and AI expertise**. The result? Faster, more efficient hiring!"`,
+    description: `📊 "Airuter's AI-driven <b>mock interviews</b> helped us identify candidates with <b>strong analytical skills and AI expertise</b>. The result? Faster, more efficient hiring!"`,
     name: "DailAI",
     location: "Noida, India",
     businessType: "AI Mock Interviews",
     logo: dailaiLogo
   },
   {
-    description: `🧠 "With Airuter's **AI Resume Optimization and skill assessment tools**, we found **the best AI researchers and developers**, making our hiring process seamless!"`,
+    description: `🧠 "With Airuter's <b>AI Resume Optimization and skill assessment tools</b>, we found <b>the best AI researchers and developers</b>, making our hiring process seamless!"`,
     name: "KitabAI",
     location: "Noida, India",
     businessType: "AI Resume Optimization",
     logo: kitabaiLogo
   },
   {
-    description: `🎥 "Airuter's AI-driven **video interview analysis** helped us hire **the right communication experts**, ensuring candidates had the technical and linguistic skills we needed!"`,
+    description: `🎥 "Airuter's AI-driven <b>video interview analysis</b> helped us hire <b>the right communication experts</b>, ensuring candidates had the technical and linguistic skills we needed!"`,
     name: "LinguaAI",
     location: "Patna, India",
     businessType: "AI Video Interview Analysis",
     logo: linguaaiLogo
   },
   {
-    description: `📚 "We needed qualified educators **fast**. Airuter's AI **profile matching and interview insights** helped us hire **skilled teachers** effortlessly!"`,
+    description: `📚 "We needed qualified educators <b>fast</b>. Airuter's AI <b>profile matching and interview insights</b> helped us hire <b>skilled teachers</b> effortlessly!"`,
     name: "EG Classes",
     location: "Delhi, India",
     businessType: "AI Profile Matching for Educators",
     logo: egclassesLogo
   },
   {
-    description: `⏱️ "Hiring teachers was time-consuming—until we used Airuter! Its AI instantly **identified top teaching candidates** and provided interview feedback, making recruitment smooth and efficient!"`,
+    description: `⏱️ "Hiring teachers was time-consuming—until we used Airuter! Its AI instantly <b>identified top teaching candidates</b> and provided interview feedback, making recruitment smooth and efficient!"`,
     name: "Mobishaala",
     location: "Delhi, India",
     businessType: "AI Recruitment for Education",
     logo: mobishaalaLogo
   },
   {
-    description: `🌱 "Airuter's AI-driven **skill evaluation** helped us hire **candidates with deep knowledge of sustainable practices**, ensuring they aligned with our company's mission!"`,
+    description: `🌱 "Airuter's AI-driven <b>skill evaluation</b> helped us hire <b>candidates with deep knowledge of sustainable practices</b>, ensuring they aligned with our company's mission!"`,
     name: "PrayogTea",
     location: "Delhi, India",
     businessType: "AI Skill Evaluation",
     logo: prayogteaLogo
   },
   {
-    description: `💎 "Finding skilled jewelry designers was tough, but Airuter's **AI-powered recruitment** helped us match with **creative and technically proficient candidates** instantly!"`,
+    description: `💎 "Finding skilled jewelry designers was tough, but Airuter's <b>AI-powered recruitment</b> helped us match with <b>creative and technically proficient candidates</b> instantly!"`,
     name: "GoldPot Jewelry",
     location: "Bengaluru, India",
     businessType: "Creative Talent Recruitment",
@@ -266,9 +266,10 @@ export default function Home() {
                       <h3>{testimonial.businessType}</h3>
                     </div>
                     <div className="testimonial-content">
-                      <h3 className="testimonial-text">
-                        {testimonial.description}
-                      </h3>
+                      <h3 
+                        className="testimonial-text"
+                        dangerouslySetInnerHTML={{ __html: testimonial.description }}
+                      />
                     </div>
                     <div className="testimonial-company-info">
                       <p className="testimonial-name">{testimonial.name} ({testimonial.location})</p>

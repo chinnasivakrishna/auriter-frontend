@@ -430,19 +430,34 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  background-color: #F9FAFB; /* Added background color for section */
-  padding: 3rem 0; /* Added padding */
+  background-color: #F7F9FE; /* Lighter background for better contrast */
+  padding: 4rem 0; /* Increased padding */
+  position: relative;
+}
+
+/* Add subtle background pattern */
+.testimonialsContainers::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(#6B46C1 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.05;
+  pointer-events: none;
 }
 
 /* Update testimonials styles */
 .testimonials-container h1 {
   font-size: 2.25rem;
-  font-weight: 700; /* Made heading bold */
+  font-weight: 700;
   color: #2D3748;
   text-align: center;
-  margin-bottom: 2.5rem; /* Increased margin */
-  line-height: 1.2;
-  padding: 0 1rem;
+  margin-bottom: 3rem; /* Increased margin */
+  line-height: 1.3;
+  padding: 0 1.5rem;
   max-width: 900px; /* Limited width for better readability */
 }
 
@@ -450,8 +465,9 @@
   position: relative;
   overflow: hidden;
   white-space: nowrap;
-  padding: 10px;
+  padding: 20px 10px; /* Increased top/bottom padding */
   margin-top: 20px;
+  width: 100%;
 }
 
 .testimonials-container {
@@ -462,12 +478,13 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 2rem 0;
+  width: 100%;
 }
 
 .testimonials-scroll-container {
   display: flex;
-  gap: 2rem;
-  animation: scroll 1200s linear infinite;
+  gap: 2.5rem; /* Increased gap between cards */
+  animation: scroll 600s linear infinite;
   width: fit-content;
 }
 
@@ -475,31 +492,30 @@
   flex-shrink: 0;
   width: 400px;
   height: 380px;
-  background: white; /* Changed to white for better contrast */
+  background: white;
   border-radius: 20px;
-  padding: 1.5rem; /* Increased padding */
+  padding: 2rem; /* Increased padding */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Added initial shadow */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); /* Enhanced shadow */
+  border: 1px solid rgba(107, 70, 193, 0.1); /* Subtle border */
 }
 
 .testimonial-cards:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(107, 70, 193, 0.15); /* Enhanced shadow on hover */
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(107, 70, 193, 0.2); /* Enhanced shadow on hover */
 }
 
 .testimonial-header-tag {
   border-radius: 2rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0.75rem 1.25rem; /* Increased padding */
   background: #6B46C1;
-  display: inline-block; /* Changed to inline-block */
+  display: inline-block;
   color: white;
-  font-size: 0.875rem; /* Reduced font size */
+  font-size: 0.875rem;
+  box-shadow: 0 4px 8px rgba(107, 70, 193, 0.3); /* Added shadow */
 }
 
 .testimonial-header-tag h3 {
@@ -509,20 +525,20 @@
 }
 
 .testimonial-content {
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .testimonial-company-info {
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .testimonial-name {
-  line-height: 1.2;
+  line-height: 1.4;
   letter-spacing: -0.02rem;
-  opacity: 0.7;
-  font-weight: 600; /* Increased weight */
+  opacity: 0.8;
+  font-weight: 600;
   color: #4A5568;
   font-size: 1rem;
 }
@@ -530,20 +546,26 @@
 .testimonial-text {
   font-size: 1.125rem;
   color: #2D3748;
-  line-height: 1.5;
+  line-height: 1.6; /* Increased line height */
   height: 100%;
   white-space: normal; /* Allow text to wrap */
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 6; /* Limit to 6 lines */
   -webkit-box-orient: vertical;
+  margin: 0;
+}
+
+.testimonial-text b {
+  color: #6B46C1; /* Make bold text purple for emphasis */
+  font-weight: 700;
 }
 
 .company-logo-container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 10px;
+  margin-top: 16px;
   height: 50px; /* Fixed height for logo area */
 }
 
@@ -552,6 +574,13 @@
   width: auto;
   max-width: 120px;
   object-fit: contain;
+  filter: grayscale(0); /* Remove grayscale filter */
+  opacity: 1; /* Full opacity */
+  transition: transform 0.3s ease;
+}
+
+.testimonial-cards:hover .company-logo {
+  transform: scale(1.05); /* Subtle scale on hover */
 }
 
 @keyframes scroll {
@@ -563,6 +592,11 @@
   }
 }
 
+/* Add a pause on hover effect for the testimonial cards */
+.testimonials-scroll-container:hover {
+  animation-play-state: paused;
+}
+
 .testimonials-scroll-wrapper::-webkit-scrollbar {
   display: none;
 }
@@ -570,6 +604,37 @@
 .testimonials-scroll-wrapper {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Add responsive styles for the testimonials section */
+@media (max-width: 768px) {
+  .testimonialsContainers {
+    padding: 3rem 0;
+  }
+  
+  .testimonials-container h1 {
+    font-size: 1.75rem;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .testimonial-cards {
+    width: 300px;
+    height: 420px;
+    padding: 1.5rem;
+  }
+  
+  .testimonial-text {
+    font-size: 1rem;
+  }
+  
+  .testimonial-name {
+    font-size: 0.875rem;
+  }
+  
+  .company-logo-container {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {

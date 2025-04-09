@@ -18,8 +18,8 @@
 
 .testimonials-headers {
   text-align: center;
-  margin-bottom: 64px;
-  width: 70%;
+  margin-bottom: 48px;
+  width: 80%;
 }
 
 .titles {
@@ -39,7 +39,7 @@
 
 .carousels-tracks {
   display: flex;
-  animation: scroll 1200s linear infinite;
+  animation: scroll 120s linear infinite; /* Reduced from 1200s to 120s for faster scrolling */
 }
 
 .carousels-tracks.paused {
@@ -47,9 +47,9 @@
 }
 
 .testimonials-cards {
-  flex: 0 0 450px;
+  flex: 0 0 400px; /* Slightly reduced width from 450px */
   margin: 0 20px;
-  padding: 32px;
+  padding: 24px; /* Slightly reduced padding from 32px */
   color: white;
   backdrop-filter: blur(10px);
   border-radius: 12px;
@@ -57,7 +57,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
-  height: 380px;
+  height: 350px; /* Fixed height reduced from 380px */
   display: flex;
   flex-direction: column;
 }
@@ -65,20 +65,21 @@
 .feature-tag {
   font-weight: 700;
   font-size: 1.125rem;
-  margin-bottom: 16px;
+  margin-bottom: 12px; /* Reduced from 16px */
   color: #FFF176; /* Light yellow for visibility */
 }
 
 .testimonials-quotes {
-  font-size: 1.125rem;
-  line-height: 1.6;
-  margin: 0 0 24px 0;
+  font-size: 1rem; /* Reduced from 1.125rem */
+  line-height: 1.5; /* Tightened line height from 1.6 */
+  margin: 0 0 16px 0; /* Reduced from 24px */
   flex-grow: 1;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 8;
+  -webkit-line-clamp: 9; /* Increased from 8 to allow more text */
   -webkit-box-orient: vertical;
   font-weight: 500;
+  text-overflow: ellipsis;
 }
 
 .testimonials-authors {
@@ -86,7 +87,7 @@
   align-items: center;
   gap: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding-top: 16px;
+  padding-top: 12px; /* Reduced from 16px */
   margin-top: auto;
 }
 
@@ -97,13 +98,13 @@
 .authors-names {
   font-weight: 700;
   font-size: 1.125rem;
-  margin: 0 0 4px 0;
+  margin: 0 0 2px 0; /* Reduced from 4px */
 }
 
 .authors-position, .authors-location {
   opacity: 0.9;
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Reduced from 1rem */
   font-weight: 500;
 }
 
@@ -131,18 +132,18 @@
   }
 
   .testimonials-cards {
-    flex: 0 0 320px;
-    padding: 24px;
-    height: 380px;
+    flex: 0 0 300px; /* Reduced from 320px */
+    padding: 20px; /* Reduced from 24px */
+    height: 350px;
   }
 
   .testimonials-quotes {
-    font-size: 1rem;
-    -webkit-line-clamp: 7;
+    font-size: 0.95rem; /* Reduced from 1rem */
+    -webkit-line-clamp: 8;
   }
   
   .feature-tag {
-    font-size: 1rem;
+    font-size: 0.95rem; /* Reduced from 1rem */
   }
 }
 
@@ -151,4 +152,17 @@
   transform: translateY(-8px);
   background: rgba(107, 70, 193, 0.3);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Add a gradient fade effect to indicate there's more content */
+.testimonials-quotes::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(transparent, rgba(107, 70, 193, 0.2));
+  pointer-events: none;
+  opacity: 0.7;
 }
