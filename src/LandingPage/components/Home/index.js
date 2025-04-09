@@ -1,83 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import "./Home.css";
 import Companies from "../Companies";
 import Faq from "../Faq";
 import InovationTestimonial from "../InnovationTestimonial";
 import SuperpowerTestimonial from "../SuperpowerTestimonial";
+import TestimonialsScroll from "../TestimonialsScroll"; // Import the new component
+import SuccessStories from "../SuccessStories"; // Import the new Success Stories component
 import demoImage from "../wmremove-transformed.png";
 import demoVideo from "../Airuter.mp4";
 import interviewProcess from "../images/Airuter-Support-Interview Journey.png";
-import { Search, FileText, MessageCircle, Video } from 'lucide-react';
-import aitotaLogo from "../images/aitota__logo.png";
-
-
-// Import company logos
-import dailaiLogo from "../images/DailAi_Logo.png";
-import kitabaiLogo from "../images/KitabAI.png";
-import linguaaiLogo from "../images/LinguaAI.png";
-import egclassesLogo from "../images/EG CLASSES.png";
-import mobishaalaLogo from "../images/Mobishaala White.png";
-import prayogteaLogo from "../images/PRAYOG TEA LOGO.png";
-import goldpotLogo from "../images/GotPot-Logo.jpg";
-
-const testimonials = [
-  {
-    description: `🎯 "Finding top AI talent was a challenge—until we used Airuter! Its AI-powered candidate matching ensured we hired **highly skilled professionals** who were the perfect fit for our team."`,
-    name: "Aitota",
-    location: "Bengaluru, India",
-    businessType: "AI Talent Matching",
-    logo: aitotaLogo
-  },
-  {
-    description: `📊 "Airuter's AI-driven **mock interviews** helped us identify candidates with **strong analytical skills and AI expertise**. The result? Faster, more efficient hiring!"`,
-    name: "DailAI",
-    location: "Noida, India",
-    businessType: "AI Mock Interviews",
-    logo: dailaiLogo
-  },
-  {
-    description: `🧠 "With Airuter's **AI Resume Optimization and skill assessment tools**, we found **the best AI researchers and developers**, making our hiring process seamless!"`,
-    name: "KitabAI",
-    location: "Noida, India",
-    businessType: "AI Resume Optimization",
-    logo: kitabaiLogo
-  },
-  {
-    description: `🎥 "Airuter's AI-driven **video interview analysis** helped us hire **the right communication experts**, ensuring candidates had the technical and linguistic skills we needed!"`,
-    name: "LinguaAI",
-    location: "Patna, India",
-    businessType: "AI Video Interview Analysis",
-    logo: linguaaiLogo
-  },
-  {
-    description: `📚 "We needed qualified educators **fast**. Airuter's AI **profile matching and interview insights** helped us hire **skilled teachers** effortlessly!"`,
-    name: "EG Classes",
-    location: "Delhi, India",
-    businessType: "AI Profile Matching for Educators",
-    logo: egclassesLogo
-  },
-  {
-    description: `⏱️ "Hiring teachers was time-consuming—until we used Airuter! Its AI instantly **identified top teaching candidates** and provided interview feedback, making recruitment smooth and efficient!"`,
-    name: "Mobishaala",
-    location: "Delhi, India",
-    businessType: "AI Recruitment for Education",
-    logo: mobishaalaLogo
-  },
-  {
-    description: `🌱 "Airuter's AI-driven **skill evaluation** helped us hire **candidates with deep knowledge of sustainable practices**, ensuring they aligned with our company's mission!"`,
-    name: "PrayogTea",
-    location: "Delhi, India",
-    businessType: "AI Skill Evaluation",
-    logo: prayogteaLogo
-  },
-  {
-    description: `💎 "Finding skilled jewelry designers was tough, but Airuter's **AI-powered recruitment** helped us match with **creative and technically proficient candidates** instantly!"`,
-    name: "GoldPot Jewelry",
-    location: "Bengaluru, India",
-    businessType: "Creative Talent Recruitment",
-    logo: goldpotLogo
-  },
-];
+import { Search, FileText, MessageCircle, Video, TrendingUp, Clock, Users } from 'lucide-react';
+import image1 from "../images/image1.png";
+import image2 from "../images/image2.png";
+import image3 from "../images/image3.png";
+import image4 from "../images/image4.png";
 
 export default function Home() {
   const videoRef = useRef(null);
@@ -127,60 +63,87 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Companies />
-      <div style={{ position: "relative" }}>
-      <section className="InterviewProcessContainerSection">
-  <div className="InterviewProcessContainer">
-    <div className="InterviewProcessText">
-      <div className="InterviewProcessHeader">
-        <p>AI-POWERED SOLUTION</p>
-        <h3>How AI Supports the Interview Journey</h3>
-        <div className="subtitle">Complete support throughout your job search process</div>
-      </div>
       
-      <div className="InterviewProcessContent">
-        <div className="InterviewProcessContentBox">
-          <h4>
-            <Search size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-            Discovering Opportunities
-          </h4>
-          <p>Job matching based on your resume and preferences, with alerts for roles that fit your skillset.</p>
-        </div>
-        
-        <div className="InterviewProcessContentBox">
-          <h4>
-            <FileText size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-            Resume & Profile Building
-          </h4>
-          <p>AI suggestions to refine your CV and showcase your qualifications and achievements.</p>
-        </div>
-        
-        <div className="InterviewProcessContentBox">
-          <h4>
-            <MessageCircle size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-            Pre-Interview Confidence Boost
-          </h4>
-          <p>Voice and body language guidance with last-minute confidence tips for preparation.</p>
-        </div>
-        
-        <div className="InterviewProcessContentBox">
-          <h4>
-            <Video size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-            Live-Interview Support
-          </h4>
-          <p>Subtle real-time nudges during video interviews and on-screen transcription for accurate tracking.</p>
-        </div>
-      </div>
-    </div>
-    
-    <div className="InterviewProcess">
-      <img src={interviewProcess} alt="Interview journey visualization" />
-    </div>
-  </div>
-</section>
+      <Companies />
+      
+      <div style={{ position: "relative" }}>
+        <section className="InterviewProcessContainerSection">
+          <div className="InterviewProcessContainer">
+            <div className="InterviewProcessText">
+              <div className="InterviewProcessHeader">
+                <h3>How AI Supports the Interview Journey</h3>
+              </div>
+              
+              <div className="InterviewProcessContent">
+                <div className="InterviewProcessContentBox">
+                  <h4>
+                    <Search size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
+                    Discovering Opportunities
+                  </h4>
+                  <div className="content-image-container">
+                    <img 
+                      src={image1} 
+                      alt="Discovering Opportunities" 
+                      className="content-image"
+                    />
+                  </div>
+                </div>
+                
+                <div className="InterviewProcessContentBox">
+                  <h4>
+                    <FileText size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
+                    Resume & Profile Building
+                  </h4>
+                  <div className="content-image-container">
+                    <img 
+                      src={image2} 
+                      alt="Resume & Profile Building" 
+                      className="content-image"
+                    />
+                  </div>
+                </div>
+                
+                <div className="InterviewProcessContentBox">
+                  <h4>
+                    <MessageCircle size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
+                    Pre-Interview Confidence Boost
+                  </h4>
+                  <div className="content-image-container">
+                    <img 
+                      src={image3} 
+                      alt="Pre-Interview Confidence Boost" 
+                      className="content-image"
+                    />
+                  </div>
+                </div>
+                
+                <div className="InterviewProcessContentBox">
+                  <h4>
+                    <Video size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
+                    Live-Interview Support
+                  </h4>
+                  <div className="content-image-container">
+                    <img 
+                      src={image4} 
+                      alt="Live-Interview Support" 
+                      className="content-image"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="InterviewProcess">
+              <img src={interviewProcess} alt="Interview journey visualization" />
+            </div>
+          </div>
+        </section>
         
         {/* Add spacing between sections */}
         <div style={{ margin: "20px 0" }}></div>
+        
+        {/* Success Stories Section */}
+        <SuccessStories />
         
         <section
           className="InterviewProcessContainerSection"
@@ -221,49 +184,20 @@ export default function Home() {
                 loop
                 controls
               />
-              
             </div>
           </div>
         </section>
       </div>
-      {/* testimonial */}
-      <section className="testimonialsContainers">
-        <div className="testimonials-container">
-          <div className="testimonials-scroll-wrapper">
-            <h1>🚀 How Airuter's AI Transformed Hiring for Leading Companies!</h1>
-            <div className="testimonials-scroll-container">
-              {[...testimonials].map((testimonial, index) => (
-                <div key={index} className="testimonial-cards">
-                  <div className="testimonial-header">
-                    <div className="testimonial-header-tag">
-                      <h3>{testimonial.businessType}</h3>
-                    </div>
-                    <div className="testimonial-content">
-                      <h3 className="testimonial-text">
-                        {testimonial.description}
-                      </h3>
-                    </div>
-                    <div className="testimonial-company-info">
-                      <p className="testimonial-name">{testimonial.name} ({testimonial.location})</p>
-                    </div>
-                  </div>
-                  <div className="company-logo-container">
-                    <img
-                      className="company-logo"
-                      src={testimonial.logo || "https://d12araoe7z5xxk.cloudfront.net/landing-page/images/questionBank/company1.png"}
-                      alt={`${testimonial.name} logo`}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      
+      {/* Testimonials section */}
+      <TestimonialsScroll />
+      
       <Faq />
+      
       <section style={{ padding: "10px" }}>
         <InovationTestimonial />
       </section>
+      
       <section>
         <SuperpowerTestimonial />
       </section>

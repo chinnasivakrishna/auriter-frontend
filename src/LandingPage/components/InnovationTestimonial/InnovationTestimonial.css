@@ -23,11 +23,11 @@
 }
 
 .titles {
-  font-size: 40px;
-  font-weight: 700;
-  font-family: serif;
+  font-size: 2.25rem;
+  font-weight: 500;
   line-height: 1.2;
   margin: 0;
+  color: white;
 }
 
 .carousels-wrappers {
@@ -39,7 +39,7 @@
 
 .carousels-tracks {
   display: flex;
-  animation: scroll 30s linear infinite;
+  animation: scroll 600s linear infinite;
 }
 
 .carousels-tracks.paused {
@@ -70,7 +70,7 @@
 }
 
 .testimonials-quotes {
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.6;
   margin: 0 0 24px 0;
   flex-grow: 1;
@@ -94,15 +94,15 @@
 }
 
 .authors-names {
-  font-weight: 700;
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 1.125rem;
   margin: 0 0 4px 0;
 }
 
 .authors-position, .authors-location {
   opacity: 0.9;
   margin: 0;
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .authors-location {
@@ -125,7 +125,7 @@
   }
 
   .titles {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 
   .testimonials-cards {
@@ -135,12 +135,12 @@
   }
 
   .testimonials-quotes {
-    font-size: 16px;
+    font-size: 1rem;
     -webkit-line-clamp: 7;
   }
   
   .feature-tag {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 

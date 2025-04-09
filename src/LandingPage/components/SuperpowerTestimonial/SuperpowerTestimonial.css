@@ -21,7 +21,7 @@
 }
 
 .SuperpowerTestimonial-subtitles {
-  font-size: 18px;
+  font-size: 1.125rem;
   opacity: 0.8;
   margin-bottom: 16px;
 }
@@ -30,6 +30,8 @@
   font-size: 2.25rem;
   line-height: 1.2;
   margin: 0;
+  font-weight: 500;
+  color: #2D3748;
 }
 
 .SuperpowerTestimonial-wrappers {
@@ -40,7 +42,7 @@
 
 .SuperpowerTestimonial-tracks {
   display: flex;
-  animation: scroll 10s linear infinite;
+  animation: scroll 600s linear infinite;
 }
 
 .SuperpowerTestimonial-tracks.paused {
@@ -66,11 +68,11 @@
 }
 
 .SuperpowerTestimonial-quotes {
-  font-size: 28px;
-  font-family: serif;
+  font-size: 1.125rem;
   margin: 10px 0 10px 0;
   line-height: 1.4;
-  color: #2D3748; /* Dark gray */
+  color: #2D3748;
+  font-weight: 500;
 }
 .SuperpowerTestimonial-quotes:hover{
   cursor: pointer;
@@ -93,12 +95,11 @@
 }
 
 .SuperpowerTestimonial-authors-names {
-  font-weight: 600;
+  font-weight: 500;
   margin: 0 0 4px 0;
   opacity: 0.4;
+  font-size: 1rem;
 }
-
-
 
 @keyframes scroll {
   0% {
@@ -116,7 +117,7 @@
   }
 
   .SuperpowerTestimonial-titles {
-    font-size: 22px;
+    font-size: 1.75rem;
   }
 
   .SuperpowerTestimonial-cards {
@@ -125,7 +126,7 @@
   }
 
   .SuperpowerTestimonial-quotes {
-    font-size: 20px;
+    font-size: 1rem;
   }
 }
 
