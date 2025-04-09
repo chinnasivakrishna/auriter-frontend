@@ -66,8 +66,11 @@ export default function SuperpowerTestimonial() {
     <div className="SuperpowerTestimonial-containers">
       <div className="SuperpowerTestimonial-contents">
         <div className="SuperpowerTestimonial-headers">
+          <p className="SuperpowerTestimonial-subtitles">INDUSTRY SOLUTIONS</p>
           <h2 className="SuperpowerTestimonial-titles">
-          Revolutionizing Hiring: AI Video Interviews Transform Talent Screening Across Industries
+            Revolutionizing Hiring<br />
+            AI Video Interviews Transform<br />
+            Talent Screening Across Industries
           </h2>
         </div>
 

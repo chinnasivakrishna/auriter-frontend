@@ -14,7 +14,6 @@ import image2 from "../images/image2.jpeg";
 import image3 from "../images/image3.jpeg";
 import image4 from "../images/image4.jpeg";
 
-
 // Import company logos
 import dailaiLogo from "../images/DailAi_Logo.png";
 import kitabaiLogo from "../images/KitabAI.png";
@@ -151,77 +150,67 @@ export default function Home() {
       </section>
       <Companies />
       <div style={{ position: "relative" }}>
-      <section className="InterviewProcessContainerSection">
-  <div className="InterviewProcessContainer">
-    <div className="InterviewProcessText">
-      <div className="InterviewProcessHeader">
-        <h3>How AI Supports the Interview Journey</h3>
-      </div>
-      
-      <div className="InterviewProcessContent">
-        <div className="InterviewProcessContentBox">
-          <h4>
-            <Search size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-            Discovering Opportunities
-          </h4>
-          <div className="content-image-container">
-            <img 
-              src={image1} 
-              alt="Discovering Opportunities" 
-              className="content-image"
-            />
+        <section className="InterviewProcessContainerSection">
+          <div className="InterviewProcessContainer">
+            <div className="InterviewProcessText">
+              <div className="InterviewProcessHeader">
+                <p>AI-POWERED SOLUTION</p>
+                <h3>How AI Supports the Interview Journey</h3>
+                <div className="subtitle">Complete support throughout your job search process</div>
+              </div>
+              
+              <div className="InterviewProcessContent">
+                <div className="InterviewProcessContentBox">
+                  <h4>
+                    <Search size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
+                    Discovering Opportunities
+                  </h4>
+                  <p>Job matching based on your resume and preferences, with alerts for roles that fit your skillset.</p>
+                  <div className="content-image-container">
+                    <img src={image1} alt="Discovering Opportunities" className="content-image" />
+                  </div>
+                </div>
+                
+                <div className="InterviewProcessContentBox">
+                  <h4>
+                    <FileText size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
+                    Resume & Profile Building
+                  </h4>
+                  <p>AI suggestions to refine your CV and showcase your qualifications and achievements.</p>
+                  <div className="content-image-container">
+                    <img src={image2} alt="Resume & Profile Building" className="content-image" />
+                  </div>
+                </div>
+                
+                <div className="InterviewProcessContentBox">
+                  <h4>
+                    <MessageCircle size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
+                    Pre-Interview Confidence Boost
+                  </h4>
+                  <p>Voice and body language guidance with last-minute confidence tips for preparation.</p>
+                  <div className="content-image-container">
+                    <img src={image3} alt="Pre-Interview Confidence Boost" className="content-image" />
+                  </div>
+                </div>
+                
+                <div className="InterviewProcessContentBox">
+                  <h4>
+                    <Video size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
+                    Live-Interview Support
+                  </h4>
+                  <p>Subtle real-time nudges during video interviews and on-screen transcription for accurate tracking.</p>
+                  <div className="content-image-container">
+                    <img src={image4} alt="Live-Interview Support" className="content-image" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="InterviewProcess">
+              <img src={interviewProcess} alt="Interview journey visualization" />
+            </div>
           </div>
-        </div>
-        
-        <div className="InterviewProcessContentBox">
-          <h4>
-            <FileText size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-            Resume & Profile Building
-          </h4>
-          <div className="content-image-container">
-            <img 
-              src={image2} 
-              alt="Resume & Profile Building" 
-              className="content-image"
-            />
-          </div>
-        </div>
-        
-        <div className="InterviewProcessContentBox">
-          <h4>
-            <MessageCircle size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-            Pre-Interview Confidence Boost
-          </h4>
-          <div className="content-image-container">
-            <img 
-              src={image3} 
-              alt="Pre-Interview Confidence Boost" 
-              className="content-image"
-            />
-          </div>
-        </div>
-        
-        <div className="InterviewProcessContentBox">
-          <h4>
-            <Video size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-            Live-Interview Support
-          </h4>
-          <div className="content-image-container">
-            <img 
-              src={image4} 
-              alt="Live-Interview Support" 
-              className="content-image"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div className="InterviewProcess">
-      <img src={interviewProcess} alt="Interview journey visualization" />
-    </div>
-  </div>
-</section>
+        </section>
         
         {/* Add spacing between sections */}
         <div style={{ margin: "20px 0" }}></div>
@@ -233,13 +222,13 @@ export default function Home() {
           <div className="InterviewProcessContainer2">
             <div className="InterviewProcessLeft2">
               <div className="InterviewProcessHeaderContainer2">
-                <h2><strong>AI-powered partner for every step of the hiring journey</strong></h2>
+                <h2>AI-powered partner for every step of the hiring journey</h2>
               </div>
               <div>
                 <ul className="InterviewProcessList2">
                   <li>
                     <div>
-                      <h3><strong>Ace Every Step of Your Interview Journey with AI</strong></h3>
+                      <h3>Ace Every Step of Your Interview Journey with AI</h3>
                       <p>
                         From building standout resumes and preparing smarter to acing interviews with real-time guidance and post-interview insights.
                       </p>
@@ -247,7 +236,7 @@ export default function Home() {
                   </li>
                   <li>
                     <div>
-                      <h3><strong>Always Interview-Ready, Whether You're a Fresher or a Pro</strong></h3>
+                      <h3>Always Interview-Ready, Whether You're a Fresher or a Pro</h3>
                       <p>
                         Airuter is your AI-powered companion designed to help you succeed in today's competitive job market.
                       </p>
@@ -265,16 +254,16 @@ export default function Home() {
                 loop
                 controls
               />
-              
             </div>
           </div>
         </section>
       </div>
+      
       {/* testimonial */}
       <section className="testimonialsContainers">
         <div className="testimonials-container">
+          <h1>🚀 How Airuter's AI Transformed Hiring for Leading Companies!</h1>
           <div className="testimonials-scroll-wrapper">
-            <h1>🚀 How Airuter's AI Transformed Hiring for Leading Companies!</h1>
             <div className="testimonials-scroll-container" ref={containerRef}>
               {repeatedTestimonials.map((testimonial, index) => (
                 <div key={index} className="testimonial-cards">
@@ -304,6 +293,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
       <Faq />
       <section style={{ padding: "10px" }}>
         <InovationTestimonial />
