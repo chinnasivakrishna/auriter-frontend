@@ -1,4 +1,7 @@
 .heros-container {
+  /* padding: 4rem 2rem; */
+  /* background: linear-gradient(135deg, #ff7676 0%, #ff99cc 100%); */
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,32 +21,29 @@
 
 .logos-scroll {
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
 }
 
 .logos-container {
   display: flex;
-  /* Increase animation duration from 20s to 300s for much slower scrolling */
-  animation: scroll 300s linear infinite;
+  animation: scroll 10s linear infinite;
   gap: 4rem;
   padding: 2rem 0;
-  /* Make sure there's no extra space causing delays */
-  width: fit-content;
 }
 
-/* Company item container */
+/* New company item container */
 .company-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 0 0 auto;
-  width: auto;
 }
 
 .logo {
   height: 40px;
   object-fit: contain;
+  /* filter: brightness(0) invert(0.2); */
   transition: filter 0.3s ease;
 }
 
@@ -51,7 +51,7 @@
   filter: brightness(0) invert(0.4);
 }
 
-/* Company name styling */
+/* New company name styling */
 .company-name {
   margin-top: 8px;
   font-size: 14px;
@@ -66,8 +66,7 @@
     transform: translateX(0);
   }
   100% {
-    /* Using calc to ensure precise movement */
-    transform: translateX(calc(-50%));
+    transform: translateX(-100%);
   }
 }
 
