@@ -25,6 +25,10 @@ export default function CompanyShowcase() {
   ];
 
   const containerRef = useRef(null);
+  const REPETITIONS = 100; // Number of times to repeat the companies array
+
+  // Create a large array of repeated companies
+  const repeatedCompanies = Array(REPETITIONS).fill().flatMap(() => companies);
 
   // Optional: Check if we need to adjust for any gaps
   useEffect(() => {
@@ -47,21 +51,9 @@ export default function CompanyShowcase() {
 
       <div className="logos-scroll">
         <div className="logos-container" ref={containerRef}>
-          {/* First set of companies */}
-          {companies.map((company, index) => (
+          {/* Render the repeated companies array */}
+          {repeatedCompanies.map((company, index) => (
             <div key={index} className="company-item">
-              <img
-                src={company.logo}
-                alt={company.alt}
-                className="logo"
-              />
-              <p className="company-name">{company.name}</p>
-            </div>
-          ))}
-          
-          {/* Duplicate the entire set for seamless looping */}
-          {companies.map((company, index) => (
-            <div key={`dup-${index}`} className="company-item">
               <img
                 src={company.logo}
                 alt={company.alt}
