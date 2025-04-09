@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import "./Companies.css";
 import kashiAI from "../images/KASHI AI LOGO.jpg";
-import aitota from "../images/aitota_logo.png";
+import aitota from "../images/aitota__logo.png";
 import britishLingua from "../images/British Lingua.png";
 import dailAi from "../images/DailAi_Logo.jpg";
 import kitabAI from "../images/KitabAI_Logo.png";
@@ -12,6 +12,18 @@ import GitPot from "../images/GitPot-LOGO.jpg";
 import wizzmedia from "../images/WIZZMEDIA_Logo.png";
 
 export default function CompanyShowcase() {
+  // Define company data with logos and names
+  const companies = [
+    { logo: kashiAI, name: "Kashi AI", alt: "Kashi AI Logo" },
+    { logo: aitota, name: "AI Tota", alt: "AI Tota Logo" },
+    { logo: britishLingua, name: "British Lingua", alt: "British Lingua Logo" },
+    { logo: dailAi, name: "Dail AI", alt: "Dail AI Logo" },
+    { logo: kitabAI, name: "Kitab AI", alt: "Kitab AI Logo" },
+    { logo: mobishaala, name: "Mobishaala", alt: "Mobishaala Logo" },
+    { logo: GitPot, name: "GitPot", alt: "GitPot Logo" },
+    { logo: wizzmedia, name: "Wizzmedia", alt: "Wizzmedia Logo" },
+  ];
+
   return (
     <div className="heros-container">
       <h1 className="heros-heading">
@@ -20,67 +32,28 @@ export default function CompanyShowcase() {
 
       <div className="logos-scroll">
         <div className="logos-container">
-          <img
-            src={kashiAI}
-            alt="Kashi AI Logo"
-            className="logo"
-          />
-          <img
-            src={aitota}
-            alt="AI Tota Logo"
-            className="logo"
-          />
-          <img
-            src={britishLingua}
-            alt="British Lingua Logo"
-            className="logo"
-          />
-          <img
-            src={dailAi}
-            alt="Dail AI Logo"
-            className="logo"
-          />
-          <img
-            src={kitabAI}
-            alt="Kitab AI Logo"
-            className="logo"
-          />
-          <img
-            src={mobishaala}
-            alt="Mobishaala Logo" 
-            className="logo"
-          />
-          <img
-            src={GitPot}
-            alt="GitPot Logo"
-            className="logo"
-          />
-          <img
-            src={wizzmedia}
-            alt="Wizzmedia Logo"
-            className="logo"
-          />
+          {companies.map((company, index) => (
+            <div key={index} className="company-item">
+              <img
+                src={company.logo}
+                alt={company.alt}
+                className="logo"
+              />
+              <p className="company-name">{company.name}</p>
+            </div>
+          ))}
+          
           {/* Duplicate logos for continuous scroll effect */}
-          <img
-            src={kashiAI}
-            alt="Kashi AI Logo"
-            className="logo"
-          />
-          <img
-            src={aitota}
-            alt="AI Tota Logo"
-            className="logo"
-          />
-          <img
-            src={britishLingua}
-            alt="British Lingua Logo"
-            className="logo"
-          />
-          <img
-            src={dailAi}
-            alt="Dail AI Logo"
-            className="logo"
-          />
+          {companies.slice(0, 4).map((company, index) => (
+            <div key={`dup-${index}`} className="company-item">
+              <img
+                src={company.logo}
+                alt={company.alt}
+                className="logo"
+              />
+              <p className="company-name">{company.name}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

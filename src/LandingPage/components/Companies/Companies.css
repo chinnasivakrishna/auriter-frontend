@@ -32,8 +32,15 @@
   padding: 2rem 0;
 }
 
-.logo {
+/* New company item container */
+.company-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 0 0 auto;
+}
+
+.logo {
   height: 40px;
   object-fit: contain;
   /* filter: brightness(0) invert(0.2); */
@@ -42,6 +49,16 @@
 
 .logo:hover {
   filter: brightness(0) invert(0.4);
+}
+
+/* New company name styling */
+.company-name {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  color: #1a1a1a;
 }
 
 @keyframes scroll {
@@ -63,7 +80,11 @@
     height: 30px;
   }
 
-  .logo-container {
+  .logos-container {
     gap: 2rem;
+  }
+  
+  .company-name {
+    font-size: 12px;
   }
 }
