@@ -32,6 +32,7 @@ export default function CompanyShowcase() {
 
       <div className="logos-scroll">
         <div className="logos-container">
+          {/* First set of companies */}
           {companies.map((company, index) => (
             <div key={index} className="company-item">
               <img
@@ -43,8 +44,8 @@ export default function CompanyShowcase() {
             </div>
           ))}
           
-          {/* Duplicate logos for continuous scroll effect */}
-          {companies.slice(0, 4).map((company, index) => (
+          {/* Duplicate the entire set for seamless looping */}
+          {companies.map((company, index) => (
             <div key={`dup-${index}`} className="company-item">
               <img
                 src={company.logo}

@@ -1,7 +1,4 @@
 .heros-container {
-  /* padding: 4rem 2rem; */
-  /* background: linear-gradient(135deg, #ff7676 0%, #ff99cc 100%); */
-  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,18 +18,18 @@
 
 .logos-scroll {
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
 }
 
 .logos-container {
   display: flex;
-  animation: scroll 10s linear infinite;
+  animation: scroll 30s linear infinite;
   gap: 4rem;
   padding: 2rem 0;
 }
 
-/* New company item container */
+/* Company item container */
 .company-item {
   display: flex;
   flex-direction: column;
@@ -43,7 +40,6 @@
 .logo {
   height: 40px;
   object-fit: contain;
-  /* filter: brightness(0) invert(0.2); */
   transition: filter 0.3s ease;
 }
 
@@ -51,7 +47,7 @@
   filter: brightness(0) invert(0.4);
 }
 
-/* New company name styling */
+/* Company name styling */
 .company-name {
   margin-top: 8px;
   font-size: 14px;
@@ -66,7 +62,8 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    /* This should be set to exactly cover the width of the first set of companies */
+    transform: translateX(-50%);
   }
 }
 

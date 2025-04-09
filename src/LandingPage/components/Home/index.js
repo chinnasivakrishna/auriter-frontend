@@ -138,10 +138,10 @@ export default function Home() {
           <div className="InterviewProcessContainer">
             <div className="InterviewProcessHeader">
               <p>From Day One to Final Rounds</p>
-              <h4>
+              <h3>
               Your Interview Journey, Supercharged by AI 🚀
               From resume creation to final follow-up, Airuter supports every step with smart AI tools—helping you stay confident, prepared, and always interview-ready.
-              </h4>
+              </h3>
             </div>
             <div className="InterviewProcess">
               <img src={interviewProcess} alt="Interview interface demo" />
