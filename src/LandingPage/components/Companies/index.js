@@ -24,6 +24,21 @@ export default function CompanyShowcase() {
     { logo: wizzmedia, name: "Wizzmedia", alt: "Wizzmedia Logo" },
   ];
 
+  const containerRef = useRef(null);
+
+  // Optional: Check if we need to adjust for any gaps
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      // This ensures the container width is properly calculated
+      const firstGroupWidth = container.children[0].offsetWidth * companies.length + 
+                              (4 * (companies.length - 1)); // account for gap
+      
+      // Set a custom property that can be used in the CSS
+      document.documentElement.style.setProperty('--scroll-width', `${firstGroupWidth}px`);
+    }
+  }, []);
+
   return (
     <div className="heros-container">
       <h1 className="heros-heading">
@@ -31,34 +46,30 @@ export default function CompanyShowcase() {
       </h1>
 
       <div className="logos-scroll">
-        <div className="logos-track">
-          {/* Primary container */}
-          <div className="logos-container">
-            {companies.map((company, index) => (
-              <div key={index} className="company-item">
-                <img
-                  src={company.logo}
-                  alt={company.alt}
-                  className="logo"
-                />
-                <p className="company-name">{company.name}</p>
-              </div>
-            ))}
-          </div>
+        <div className="logos-container" ref={containerRef}>
+          {/* First set of companies */}
+          {companies.map((company, index) => (
+            <div key={index} className="company-item">
+              <img
+                src={company.logo}
+                alt={company.alt}
+                className="logo"
+              />
+              <p className="company-name">{company.name}</p>
+            </div>
+          ))}
           
-          {/* Second container - exact duplicate */}
-          <div className="logos-container">
-            {companies.map((company, index) => (
-              <div key={`dup-${index}`} className="company-item">
-                <img
-                  src={company.logo}
-                  alt={company.alt}
-                  className="logo"
-                />
-                <p className="company-name">{company.name}</p>
-              </div>
-            ))}
-          </div>
+          {/* Duplicate the entire set for seamless looping */}
+          {companies.map((company, index) => (
+            <div key={`dup-${index}`} className="company-item">
+              <img
+                src={company.logo}
+                alt={company.alt}
+                className="logo"
+              />
+              <p className="company-name">{company.name}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
