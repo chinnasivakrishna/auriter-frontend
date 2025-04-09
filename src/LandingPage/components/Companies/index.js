@@ -9,7 +9,7 @@ import dailAi from "../images/DailAi_Logo.png";
 import kitabAI from "../images/KitabAI.png";
 import mobishaala from "../images/Mobishaala White.png";
 import GitPot from "../images/GotPot-Logo.jpg";
-import wizzmedia from "../images/WIZZMEDIA_Logo.png";
+import wizzmedia from "../images/WIZZMEDIA_LOGO.png";
 
 export default function CompanyShowcase() {
   // Define company data with logos and names
