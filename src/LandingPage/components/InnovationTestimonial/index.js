@@ -72,8 +72,8 @@ export default function InnovationTestimonial() {
     }
   ];
 
-  // Create a repeated array with 100 repetitions to match SuperpowerTestimonial
-  const REPETITIONS = 100; // Changed from 10 to 100 to match SuperpowerTestimonial
+  // Create a repeated array with 20 repetitions - a more moderate number
+  const REPETITIONS = 20; // Changed from 100 to 20 for better balance
   const repeatedTestimonials = Array(REPETITIONS).fill().flatMap(() => testimonials);
 
   return (

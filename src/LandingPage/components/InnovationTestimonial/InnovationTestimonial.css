@@ -39,7 +39,7 @@
 
 .carousels-tracks {
   display: flex;
-  animation: scroll 1200s linear infinite; /* Changed from 20s to 1200s to match SuperpowerTestimonial */
+  animation: scroll 120s linear infinite; /* Changed to 120s - a moderate speed */
 }
 
 .carousels-tracks.paused {
