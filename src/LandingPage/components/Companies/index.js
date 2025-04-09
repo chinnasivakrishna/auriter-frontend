@@ -24,6 +24,25 @@ export default function CompanyShowcase() {
     { logo: wizzmedia, name: "Wizzmedia", alt: "Wizzmedia Logo" },
   ];
 
+  const containerRef = useRef(null);
+  const REPETITIONS = 100; // Number of times to repeat the companies array
+
+  // Create a large array of repeated companies
+  const repeatedCompanies = Array(REPETITIONS).fill().flatMap(() => companies);
+
+  // Optional: Check if we need to adjust for any gaps
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      // This ensures the container width is properly calculated
+      const firstGroupWidth = container.children[0].offsetWidth * companies.length + 
+                              (4 * (companies.length - 1)); // account for gap
+      
+      // Set a custom property that can be used in the CSS
+      document.documentElement.style.setProperty('--scroll-width', `${firstGroupWidth}px`);
+    }
+  }, []);
+
   return (
     <div className="heros-container">
       <h1 className="heros-heading">
@@ -31,21 +50,10 @@ export default function CompanyShowcase() {
       </h1>
 
       <div className="logos-scroll">
-        <div className="logos-container">
-          {companies.map((company, index) => (
+        <div className="logos-container" ref={containerRef}>
+          {/* Render the repeated companies array */}
+          {repeatedCompanies.map((company, index) => (
             <div key={index} className="company-item">
-              <img
-                src={company.logo}
-                alt={company.alt}
-                className="logo"
-              />
-              <p className="company-name">{company.name}</p>
-            </div>
-          ))}
-          
-          {/* Duplicate logos for continuous scroll effect */}
-          {companies.slice(0, 4).map((company, index) => (
-            <div key={`dup-${index}`} className="company-item">
               <img
                 src={company.logo}
                 alt={company.alt}

@@ -136,12 +136,14 @@ export default function Home() {
       <div style={{ position: "relative" }}>
         <section className="InterviewProcessContainerSection">
           <div className="InterviewProcessContainer">
-            <div className="InterviewProcessHeader">
-              <p>From Day One to Final Rounds</p>
-              <h3>
-              Your Interview Journey, Supercharged by AI 🚀
-              From resume creation to final follow-up, Airuter supports every step with smart AI tools—helping you stay confident, prepared, and always interview-ready.
-              </h3>
+            <div className="InterviewProcessText">
+              <div className="InterviewProcessHeader">
+                <p>From Day One to Final Rounds</p>
+                <h3>
+                Your Interview Journey, Supercharged by AI 🚀
+                From resume creation to final follow-up, Airuter supports every step with smart AI tools—helping you stay confident, prepared, and always interview-ready.
+                </h3>
+              </div>
             </div>
             <div className="InterviewProcess">
               <img src={interviewProcess} alt="Interview interface demo" />
@@ -159,7 +161,6 @@ export default function Home() {
           <div className="InterviewProcessContainer2">
             <div className="InterviewProcessLeft2">
               <div className="InterviewProcessHeaderContainer2">
-                
                 <h2>AI-powered partner for every step of the hiring journey</h2>
               </div>
               <div>
@@ -169,7 +170,6 @@ export default function Home() {
                       <h3>Ace Every Step of Your Interview Journey with AI </h3>
                       <p>
                       From building standout resumes and preparing smarter to acing interviews with real-time guidance and post-interview insights.
-                      
                       </p>
                     </div>
                   </li>
@@ -189,27 +189,14 @@ export default function Home() {
               <video 
                 src={demoVideo} 
                 autoPlay 
-                loop 
+                muted
+                playsInline
+                loop
                 controls
               />
             </div>
           </div>
         </section>
-
-        {/* <div
-          style={{
-            height: "100vh",
-            fontSize: "3rem",
-            position: "sticky",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "white",
-            top: 80,
-          }}
-        >
-          3
-        </div> */}
       </div>
       {/* testimonial */}
       <section className="testimonialsContainers">

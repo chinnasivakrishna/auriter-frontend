@@ -46,8 +46,8 @@
 }
 
 .metric-value {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 2rem; /* Increased from 1.5rem to 2rem */
+  font-weight: 700; /* Made slightly bolder for emphasis */
   color: #6B46C1; /* Purple color */
 }
 
@@ -107,25 +107,31 @@
 
 .InterviewProcessContainer {
   display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
+  flex-direction: row; /* Changed from column to row */
+  justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 3rem 2rem;
   background-color: white;
   border-radius: 30px;
   margin-bottom: 60px;
+  gap: 2rem; /* Add gap between text and image */
+}
+
+.InterviewProcessText {
+  flex: 1;
+  max-width: 50%;
 }
 
 .InterviewProcessHeader {
-  max-width: 34.8125rem;
-  text-align: center;
-  margin-bottom: 4rem;
-  /* gap: 4rem; */
+  max-width: 100%;
+  text-align: left; /* Changed from center to left */
+  margin-bottom: 2rem;
 }
 
 .InterviewProcessHeader p {
   font-size: 1.125rem;
   color: rgba(28, 29, 32, 0.3);
+  margin-bottom: 20px;
 }
 
 .InterviewProcessContainer h2 {
@@ -135,16 +141,26 @@
   font-weight: 400;
 }
 
+.InterviewProcessContainer h3 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #2D3748;
+}
+
 .InterviewProcess {
+  flex: 1;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 30px; /* Add bottom margin to create space */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0; /* Remove bottom margin as it's now side by side */
 }
 
 .InterviewProcess img {
   max-width: 100%;
   height: auto;
+  border-radius: 12px; /* Optional: add rounded corners to image */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
   display: block; /* Ensure proper layout */
 }
 
@@ -278,10 +294,6 @@
   overflow: hidden;
 }
 
-.InterviewProcessHeader p {
-  margin-bottom: 20px;
-}
-
 .testimonials-container {
   display: flex;
   flex-direction: column;
@@ -408,6 +420,10 @@
     flex-direction: row;
   }
 
+  .metric-value {
+    font-size: 1.75rem; /* Slightly smaller on mobile but still larger than original */
+  }
+
   .separator {
     display: none;
   }
@@ -424,7 +440,18 @@
   }
 
   .InterviewProcessContainer {
+    flex-direction: column;
+    padding: 2rem 1rem;
     height: 100%;
+  }
+
+  .InterviewProcessText {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .InterviewProcessHeader {
+    text-align: center; /* Center text on mobile */
   }
 
   .InterviewProcessContainer2 {
@@ -443,10 +470,6 @@
     width: 100%;
     height: auto;
     margin-top: 0; /* Remove extra margin */
-  }
-
-  .InterviewProcessHeader {
-    margin-bottom: 20px;
   }
 
   .InterviewProcess {

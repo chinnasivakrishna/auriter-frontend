@@ -16,8 +16,7 @@ const Footer = () => {
         <h2 className="footer_heading">Airuter</h2>
         <p className="about-us">Vision</p>
         <p className="about-us-text">
-          Empower Institutions & Teachers with state of the art digital
-          classroom Technology.
+        Empower individuals by unlocking their potential and connecting them to the right opportunities through AI.
         </p>
         <ul className="social-icons">
           <li>
@@ -43,11 +42,11 @@ const Footer = () => {
         <p>Head Office</p>
         <p>804, 5th Cross, 4th Block</p>
         <p> Koramangala, Bengaluru-560095</p>
-        <p>contact@BookAIo.com</p>
+        <p>contact@airuter.com</p>
         <p>Branch Office </p>
         <p>
-          293 Saidulajab Western Marg,
-          <br /> New Delhi-110030
+        S4, D53, Sector 2,
+          <br /> Noida 201301
         </p>
       </div>
 
