@@ -7,7 +7,7 @@ import ITTechnology from "../images/image-IT.jpeg";
 import Healthcare from "../images/image-Healthcare.jpeg";
 import FinancialServices from "../images/image-finance.jpeg";
 import Education from "../images/image-education.jpeg";
-import LogisticsTransportation from "../images/image-logistics.jpeg";
+import LogisticsTransportation from "../images/image-logistic.jpeg";
 import Manufacturing from "../images/image-manufacturing.jpeg";
 
 export default function SuperpowerTestimonial() {
