@@ -23,11 +23,13 @@
   padding: 2rem 0;
 }
 
-/* Style for the HTML marquee element */
-.logos-scroll marquee {
-  width: 100%;
+/* Contains all logo containers */
+.logos-track {
+  display: flex;
+  will-change: transform;
 }
 
+/* Container for company items */
 .logos-container {
   display: flex;
   gap: 4rem;
@@ -40,7 +42,6 @@
   flex-direction: column;
   align-items: center;
   flex: 0 0 auto;
-  margin: 0 2rem;
 }
 
 .logo {
@@ -72,9 +73,9 @@
   .logo {
     height: 30px;
   }
-  
-  .company-item {
-    margin: 0 1rem;
+
+  .logos-container {
+    gap: 2rem;
   }
   
   .company-name {
