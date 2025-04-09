@@ -24,11 +24,10 @@
 
 .logos-container {
   display: flex;
-  animation: scroll 20s linear infinite;
   gap: 4rem;
   padding: 2rem 0;
-  /* Make sure there's no extra space causing delays */
-  width: fit-content;
+  /* Animation is now handled by JavaScript */
+  will-change: transform;
 }
 
 /* Company item container */
@@ -37,7 +36,6 @@
   flex-direction: column;
   align-items: center;
   flex: 0 0 auto;
-  width: auto;
 }
 
 .logo {
@@ -58,16 +56,6 @@
   text-align: center;
   white-space: nowrap;
   color: #1a1a1a;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    /* Using calc to ensure precise movement */
-    transform: translateX(calc(-50%));
-  }
 }
 
 @media (max-width: 768px) {
