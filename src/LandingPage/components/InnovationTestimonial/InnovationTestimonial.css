@@ -39,7 +39,7 @@
 
 .carousels-tracks {
   display: flex;
-  animation: scroll 60s linear infinite; /* Reduced from 1200s to 120s for faster scrolling */
+  animation: scroll 30s linear infinite; /* Reduced from 1200s to 120s for faster scrolling */
 }
 
 .carousels-tracks.paused {
@@ -70,8 +70,6 @@
 }
 
 .testimonials-quotes {
-  font-size: 1rem; /* Reduced from 1.125rem */
-  line-height: 1.5; /* Tightened line height from 1.6 */
   margin: 0 0 16px 0; /* Reduced from 24px */
   flex-grow: 1;
   overflow: hidden;
