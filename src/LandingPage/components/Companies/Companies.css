@@ -25,7 +25,7 @@
 .logos-container {
   display: flex;
   /* Increase animation duration from 20s to 300s for much slower scrolling */
-  animation: scroll 300s linear infinite;
+  animation: scroll 400s linear infinite;
   gap: 4rem;
   padding: 2rem 0;
   /* Make sure there's no extra space causing delays */
