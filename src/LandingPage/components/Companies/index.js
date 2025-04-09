@@ -8,7 +8,7 @@ import britishLingua from "../images/British Lingua.png";
 import dailAi from "../images/DailAi_Logo.png";
 import kitabAI from "../images/KitabAI.png";
 import mobishaala from "../images/Mobishaala White.png";
-import GitPot from "../images/GotPot-LOGO.jpg";
+import GitPot from "../images/GotPot-Logo.jpg";
 import wizzmedia from "../images/WIZZMEDIA_Logo.png";
 
 export default function CompanyShowcase() {
