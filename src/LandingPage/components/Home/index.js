@@ -189,7 +189,6 @@ export default function Home() {
               <video 
                 src={demoVideo} 
                 autoPlay 
-                muted
                 playsInline
                 loop
                 controls
