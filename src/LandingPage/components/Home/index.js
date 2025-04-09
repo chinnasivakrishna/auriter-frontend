@@ -92,6 +92,11 @@ export default function Home() {
     }
   };
 
+  const handleGetInTouch = () => {
+    const whatsappUrl = "https://web.whatsapp.com/send/?phone=8147540362&text=Hello%20Airuter%20team%20,%20I%20want%20to%20use%20Airuter%20service,%20%20my%20name%20is";
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <>
       <section className="hero">
@@ -114,13 +119,16 @@ export default function Home() {
             </div>
           </div>
 
-          <button className="cta-button">Get In Touch</button>
+          <div className="button-container">
+            <button className="cta-button" onClick={handleGetInTouch}>Get In Touch</button>
+            <button className="try-free-button">Try for Free</button>
+          </div>
 
           <p className="subtitle">
             Meet your AI hiring assistant – from resume creation to real-time video interview, Airuter empowers you to stand out and get hired.
           </p>
         </div>
-        <div className="demo-content">
+        <div className="hero-image-container">
           <div className="demo-image">
             <img
               src={demoImage}

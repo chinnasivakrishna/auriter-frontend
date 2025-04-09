@@ -61,6 +61,13 @@
   background: #E2E8F0; /* Light gray */
 }
 
+/* New button container styles */
+.button-container {
+  display: flex;
+  gap: 1rem;
+  margin: 1.7rem 0;
+}
+
 .cta-button {
   background: #6B46C1; /* Purple color */
   color: white;
@@ -71,7 +78,24 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
-  margin: 1.7rem 0;
+  margin: 0; /* Remove margin since it's handled by container */
+}
+
+.try-free-button {
+  background: transparent;
+  color: #6B46C1;
+  border: 1px solid #6B46C1;
+  padding: 0.75rem 1.5rem; /* Smaller padding */
+  border-radius: 8px;
+  font-size: 0.95rem; /* Smaller font */
+  font-weight: 500; /* Slightly less bold */
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.try-free-button:hover {
+  background: rgba(107, 70, 193, 0.1);
+  box-shadow: 0 2px 4px rgba(107, 70, 193, 0.1);
 }
 
 .cta-button:hover {
@@ -493,6 +517,17 @@
   .demo-image {
     width: 100%;
     height: auto;
+  }
+
+  /* Updated mobile styles for buttons */
+  .button-container {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+  
+  .cta-button, .try-free-button {
+    width: 100%;
   }
 
   .InterviewProcessContainerSection {
