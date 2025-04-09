@@ -211,7 +211,7 @@ export default function Home() {
               </div>
             </div>
             <div className="InterviewProcessRight2">
-              <video src={demoVideo} autoPlay loop muted />
+              <video src={demoVideo} autoPlay loop />
               
             </div>
           </div>

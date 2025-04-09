@@ -2,92 +2,83 @@
 
 import { useEffect, useRef } from "react";
 import "./Companies.css";
+import kashiAI from "../images/KASHI AI LOGO.jpg";
+import aitota from "../images/aitota_logo.png";
+import britishLingua from "../images/British Lingua.png";
+import dailAi from "../images/DailAi_Logo.jpg";
+import kitabAI from "../images/KitabAI_Logo.png";
+import mobishaala from "../images/Mobishaala White.png";
+import GitPot from "../images/GitPot-LOGO.jpg";
+import wizzmedia from "../images/WIZZMEDIA_Logo.png";
 
 export default function CompanyShowcase() {
-  //   const containerRef = useRef < HTMLDivElement > null;
-  //   const contentRef = useRef < HTMLDivElement > null;
-
-  //   useEffect(() => {
-  //     if (containerRef.current && contentRef.current) {
-  //       // Clone the content for seamless infinite scroll
-  //       const clone = contentRef.current.cloneNode(true);
-  //       containerRef.current.appendChild(clone);
-  //     }
-  //   }, []);
-
   return (
     <div className="heros-container">
       <h1 className="heros-heading">
-      Trusted by 15,000+ candidates, Appreciated by 30+ Top Companies.
+        Trusted Partners
       </h1>
 
-      {/* <div className="logo-scroll" ref={containerRef}> */}
       <div className="logos-scroll">
-        {/* <div className="logo-container" ref={contentRef}> */}
         <div className="logos-container">
           <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
+            src={kashiAI}
+            alt="Kashi AI Logo"
             className="logo"
           />
           <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
+            src={aitota}
+            alt="AI Tota Logo"
             className="logo"
           />
           <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
+            src={britishLingua}
+            alt="British Lingua Logo"
             className="logo"
           />
           <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
+            src={dailAi}
+            alt="Dail AI Logo"
             className="logo"
           />
           <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
+            src={kitabAI}
+            alt="Kitab AI Logo"
             className="logo"
           />
           <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
+            src={mobishaala}
+            alt="Mobishaala Logo" 
             className="logo"
           />
           <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
+            src={GitPot}
+            alt="GitPot Logo"
             className="logo"
           />
           <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
+            src={wizzmedia}
+            alt="Wizzmedia Logo"
+            className="logo"
+          />
+          {/* Duplicate logos for continuous scroll effect */}
+          <img
+            src={kashiAI}
+            alt="Kashi AI Logo"
             className="logo"
           />
           <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
+            src={aitota}
+            alt="AI Tota Logo"
             className="logo"
           />
           <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
+            src={britishLingua}
+            alt="British Lingua Logo"
             className="logo"
           />
           <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
-            className="logo"
-          />
-          <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
-            className="logo"
-          />
-          <img
-            src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/companies/airbnb_logo.svg"
-            alt="TikTok Logo"
+            src={dailAi}
+            alt="Dail AI Logo"
             className="logo"
           />
         </div>
