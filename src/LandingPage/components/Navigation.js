@@ -2,7 +2,7 @@
 import { useState } from "react";
 import "./Navigation.css";
 import { Link } from "react-router-dom";
-import logo from "./images/Airuter LOGO_WHITE BACKGROUND.png";
+import logo from "./images/Airuter LOGO_WHITE BACKGROUND (1).png";
 // import { Link, useLocation } from "react-router-dom";
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

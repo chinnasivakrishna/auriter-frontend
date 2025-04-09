@@ -88,39 +88,39 @@ export default function Faq() {
 
   const faqData = [
     {
-      question: "Is interview transcription available?",
+      question: "Can I get a transcript of my interview?",
       answer:
-        "In adherence to data privacy protection standards, Airuter does not retain interview transcriptions. However, users have the option to access an Interview Report immediately following each session. It is important to note that if the 'View Interview Report' option is not selected upon session completion, retrieval of the report will not be possible at a later time.",
+        "To protect user data in line with our privacy policy, Airuter does not store interview transcripts. However, you can access a detailed Interview Report immediately after your session. Please note: if the 'View Interview Report' option is not selected at the end of the session, the report cannot be retrieved later.",
     },
     {
-      question: "What is the cancellation and refund policy?",
+      question: "How does your cancellation and refund policy work?",
       answer:
-        "Our cancellation and refund policy allows for full refunds within 30 days of purchase if you're not satisfied with our service.",
+        "We offer a 30-day money-back guarantee. If you're not satisfied with our service within this period, you can request a full refund—no questions asked.",
     },
     {
-      question: "What is the policy for the free trial?",
+      question: "Is there a free trial available? What does it include?",
       answer:
-        "The free trial gives you full access to all features for 14 days with no credit card required.",
+        "Yes! Our 14-day free trial gives you unrestricted access to all features, with no credit card required to sign up.",
     },
     {
-      question: "Which domains/industries are supported by Airuter?",
+      question: "Which industries does Airuter cater to?",
       answer:
-        "Airuter supports a wide range of industries including technology, finance, healthcare, and more.",
+        "Airuter is designed to support diverse industries, including technology, finance, healthcare, education, retail, and more.",
     },
     {
-      question: "What is the cancellation and refund policy?",
+      question: "Will I be charged after the free trial ends?",
       answer:
-        "Our cancellation and refund policy allows for full refunds within 30 days of purchase if you're not satisfied with our service.",
+        "No, you won’t be charged automatically. Since no credit card is required for the trial, you can explore Airuter risk-free.",
     },
     {
-      question: "What is the policy for the free trial?",
+      question: "Can I download the Interview Report later?",
       answer:
-        "The free trial gives you full access to all features for 14 days with no credit card required.",
+        "Interview Reports must be viewed and saved immediately after the session. Once you leave the session without viewing it, it won’t be available later due to our privacy protocols.",
     },
     {
-      question: "Which domains/industries are supported by Airuter?",
+      question: "Are there any limitations during the free trial period?",
       answer:
-        "Airuter supports a wide range of industries including technology, finance, healthcare, and more.",
+        "None at all! You’ll get full access to every feature so you can evaluate the platform thoroughly before committing.",
     },
   ];
 
@@ -131,10 +131,7 @@ export default function Faq() {
   return (
     <>
       <div style={{ margin: "0px auto" }} className="InterviewProcessHeader">
-        <h2>
-          A suite of AI tools to navigate through this difficult recruiting
-          season
-        </h2>
+        
       </div>
       <div className="faq-container">
         {faqData.map((item, index) => (

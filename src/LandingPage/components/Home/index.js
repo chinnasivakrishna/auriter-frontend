@@ -9,67 +9,77 @@ import demoVideo from "../Airuter.mp4";
 import interviewProcess from "../images/Airuter-Support-Interview Journey.png";
 import { Search, FileText, MessageCircle, Video } from 'lucide-react';
 
+// Import company logos
+import aitotaLogo from "../images/company-logos/aitota-logo.png";
+import dailaiLogo from "../images/company-logos/dailai-logo.png";
+import kitabaiLogo from "../images/company-logos/kitabai-logo.png";
+import linguaaiLogo from "../images/company-logos/linguaai-logo.png";
+import egclassesLogo from "../images/company-logos/egclasses-logo.png";
+import mobishaalaLogo from "../images/company-logos/mobishaala-logo.png";
+import prayogteaLogo from "../images/company-logos/prayogtea-logo.png";
+import goldpotLogo from "../images/company-logos/goldpot-logo.png";
+
 const testimonials = [
   {
-    description: `🎯 Airuter’s AI Resume Builder didn’t just format my resume—it optimized it! The AI analyzed industry trends and tailored suggestions to make my application stand out. Within weeks, I landed my dream job!`,
-    name: "Priya – Digital Marketing (Bangalore, India)",
-    businessType: "AI Resume Builder",
+    description: `🎯 "Finding top AI talent was a challenge—until we used Airuter! Its AI-powered candidate matching ensured we hired **highly skilled professionals** who were the perfect fit for our team."`,
+    name: "Aitota",
+    location: "Bengaluru, India",
+    businessType: "AI Talent Matching",
+    logo: aitotaLogo
   },
   {
-    description: `🎥 I had never faced a video interview before, but Airuter’s AI-powered mock interviews changed everything! The system analyzed my tone, body language, and response structure, giving me real-time insights. Thanks to this, I aced my interview!`,
-    name: "Aditya – Software Developer (Hyderabad, India)",
-    businessType: "AI Video Interview",
+    description: `📊 "Airuter's AI-driven **mock interviews** helped us identify candidates with **strong analytical skills and AI expertise**. The result? Faster, more efficient hiring!"`,
+    name: "DailAI",
+    location: "Noida, India",
+    businessType: "AI Mock Interviews",
+    logo: dailaiLogo
   },
   {
-    description: `🧠 Airuter’s AI-driven mock interviews pinpointed my weak spots with laser accuracy. Whether it was improving my communication or technical responses, the platform’s feedback was incredibly precise. This personalized approach helped me secure my role!`,
-    name: "Neelam – Data Analyst (Pune, India)",
-    businessType: "AI-Powered Mock Interviews",
+    description: `🧠 "With Airuter's **AI Resume Optimization and skill assessment tools**, we found **the best AI researchers and developers**, making our hiring process seamless!"`,
+    name: "KitabAI",
+    location: "Noida, India",
+    businessType: "AI Resume Optimization",
+    logo: kitabaiLogo
   },
   {
-    description: `⚡ Searching for jobs used to be frustrating, but Airuter’s AI Profile Matching changed the game! It scanned my skills and career goals, instantly connecting me with relevant job opportunities. The result? A perfect job match in no time!`,
-    name: "Vaibhav – Full-Stack Developer (Mumbai, India)",
-    businessType: "AI Profile Matching",
+    description: `🎥 "Airuter's AI-driven **video interview analysis** helped us hire **the right communication experts**, ensuring candidates had the technical and linguistic skills we needed!"`,
+    name: "LinguaAI",
+    location: "Patna, India",
+    businessType: "AI Video Interview Analysis",
+    logo: linguaaiLogo
   },
   {
-    description: `📈 Airuter’s AI-powered learning system identified gaps in my skills and recommended focused upskilling. This targeted approach helped me refine my UX/UI expertise quickly, leading to my dream job!`,
-    name: "Sushma – UX/UI Designer (Delhi, India)",
-    businessType: "AI-Driven Skill Enhancement",
+    description: `📚 "We needed qualified educators **fast**. Airuter's AI **profile matching and interview insights** helped us hire **skilled teachers** effortlessly!"`,
+    name: "EG Classes",
+    location: "Delhi, India",
+    businessType: "AI Profile Matching for Educators",
+    logo: egclassesLogo
   },
   {
-    description: `🔍 After each mock interview, Airuter’s AI-generated feedback was incredibly detailed. It didn’t just highlight mistakes—it provided actionable solutions! This made it easy to improve and boosted my confidence for real interviews.`,
-    name: "Khushboo – Content Strategist (Kolkata, India)",
-    businessType: "Smart AI Feedback",
+    description: `⏱️ "Hiring teachers was time-consuming—until we used Airuter! Its AI instantly **identified top teaching candidates** and provided interview feedback, making recruitment smooth and efficient!"`,
+    name: "Mobishaala",
+    location: "Delhi, India",
+    businessType: "AI Recruitment for Education",
+    logo: mobishaalaLogo
   },
   {
-    description: `📊 Airuter’s AI went beyond generic advice—it gave me data-backed insights on how to refine my resume, improve my interview technique, and showcase leadership skills. The AI-driven guidance made all the difference in landing my product management role!`,
-    name: "Samarjeet – Product Manager (Chennai, India)",
-    businessType: "AI Career Guidance",
+    description: `🌱 "Airuter's AI-driven **skill evaluation** helped us hire **candidates with deep knowledge of sustainable practices**, ensuring they aligned with our company's mission!"`,
+    name: "PrayogTea",
+    location: "Delhi, India",
+    businessType: "AI Skill Evaluation",
+    logo: prayogteaLogo
   },
   {
-    description: `🔗 Traditional job searches felt overwhelming, but Airuter’s AI streamlined the process! It analyzed my strengths, preferences, and market trends to match me with the right companies. This smart matching system helped me land my ideal job quickly!`,
-    name: "Preeti – Marketing Strategist (Jaipur, India)",
-    businessType: "AI-Powered Networking",
-  },
-  {
-    description: `🚀 The AI mock interviews were next-level! They didn’t just assess my answers—they provided in-depth analysis of my problem-solving approach and communication. This real-time feedback gave me a competitive edge and helped me secure my data scientist role!`,
-    name: "Shubham – Data Scientist (Ahmedabad, India)",
-    businessType: "Real-Time AI Feedback",
+    description: `💎 "Finding skilled jewelry designers was tough, but Airuter's **AI-powered recruitment** helped us match with **creative and technically proficient candidates** instantly!"`,
+    name: "GoldPot Jewelry",
+    location: "Bengaluru, India",
+    businessType: "Creative Talent Recruitment",
+    logo: goldpotLogo
   },
 ];
 
-
-
 export default function Home() {
-  // For video unmute functionality
   const videoRef = useRef(null);
-  const [isMuted, setIsMuted] = useState(true);
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(!isMuted);
-    }
-  };
 
   const handleGetInTouch = () => {
     const whatsappUrl = "https://web.whatsapp.com/send/?phone=8147540362&text=Hello%20Airuter%20team%20,%20I%20want%20to%20use%20Airuter%20service,%20%20my%20name%20is";
@@ -130,7 +140,7 @@ export default function Home() {
       <div className="InterviewProcessContent">
         <div className="InterviewProcessContentBox">
           <h4>
-            <i className="fas fa-search" style={{marginRight: '10px', color: '#6B46C1'}}></i>
+            <Search size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
             Discovering Opportunities
           </h4>
           <p>Job matching based on your resume and preferences, with alerts for roles that fit your skillset.</p>
@@ -138,7 +148,7 @@ export default function Home() {
         
         <div className="InterviewProcessContentBox">
           <h4>
-            <i className="fas fa-file-alt" style={{marginRight: '10px', color: '#6B46C1'}}></i>
+            <FileText size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
             Resume & Profile Building
           </h4>
           <p>AI suggestions to refine your CV and showcase your qualifications and achievements.</p>
@@ -146,7 +156,7 @@ export default function Home() {
         
         <div className="InterviewProcessContentBox">
           <h4>
-            <i className="fas fa-comments" style={{marginRight: '10px', color: '#6B46C1'}}></i>
+            <MessageCircle size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
             Pre-Interview Confidence Boost
           </h4>
           <p>Voice and body language guidance with last-minute confidence tips for preparation.</p>
@@ -154,7 +164,7 @@ export default function Home() {
         
         <div className="InterviewProcessContentBox">
           <h4>
-            <i className="fas fa-video" style={{marginRight: '10px', color: '#6B46C1'}}></i>
+            <Video size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
             Live-Interview Support
           </h4>
           <p>Subtle real-time nudges during video interviews and on-screen transcription for accurate tracking.</p>
@@ -217,9 +227,9 @@ export default function Home() {
       </div>
       {/* testimonial */}
       <section className="testimonialsContainers">
-       
         <div className="testimonials-container">
           <div className="testimonials-scroll-wrapper">
+            <h1>🚀 How Airuter's AI Transformed Hiring for Leading Companies!</h1>
             <div className="testimonials-scroll-container">
               {[...testimonials].map((testimonial, index) => (
                 <div key={index} className="testimonial-cards">
@@ -232,12 +242,17 @@ export default function Home() {
                         {testimonial.description}
                       </h3>
                     </div>
-                    <p className="testimonial-name">{testimonial.name}</p>
+                    <div className="testimonial-company-info">
+                      <p className="testimonial-name">{testimonial.name} ({testimonial.location})</p>
+                    </div>
                   </div>
-                  <img
-                    className="company-logo"
-                    src="https://d12araoe7z5xxk.cloudfront.net/landing-page/images/questionBank/company1.png"
-                  />
+                  <div className="company-logo-container">
+                    <img
+                      className="company-logo"
+                      src={testimonial.logo || "https://d12araoe7z5xxk.cloudfront.net/landing-page/images/questionBank/company1.png"}
+                      alt={`${testimonial.name} logo`}
+                    />
+                  </div>
                 </div>
               ))}
             </div>

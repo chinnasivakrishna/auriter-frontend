@@ -19,33 +19,27 @@
 .testimonials-headers {
   text-align: center;
   margin-bottom: 64px;
-  width: 50%;
-}
-
-.subtitles {
-  font-size: 18px;
-  opacity: 0.8;
-  margin-bottom: 16px;
-
+  width: 70%;
 }
 
 .titles {
   font-size: 40px;
+  font-weight: 700;
   font-family: serif;
   line-height: 1.2;
   margin: 0;
-
 }
 
 .carousels-wrappers {
   position: relative;
   overflow: hidden;
   padding: 20px 0;
+  width: 100%;
 }
 
 .carousels-tracks {
   display: flex;
-  animation: scroll 10s linear infinite;
+  animation: scroll 30s linear infinite;
 }
 
 .carousels-tracks.paused {
@@ -53,27 +47,46 @@
 }
 
 .testimonials-cards {
-  flex: 0 0 400px;
+  flex: 0 0 450px;
   margin: 0 20px;
   padding: 32px;
   color: white;
   backdrop-filter: blur(10px);
-  border-radius: 8px;
-  background: rgba(107, 70, 193, 0.1); /* Light purple background */
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(107, 70, 193, 0.2); /* Light purple background */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-tag {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #FFF176; /* Light yellow for visibility */
 }
 
 .testimonials-quotes {
-  font-size: 24px;
-  font-family: serif;
+  font-size: 18px;
+  line-height: 1.6;
   margin: 0 0 24px 0;
-  line-height: 1.4;
+  flex-grow: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
 }
 
 .testimonials-authors {
   display: flex;
   align-items: center;
   gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 16px;
+  margin-top: auto;
 }
 
 .authors-infos {
@@ -81,13 +94,19 @@
 }
 
 .authors-names {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 18px;
   margin: 0 0 4px 0;
 }
 
-.authors-companys {
-  opacity: 0.8;
+.authors-position, .authors-location {
+  opacity: 0.9;
   margin: 0;
+  font-size: 14px;
+}
+
+.authors-location {
+  opacity: 0.7;
 }
 
 @keyframes scroll {
@@ -106,27 +125,28 @@
   }
 
   .titles {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .testimonials-cards {
-    flex: 0 0 300px;
+    flex: 0 0 320px;
     padding: 24px;
+    height: 380px;
   }
 
   .testimonials-quotes {
-    font-size: 20px;
+    font-size: 16px;
+    -webkit-line-clamp: 7;
+  }
+  
+  .feature-tag {
+    font-size: 16px;
   }
 }
 
-/* Ensure smooth transitions */
-.carousels-tracks {
-  transition: all 0.3s ease-out;
-}
-
-/* Optional: Add hover effect on cards */
+/* Enhanced hover effect on cards */
 .testimonials-cards:hover {
-  transform: translateY(-5px);
-  background: rgba(107, 70, 193, 0.2); /* Slightly darker purple on hover */
-  transition: all 0.3s ease;
+  transform: translateY(-8px);
+  background: rgba(107, 70, 193, 0.3);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
