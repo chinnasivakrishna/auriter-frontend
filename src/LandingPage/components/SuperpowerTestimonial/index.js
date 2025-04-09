@@ -58,6 +58,10 @@ export default function SuperpowerTestimonial() {
     },
   ];
 
+  // Create a large array of repeated testimonials
+  const REPETITIONS = 100;
+  const repeatedTestimonials = Array(REPETITIONS).fill().flatMap(() => testimonials);
+
   return (
     <div className="SuperpowerTestimonial-containers">
       <div className="SuperpowerTestimonial-contents">
@@ -77,7 +81,7 @@ export default function SuperpowerTestimonial() {
               isPaused ? "paused" : ""
             }`}
           >
-            {[...testimonials, ...testimonials].map((testimonial, index) => (
+            {repeatedTestimonials.map((testimonial, index) => (
               <div key={index} className="SuperpowerTestimonial-cards">
                 <img
                   alt="superpower-image"

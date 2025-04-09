@@ -72,6 +72,10 @@ export default function InnovationTestimonial() {
     }
   ];
 
+  // Create a large array of repeated testimonials
+  const REPETITIONS = 100;
+  const repeatedTestimonials = Array(REPETITIONS).fill().flatMap(() => testimonials);
+
   return (
     <div className="testimonials-containers">
       <div className="testimonials-contents">
@@ -85,7 +89,7 @@ export default function InnovationTestimonial() {
           onMouseLeave={() => setIsPaused(false)}
         >
           <div className={`carousels-tracks ${isPaused ? "paused" : ""}`}>
-            {[...testimonials, ...testimonials].map((testimonial, index) => (
+            {repeatedTestimonials.map((testimonial, index) => (
               <div key={index} className="testimonials-cards">
                 <div className="feature-tag">🚀 {testimonial.feature}</div>
                 <blockquote className="testimonials-quotes">
