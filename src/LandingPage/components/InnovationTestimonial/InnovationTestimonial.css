@@ -39,7 +39,7 @@
 
 .carousels-tracks {
   display: flex;
-  animation: scroll 15s linear infinite; /* Extremely fast scrolling - only 15 seconds */
+  animation: scroll 5s linear infinite; /* Extremely fast scrolling - only 5 seconds */
 }
 
 .carousels-tracks.paused {
