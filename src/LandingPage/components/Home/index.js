@@ -231,11 +231,7 @@ export default function Home() {
       {/* testimonial */}
       <section className="testimonialsContainers">
         <div className="InterviewProcessHeader">
-          <p>From Day One to Final Rounds</p>
-          <h2>
-            A suite of AI tools to navigate through this difficult recruiting
-            season
-          </h2>
+          
         </div>
         <div className="testimonials-container">
           <div className="testimonials-scroll-wrapper">

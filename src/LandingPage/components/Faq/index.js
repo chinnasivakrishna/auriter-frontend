@@ -131,7 +131,6 @@ export default function Faq() {
   return (
     <>
       <div style={{ margin: "0px auto" }} className="InterviewProcessHeader">
-        <p>From Day One to Final Rounds</p>
         <h2>
           A suite of AI tools to navigate through this difficult recruiting
           season
