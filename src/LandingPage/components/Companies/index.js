@@ -5,7 +5,7 @@ import "./Companies.css";
 import kashiAI from "../images/KASHI AI LOGO.jpg";
 import aitota from "../images/aitota__logo.png";
 import britishLingua from "../images/British Lingua.png";
-import dailAi from "../images/DailAi_Logo.jpg";
+import dailAi from "../images/DailAi_Logo.png";
 import kitabAI from "../images/KitabAI_Logo.png";
 import mobishaala from "../images/Mobishaala White.png";
 import GitPot from "../images/GitPot-LOGO.jpg";
