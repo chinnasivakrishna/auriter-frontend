@@ -39,7 +39,7 @@
 
 .carousels-tracks {
   display: flex;
-  animation: scroll 30s linear infinite; /* Reduced from 1200s to 120s for faster scrolling */
+  animation: scroll 20s linear infinite; /* Reduced from 1200s to 120s for faster scrolling */
 }
 
 .carousels-tracks.paused {
@@ -76,7 +76,7 @@
   display: -webkit-box;
   -webkit-line-clamp: 9; /* Increased from 8 to allow more text */
   -webkit-box-orient: vertical;
-  font-weight: 500;
+  font-weight: 300;
   text-overflow: ellipsis;
 }
 
