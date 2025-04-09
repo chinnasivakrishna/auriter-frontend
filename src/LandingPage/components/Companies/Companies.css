@@ -23,13 +23,14 @@
   padding: 2rem 0;
 }
 
-/* Contains all logo containers */
+/* Track that contains both containers */
 .logos-track {
   display: flex;
-  will-change: transform;
+  width: max-content; /* Auto-adjust to content width */
+  animation: infinite-scroll 25s linear infinite;
 }
 
-/* Container for company items */
+/* Individual logo containers */
 .logos-container {
   display: flex;
   gap: 4rem;
@@ -62,6 +63,17 @@
   text-align: center;
   white-space: nowrap;
   color: #1a1a1a;
+}
+
+/* The key animation */
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* This moves exactly one container width */
+    transform: translateX(-50%);
+  }
 }
 
 @media (max-width: 768px) {
