@@ -148,6 +148,10 @@ export default function Home() {
             </div>
           </div>
         </section>
+        
+        {/* Add spacing between sections */}
+        <div style={{ margin: "20px 0" }}></div>
+        
         <section
           className="InterviewProcessContainerSection"
           style={{ marginBottom: "40px" }}
@@ -171,9 +175,9 @@ export default function Home() {
                   </li>
                   <li>
                     <div>
-                      <h3>Always Interview-Ready, Whether You’re a Fresher or a Pro</h3>
+                      <h3>Always Interview-Ready, Whether You're a Fresher or a Pro</h3>
                       <p>
-                      Airuter is your AI-powered companion designed to help you succeed in today’s competitive job market.
+                      Airuter is your AI-powered companion designed to help you succeed in today's competitive job market.
                       </p>
                     </div>
                   </li>
@@ -182,8 +186,12 @@ export default function Home() {
               
             </div>
             <div className="InterviewProcessRight2">
-              <video src={demoVideo} autoPlay loop />
-              
+              <video 
+                src={demoVideo} 
+                autoPlay 
+                loop 
+                controls
+              />
             </div>
           </div>
         </section>

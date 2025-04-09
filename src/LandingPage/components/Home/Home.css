@@ -98,10 +98,11 @@
 }
 
 .InterviewProcessContainerSection {
-  position: sticky;
-  top: 80px;
-  height: 100vh;
+  position: relative; /* Changed from sticky for better flow */
+  top: auto;
+  height: auto;
   padding: 10px;
+  margin-bottom: 40px; /* Add bottom margin to create space */
 }
 
 .InterviewProcessContainer {
@@ -138,6 +139,13 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  margin-bottom: 30px; /* Add bottom margin to create space */
+}
+
+.InterviewProcess img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Ensure proper layout */
 }
 
 .separators {
@@ -254,12 +262,13 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Added shadow */
 }
 
-/* Add this to make the video responsive */
+/* Add this to make the video responsive and enable audio */
 .InterviewProcessRight2 video {
   width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 12px;
+  display: block; /* Ensures proper layout */
 }
 
 .testimonialsContainers {
