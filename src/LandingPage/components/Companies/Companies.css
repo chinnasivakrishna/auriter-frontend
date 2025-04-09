@@ -24,7 +24,7 @@
 
 .logos-container {
   display: flex;
-  animation: scroll 30s linear infinite;
+  animation: scroll 20s linear infinite;
   gap: 4rem;
   padding: 2rem 0;
 }
@@ -62,8 +62,8 @@
     transform: translateX(0);
   }
   100% {
-    /* This should be set to exactly cover the width of the first set of companies */
-    transform: translateX(-50%);
+    /* This uses the CSS variable we set in JavaScript */
+    transform: translateX(calc(-1 * var(--scroll-width, 50%)));
   }
 }
 

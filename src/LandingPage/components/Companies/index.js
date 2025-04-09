@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Companies.css";
 import kashiAI from "../images/KASHI AI LOGO.jpg";
 import aitota from "../images/aitota__logo.png";
@@ -24,6 +24,28 @@ export default function CompanyShowcase() {
     { logo: wizzmedia, name: "Wizzmedia", alt: "Wizzmedia Logo" },
   ];
 
+  const [scrollWidth, setScrollWidth] = useState(0);
+  const containerRef = useRef(null);
+  
+  useEffect(() => {
+    if (containerRef.current) {
+      // Get the width of one company item (including gap)
+      const items = containerRef.current.querySelectorAll('.company-item');
+      if (items.length > 0) {
+        const itemWidth = items[0].offsetWidth;
+        const gap = parseInt(getComputedStyle(containerRef.current).gap);
+        const totalItemWidth = itemWidth + gap;
+        
+        // Calculate total width for all companies
+        const totalWidth = totalItemWidth * companies.length;
+        setScrollWidth(totalWidth);
+        
+        // Set the CSS variable for animation
+        document.documentElement.style.setProperty('--scroll-width', `${totalWidth}px`);
+      }
+    }
+  }, []);
+
   return (
     <div className="heros-container">
       <h1 className="heros-heading">
@@ -31,7 +53,10 @@ export default function CompanyShowcase() {
       </h1>
 
       <div className="logos-scroll">
-        <div className="logos-container">
+        <div className="logos-container" ref={containerRef} style={{
+          // Apply inline styles for perfect scrolling
+          width: scrollWidth > 0 ? `${scrollWidth * 2}px` : 'auto'
+        }}>
           {/* First set of companies */}
           {companies.map((company, index) => (
             <div key={index} className="company-item">
