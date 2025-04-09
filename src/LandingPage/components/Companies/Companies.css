@@ -23,7 +23,7 @@
 
 .logos-container {
   display: flex;
-  animation: scroll 600s linear infinite;
+  animation: scroll 1200s linear infinite;
   gap: 2rem;
   padding: 2rem 0;
   width: fit-content;
@@ -80,7 +80,7 @@
   }
 
   .logos-container {
-    gap: 1.5rem;
+    gap: 2.5rem;
   }
   
   .company-name {

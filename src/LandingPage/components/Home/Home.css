@@ -467,7 +467,7 @@
 .testimonials-scroll-container {
   display: flex;
   gap: 2rem;
-  animation: scroll 600s linear infinite;
+  animation: scroll 1200s linear infinite;
   width: fit-content;
 }
 

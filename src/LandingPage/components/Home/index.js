@@ -154,9 +154,7 @@ export default function Home() {
           <div className="InterviewProcessContainer">
             <div className="InterviewProcessText">
               <div className="InterviewProcessHeader">
-                <p>AI-POWERED SOLUTION</p>
                 <h3>How AI Supports the Interview Journey</h3>
-                <div className="subtitle">Complete support throughout your job search process</div>
               </div>
               
               <div className="InterviewProcessContent">
@@ -165,7 +163,6 @@ export default function Home() {
                     <Search size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
                     Discovering Opportunities
                   </h4>
-                  <p>Job matching based on your resume and preferences, with alerts for roles that fit your skillset.</p>
                   <div className="content-image-container">
                     <img src={image1} alt="Discovering Opportunities" className="content-image" />
                   </div>
@@ -176,7 +173,6 @@ export default function Home() {
                     <FileText size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
                     Resume & Profile Building
                   </h4>
-                  <p>AI suggestions to refine your CV and showcase your qualifications and achievements.</p>
                   <div className="content-image-container">
                     <img src={image2} alt="Resume & Profile Building" className="content-image" />
                   </div>
@@ -187,7 +183,6 @@ export default function Home() {
                     <MessageCircle size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
                     Pre-Interview Confidence Boost
                   </h4>
-                  <p>Voice and body language guidance with last-minute confidence tips for preparation.</p>
                   <div className="content-image-container">
                     <img src={image3} alt="Pre-Interview Confidence Boost" className="content-image" />
                   </div>
@@ -198,7 +193,6 @@ export default function Home() {
                     <Video size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
                     Live-Interview Support
                   </h4>
-                  <p>Subtle real-time nudges during video interviews and on-screen transcription for accurate tracking.</p>
                   <div className="content-image-container">
                     <img src={image4} alt="Live-Interview Support" className="content-image" />
                   </div>

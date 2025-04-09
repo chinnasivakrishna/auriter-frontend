@@ -43,7 +43,7 @@
 
 .SuperpowerTestimonial-tracks {
   display: flex;
-  animation: scroll 600s linear infinite;
+  animation: scroll 1200s linear infinite;
 }
 
 .SuperpowerTestimonial-tracks.paused {
