@@ -6,6 +6,7 @@ import InovationTestimonial from "../InnovationTestimonial";
 import SuperpowerTestimonial from "../SuperpowerTestimonial";
 import demoImage from "../wmremove-transformed.png";
 import demoVideo from "../Airuter.mp4";
+import interviewProcess from "../images/Airuter-Support-Interview Journey.png";
 const testimonials = [
   {
     description: `Using Airuter, I felt much more confident in my interview approach, which led to my offer in project management.`,
@@ -138,36 +139,12 @@ export default function Home() {
             <div className="InterviewProcessHeader">
               <p>From Day One to Final Rounds</p>
               <h2>
-                A suite of AI tools to navigate through this difficult
-                recruiting season
+              Your Interview Journey, Supercharged by AI 🚀
+              From resume creation to final follow-up, Airuter supports every step with smart AI tools—helping you stay confident, prepared, and always interview-ready.
               </h2>
             </div>
             <div className="InterviewProcess">
-              <ul className="InterviewProcessList">
-                <li>
-                  <h3>Before Interview</h3>
-                </li>
-                <li>AI Resume Builder</li>
-                <li>AI Interview Copilot</li>
-              </ul>
-              <span className="separators"></span>
-              <ul className="InterviewProcessList">
-                <li>
-                  <h3>During Interview</h3>
-                </li>
-                <li>Interview Copilot™</li>
-                <li>Real-Time Transcription</li>
-                <li>AI Interview Copilot</li>
-              </ul>
-              <span className="separators"></span>
-              <ul className="InterviewProcessList">
-                <li>
-                  <h3>After Interview</h3>
-                </li>
-                <li>Interview Copilot™</li>
-                <li>Real-Time Transcription</li>
-                <li>AI Interview Copilot</li>
-              </ul>
+              <img src={interviewProcess} alt="Interview interface demo" />
             </div>
           </div>
         </section>
@@ -178,9 +155,7 @@ export default function Home() {
           <div className="InterviewProcessContainer2">
             <div className="InterviewProcessLeft2">
               <div className="InterviewProcessHeaderContainer2">
-                <div className="InterviewProcessHeader2">
-                  <h3>AI Resume Builder</h3>
-                </div>
+                
                 <h2>AI-powered partner for every step of the hiring journey</h2>
               </div>
               <div>
@@ -204,11 +179,7 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-              <div>
-                <a className="cta-button2" href="#">
-                  Launch Resume Builder
-                </a>
-              </div>
+              
             </div>
             <div className="InterviewProcessRight2">
               <video src={demoVideo} autoPlay loop />

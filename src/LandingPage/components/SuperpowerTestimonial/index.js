@@ -2,50 +2,59 @@
 
 import { useState } from "react";
 import "./SuperpowerTestimonial.css";
+import RetailHospitality from "../images/img1-retail.jpeg";
+import ITTechnology from "../images/image-IT.jpeg";
+import Healthcare from "../images/image-Healthcare.jpeg";
+import FinancialServices from "../images/image-finance.jpeg";
+import Education from "../images/image-education.jpeg";
+import LogisticsTransportation from "../images/image-logistics.jpeg";
+import Manufacturing from "../images/image-manufacturing.jpeg";
 
 export default function SuperpowerTestimonial() {
   const [isPaused, setIsPaused] = useState(false);
 
   const testimonials = [
     {
-      quote: "How to use AI Material Generator",
-      date: "Feb 01,2024",
-      author: "Alaina Demopoulos",
-      company: "The Guardian",
+      quote: "Retail & Hospitality", 
       description:
-        "Using Auriter, I felt much more confident in my interview approach, which led to my offer in project management. ",
+        "Airuter quickly screens for customer service skills and positive attitudes in high-volume hiring. Identify candidates who excel in customer-facing roles, improving satisfaction and retention.",
+      image: RetailHospitality,
     },
     {
-      quote: "How to use AI Material Generator",
-      date: "Feb 01,2024",
-      author: "Alaina Demopoulos",
-      company: "The Guardian",
+      quote: "IT &Technology", 
       description:
-        "Using Auriter, I felt much more confident in my interview approach, which led to my offer in project management. ",
+        "Efficiently assess technical communication and foundational knowledge with Airuter. Filter candidates based on essential tech skills, saving valuable time for your technical hiring teams.",
+      image: ITTechnology,
     },
     {
-      quote: "How to use AI Material Generator",
-      date: "Feb 01,2024",
-      author: "Alaina Demopoulos",
-      company: "The Guardian",
+      quote: "Healthcare", 
       description:
-        "Using Auriter, I felt much more confident in my interview approach, which led to my offer in project management. ",
+        "Airuter helps identify candidates with strong empathy and clear communication crucial for patient care. Ensure your team delivers compassionate and effective healthcare services.",
+      image: Healthcare,
     },
     {
-      quote: "How to use AI Material Generator",
-      date: "Feb 01,2024",
-      author: "Alaina Demopoulos",
-      company: "The Guardian",
+      quote: "Financial Services", 
       description:
-        "Using Auriter, I felt much more confident in my interview approach, which led to my offer in project management. ",
+        "Screen candidates for their understanding of compliance and attention to detail using Airuter. Hire individuals prepared for the regulatory demands of the financial sector.",
+      image: FinancialServices,
     },
     {
-      quote: "How to use AI Material Generator",
-      date: "Feb 01,2024",
-      author: "Alaina Demopoulos",
-      company: "The Guardian",
+      quote: "Education", 
       description:
-        "Using Auriter, I felt much more confident in my interview approach, which led to my offer in project management. ",
+        "Discover educators with clear communication skills and a genuine passion for teaching through Airuter's analysis. Build a team that inspires and effectively engages students. ",
+      image: Education,
+    },
+    {
+      quote: "Logistics & Transportation", 
+      description:
+        "Airuter assesses problem-solving abilities and safety awareness in potential hires. Build a reliable team focused on efficient and safe logistical operations.",
+      image: LogisticsTransportation,
+    },
+    {
+      quote: "Manufacturing", 
+      description:
+        "Identify candidates with a keen eye for detail and the ability to follow processes with Airuter. Ensure a workforce committed to quality and efficient production. ",
+      image: Manufacturing,
     },
   ];
 
@@ -73,9 +82,8 @@ export default function SuperpowerTestimonial() {
               <div key={index} className="SuperpowerTestimonial-cards">
                 <img
                   className="superpower-image"
-                  src="https://uploads-ssl.webflow.com/664ed8170ea9a09ebb0c8a24/66600a2aa990e4c75da6fe07_tutor-3.webp"
+                  src={testimonial.image}
                 />
-                <p className="SuperpowerTestimonial-dates">{testimonial.date}</p>
                 <blockquote className="SuperpowerTestimonial-quotes">
                   {testimonial.quote}
                 </blockquote>
