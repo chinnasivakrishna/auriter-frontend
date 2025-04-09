@@ -20,14 +20,18 @@
   width: 100%;
   overflow: hidden;
   position: relative;
+  padding: 2rem 0;
+}
+
+/* Style for the HTML marquee element */
+.logos-scroll marquee {
+  width: 100%;
 }
 
 .logos-container {
   display: flex;
   gap: 4rem;
-  padding: 2rem 0;
-  /* Animation is now handled by JavaScript */
-  will-change: transform;
+  padding: 0;
 }
 
 /* Company item container */
@@ -36,6 +40,7 @@
   flex-direction: column;
   align-items: center;
   flex: 0 0 auto;
+  margin: 0 2rem;
 }
 
 .logo {
@@ -67,9 +72,9 @@
   .logo {
     height: 30px;
   }
-
-  .logos-container {
-    gap: 2rem;
+  
+  .company-item {
+    margin: 0 1rem;
   }
   
   .company-name {

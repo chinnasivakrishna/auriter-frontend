@@ -23,45 +23,6 @@ export default function CompanyShowcase() {
     { logo: GitPot, name: "GitPot", alt: "GotPot Logo" },
     { logo: wizzmedia, name: "Wizzmedia", alt: "Wizzmedia Logo" },
   ];
-  
-  const scrollRef = useRef(null);
-  
-  // Manual animation with requestAnimationFrame for better control
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-    
-    let scrollPosition = 0;
-    const scrollSpeed = 1; // Adjust speed as needed
-    
-    // Create a duplicate set of all company items for infinite scrolling
-    const originalItems = Array.from(scrollContainer.children);
-    originalItems.forEach(item => {
-      const clone = item.cloneNode(true);
-      scrollContainer.appendChild(clone);
-    });
-    
-    // Get the width of a single set of company items
-    const firstItemsWidth = originalItems.reduce((total, item) => total + item.offsetWidth, 0) + 
-                         (originalItems.length - 1) * parseInt(getComputedStyle(scrollContainer).columnGap || '0');
-    
-    const animate = () => {
-      scrollPosition += scrollSpeed;
-      
-      // Reset position when we've scrolled through one full set
-      if (scrollPosition >= firstItemsWidth) {
-        scrollPosition = 0;
-      }
-      
-      scrollContainer.style.transform = `translateX(-${scrollPosition}px)`;
-      requestAnimationFrame(animate);
-    };
-    
-    const animationFrame = requestAnimationFrame(animate);
-    
-    // Cleanup animation on unmount
-    return () => cancelAnimationFrame(animationFrame);
-  }, []);
 
   return (
     <div className="heros-container">
@@ -70,18 +31,23 @@ export default function CompanyShowcase() {
       </h1>
 
       <div className="logos-scroll">
-        <div className="logos-container" ref={scrollRef}>
-          {companies.map((company, index) => (
-            <div key={index} className="company-item">
-              <img
-                src={company.logo}
-                alt={company.alt}
-                className="logo"
-              />
-              <p className="company-name">{company.name}</p>
-            </div>
-          ))}
-        </div>
+        {/* Using the HTML marquee element for reliable infinite scrolling */}
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+          <div className="logos-container">
+            {companies.map((company, index) => (
+              <div key={index} className="company-item">
+                <img
+                  src={company.logo}
+                  alt={company.alt}
+                  className="logo"
+                />
+                <p className="company-name">{company.name}</p>
+              </div>
+            ))}
+            
+            {/* No need for duplicates with marquee */}
+          </div>
+        </marquee>
       </div>
     </div>
   );
