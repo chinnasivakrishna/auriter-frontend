@@ -10,18 +10,31 @@ import kitabAI from "../images/KitabAI.png";
 import mobishaala from "../images/Mobishaala White.png";
 import GitPot from "../images/GotPot-Logo.jpg";
 import wizzmedia from "../images/WIZZMEDIA_LOGO.png";
-
+import LinguaAI from "../images/LinguaAI.png";
+import SURE60 from "../images/SURE60LOGO.png";
+import PRAYOGTEA from "../images/PRAYOG TEA LOGO.png";
+import KNOWLEDGEINDIA from "../images/KNOWLEDGE INDIA.png";
+import FUTURESEEDS from "../images/FUTURE SEEDS LOGO.png";
+import CPSLOGO from "../images/CPS LOGO.png";
+import EGCLASSES from "../images/EG CLASSES LOGO.png";
 export default function CompanyShowcase() {
   // Define company data with logos and names
   const companies = [
-    { logo: kashiAI, name: "Kashi AI", alt: "Kashi AI Logo" },
-    { logo: aitota, name: "AI Tota", alt: "AI Tota Logo" },
+    { logo: kashiAI, name: "Kashi", alt: "Kashi AI Logo" },
+    { logo: aitota, name: "Tota", alt: "AI Tota Logo" },
     { logo: britishLingua, name: "British Lingua", alt: "British Lingua Logo" },
-    { logo: dailAi, name: "Dail AI", alt: "Dail AI Logo" },
-    { logo: kitabAI, name: "Kitab AI", alt: "Kitab AI Logo" },
+    { logo: dailAi, name: "Dail", alt: "Dail AI Logo" },
+    { logo: kitabAI, name: "Kitab", alt: "Kitab AI Logo" },
     { logo: mobishaala, name: "Mobishaala", alt: "Mobishaala Logo" },
     { logo: GitPot, name: "GitPot", alt: "GotPot Logo" },
     { logo: wizzmedia, name: "Wizzmedia", alt: "Wizzmedia Logo" },
+    { logo: LinguaAI, name: "Lingua", alt: "Lingua AI Logo" },
+    { logo: SURE60, name: "Sure60", alt: "Sure60 Logo" },
+    { logo: PRAYOGTEA, name: "Prayog Tea", alt: "Prayog Tea Logo" },
+    { logo: KNOWLEDGEINDIA, name: "Knowledge India", alt: "Knowledge India Logo" },
+    { logo: FUTURESEEDS, name: "Future Seeds", alt: "Future Seeds Logo" },
+    { logo: CPSLOGO, name: "CPS", alt: "CPS Logo" },
+    { logo: EGCLASSES, name: "EG Classes", alt: "EG Classes Logo" },
   ];
 
   const containerRef = useRef(null);

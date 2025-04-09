@@ -26,13 +26,12 @@
   color: #6B46C1;
 }
 
-.ai-badge {
-  background: #6B46C1;
-  color: white;
-  padding: 0.1rem 0.3rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
+.logo-image {
+  height: 24px;
+  width: auto;
 }
+
+/* Removed the AI badge styles since we're using the logo image instead */
 
 .desktopNavList {
   display: flex;

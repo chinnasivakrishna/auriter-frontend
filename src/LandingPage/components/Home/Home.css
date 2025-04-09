@@ -98,40 +98,93 @@
 }
 
 .InterviewProcessContainerSection {
-  position: relative; /* Changed from sticky for better flow */
+  position: relative;
   top: auto;
   height: auto;
   padding: 10px;
-  margin-bottom: 40px; /* Add bottom margin to create space */
+  margin-bottom: 40px;
 }
 
 .InterviewProcessContainer {
   display: flex;
-  flex-direction: row; /* Changed from column to row */
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 3rem 2rem;
+  padding: 4rem 3rem;
   background-color: white;
   border-radius: 30px;
   margin-bottom: 60px;
-  gap: 2rem; /* Add gap between text and image */
+  gap: 3rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
 .InterviewProcessText {
-  flex: 1;
-  max-width: 50%;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.InterviewProcessContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.InterviewProcessContentBox {
+  background-color: #F9FAFB;
+  border-radius: 16px;
+  padding: 1.5rem;
+  border-left: 4px solid #6B46C1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.InterviewProcessContentBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(107, 70, 193, 0.1);
+}
+
+.InterviewProcessContentBox h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #2D3748;
+}
+
+.InterviewProcessContentBox p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4A5568;
 }
 
 .InterviewProcessHeader {
   max-width: 100%;
-  text-align: left; /* Changed from center to left */
-  margin-bottom: 2rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
 }
 
 .InterviewProcessHeader p {
   font-size: 1.125rem;
   color: rgba(28, 29, 32, 0.3);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.InterviewProcessHeader h3 {
+  font-size: 1.75rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #2D3748;
+  margin-bottom: 1rem;
+}
+
+.InterviewProcessHeader .subtitle {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: #4A5568;
+  font-weight: normal;
 }
 
 .InterviewProcessContainer h2 {
@@ -141,27 +194,24 @@
   font-weight: 400;
 }
 
-.InterviewProcessContainer h3 {
-  font-size: 1.5rem;
-  line-height: 1.4;
-  font-weight: 500;
-  color: #2D3748;
-}
-
 .InterviewProcess {
-  flex: 1;
+  flex: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 0; /* Remove bottom margin as it's now side by side */
 }
 
 .InterviewProcess img {
-  max-width: 100%;
+  max-width: 90%; /* Decreased from 100% */
   height: auto;
-  border-radius: 12px; /* Optional: add rounded corners to image */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
-  display: block; /* Ensure proper layout */
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(107, 70, 193, 0.1);
+}
+
+.InterviewProcess img:hover {
+  transform: scale(1.02);
 }
 
 .separators {
@@ -195,43 +245,43 @@
 }
 
 .InterviewProcessContainer2 {
-  position: relative; /* Changed from sticky for better flow */
+  position: relative;
   top: 0;
   display: flex;
   flex-direction: row;
-  padding: 60px 40px; /* Increased padding for better spacing */
+  padding: 60px 40px;
   background-color: white;
   border-radius: 30px;
-  max-width: 1200px; /* Added max-width for consistency */
-  margin: 0 auto; /* Center the container */
-  gap: 40px; /* Added gap between left and right sides */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .InterviewProcessLeft2 {
-  height: auto; /* Changed from 100% for better responsiveness */
+  height: auto;
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Changed from space-around for better alignment */
+  justify-content: flex-start;
   max-width: 35.4rem;
-  padding-right: 20px; /* Added padding */
+  padding-right: 20px;
 }
 
 .InterviewProcessHeaderContainer2 {
-  margin-bottom: 30px; /* Added margin bottom */
+  margin-bottom: 30px;
 }
 
 .InterviewProcessHeaderContainer2 h2 {
   margin-bottom: 30px;
   font-size: 2.375rem;
   letter-spacing: -.0475rem;
-  line-height: 1.2; /* Added line height */
+  line-height: 1.2;
 }
 
 .InterviewProcessHeader2 {
   border-radius: 2rem;
-  background: #6B46C1; /* Purple color */
+  background: #6B46C1;
   display: flex;
   justify-self: flex-start;
   margin-bottom: 40px;
@@ -255,7 +305,7 @@
 
 .cta-button2 {
   padding: 15px 20px;
-  background-color: #6B46C1; /* Purple color */
+  background-color: #6B46C1;
   color: white;
   text-decoration: none;
   border-radius: 10px;
@@ -265,26 +315,44 @@
 }
 
 .cta-button2:hover {
-  background: #553C9A; /* Darker purple */
+  background: #553C9A;
 }
 
 .InterviewProcessRight2 {
-  height: auto; /* Changed from 100% */
+  height: auto;
   width: 50%;
   max-width: 35.4rem;
   position: relative;
   overflow: hidden;
-  border-radius: 12px; /* Added border radius for video */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Added shadow */
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Add this to make the video responsive and enable audio */
 .InterviewProcessRight2 video {
   width: 100%;
   height: auto;
   object-fit: cover;
   border-radius: 12px;
-  display: block; /* Ensures proper layout */
+  display: block;
+}
+
+.unmute-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.unmute-button:hover {
+  background: rgba(0, 0, 0, 0.9);
 }
 
 .testimonialsContainers {
@@ -302,7 +370,6 @@
   margin: 0 auto;
 }
 
-/* Scrollable area styling */
 .testimonials-scroll-wrapper {
   position: relative;
   overflow: hidden;
@@ -316,7 +383,6 @@
   animation: scroll 10s linear infinite;
 }
 
-/* Individual card styles */
 .testimonial-cards {
   flex-shrink: 0;
   width: 400px;
@@ -370,7 +436,6 @@
   width: 100px;
 }
 
-/* Scroll animation (optional) */
 @keyframes scroll {
   from {
     transform: translateX(0);
@@ -381,16 +446,13 @@
   }
 }
 
-/* Hide scrollbar */
 .testimonials-scroll-wrapper::-webkit-scrollbar {
   display: none;
 }
 
 .testimonials-scroll-wrapper {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
 
 @media (max-width: 768px) {
@@ -403,11 +465,11 @@
   .hero-content {
     max-width: 100%;
     align-items: center;
-    order: 2; /* Place content below image on mobile */
+    order: 2;
   }
 
   .hero-image-container {
-    order: 1; /* Place image above content on mobile */
+    order: 1;
     margin-bottom: 2rem;
   }
 
@@ -421,7 +483,7 @@
   }
 
   .metric-value {
-    font-size: 1.75rem; /* Slightly smaller on mobile but still larger than original */
+    font-size: 1.75rem;
   }
 
   .separator {
@@ -441,7 +503,7 @@
 
   .InterviewProcessContainer {
     flex-direction: column;
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
     height: 100%;
   }
 
@@ -450,13 +512,18 @@
     margin-bottom: 2rem;
   }
 
+  .InterviewProcessContent {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
   .InterviewProcessHeader {
-    text-align: center; /* Center text on mobile */
+    text-align: center;
   }
 
   .InterviewProcessContainer2 {
     flex-direction: column;
-    padding: 30px 20px; /* Reduced padding for mobile */
+    padding: 30px 20px;
     gap: 30px;
   }
 
@@ -469,12 +536,16 @@
   .InterviewProcessRight2 {
     width: 100%;
     height: auto;
-    margin-top: 0; /* Remove extra margin */
+    margin-top: 0;
   }
 
   .InterviewProcess {
     flex-direction: column;
     align-items: center;
+  }
+
+  .InterviewProcess img {
+    max-width: 100%;
   }
 
   .separators {

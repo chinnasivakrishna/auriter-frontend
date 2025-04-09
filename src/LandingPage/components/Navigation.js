@@ -2,6 +2,7 @@
 import { useState } from "react";
 import "./Navigation.css";
 import { Link } from "react-router-dom";
+import logo from "../images/logo.png";
 // import { Link, useLocation } from "react-router-dom";
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +23,7 @@ export default function Navigation() {
         <div className="nav-content">
           <div className="logo">
             <span>Airuter</span>
-            <span className="ai-badge">AI</span>
+            <img src={logo} alt="Logo" className="logo-image" />
           </div>
           <nav className="desktopNav">
             <div className="desktop">

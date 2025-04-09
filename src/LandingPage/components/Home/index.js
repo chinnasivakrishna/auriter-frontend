@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./Home.css";
 import Companies from "../Companies";
 import Faq from "../Faq";
@@ -81,13 +81,23 @@ const testimonials = [
 ];
 
 export default function Home() {
-  // const [searchQuery, setSearchQuery] = useState("");
+  // For video unmute functionality
+  const videoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <>
       <section className="hero">
         <div className="hero-content">
           <h1>
-          Screening Talent with AI,
+            Screening Talent with AI,
             <br />
             Matching Potential with Opportunity.
           </h1>
@@ -106,24 +116,11 @@ export default function Home() {
 
           <button className="cta-button">Get In Touch</button>
 
-          
           <p className="subtitle">
-          Meet your AI hiring assistant – from resume creation to real-time video interview, Airuter empowers you to stand out and get hired.
+            Meet your AI hiring assistant – from resume creation to real-time video interview, Airuter empowers you to stand out and get hired.
           </p>
-
         </div>
         <div className="demo-content">
-          {/* <div className="demo-features">
-          <div className="feature">
-            <span>Seamless connection to any interview meeting software</span>
-          </div>
-          <div className="feature">
-            <span>Real-time transcription from interviewer</span>
-          </div>
-          <div className="feature">
-          <span>Real-time and personalized suggestions for answers</span>
-          </div>
-          </div> */}
           <div className="demo-image">
             <img
               src={demoImage}
@@ -138,15 +135,36 @@ export default function Home() {
           <div className="InterviewProcessContainer">
             <div className="InterviewProcessText">
               <div className="InterviewProcessHeader">
-                <p>From Day One to Final Rounds</p>
-                <h3>
-                Your Interview Journey, Supercharged by AI 🚀
-                From resume creation to final follow-up, Airuter supports every step with smart AI tools—helping you stay confident, prepared, and always interview-ready.
-                </h3>
+                <p>FROM APPLICATION TO OFFER</p>
+                <h3>Your Interview Journey, Supercharged by AI 🚀</h3>
+                <p className="subtitle">From resume creation to final follow-up, Airuter supports every step with smart AI tools—helping you stay confident, prepared, and always interview-ready.</p>
+              </div>
+              
+              <div className="InterviewProcessContent">
+                <div className="InterviewProcessContentBox">
+                  <h4>Resume Optimization</h4>
+                  <p>AI-powered resume tailoring that matches job descriptions and highlights your key skills, increasing your chances of getting noticed.</p>
+                </div>
+                
+                <div className="InterviewProcessContentBox">
+                  <h4>Interview Preparation</h4>
+                  <p>Personalized practice sessions with industry-specific questions and real-time feedback to boost your confidence.</p>
+                </div>
+                
+                <div className="InterviewProcessContentBox">
+                  <h4>Real-time Guidance</h4>
+                  <p>During interviews, receive subtle suggestions and talking points that help you deliver compelling, structured answers.</p>
+                </div>
+                
+                <div className="InterviewProcessContentBox">
+                  <h4>Post-Interview Analysis</h4>
+                  <p>Detailed performance insights and follow-up templates to help you improve and stand out after each interview.</p>
+                </div>
               </div>
             </div>
+            
             <div className="InterviewProcess">
-              <img src={interviewProcess} alt="Interview interface demo" />
+              <img src={interviewProcess} alt="Interview journey visualization" />
             </div>
           </div>
         </section>
@@ -169,7 +187,7 @@ export default function Home() {
                     <div>
                       <h3>Ace Every Step of Your Interview Journey with AI </h3>
                       <p>
-                      From building standout resumes and preparing smarter to acing interviews with real-time guidance and post-interview insights.
+                        From building standout resumes and preparing smarter to acing interviews with real-time guidance and post-interview insights.
                       </p>
                     </div>
                   </li>
@@ -177,22 +195,29 @@ export default function Home() {
                     <div>
                       <h3>Always Interview-Ready, Whether You're a Fresher or a Pro</h3>
                       <p>
-                      Airuter is your AI-powered companion designed to help you succeed in today's competitive job market.
+                        Airuter is your AI-powered companion designed to help you succeed in today's competitive job market.
                       </p>
                     </div>
                   </li>
                 </ul>
               </div>
-              
             </div>
             <div className="InterviewProcessRight2">
               <video 
+                ref={videoRef}
                 src={demoVideo} 
                 autoPlay 
                 playsInline
                 loop
                 controls
               />
+              <button 
+                onClick={toggleMute} 
+                className="unmute-button"
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+              >
+                {isMuted ? "Unmute" : "Mute"}
+              </button>
             </div>
           </div>
         </section>
