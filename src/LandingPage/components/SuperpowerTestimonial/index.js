@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./SuperpowerTestimonial.css";
 import RetailHospitality from "../images/img1-retail.jpeg";
 import ITTechnology from "../images/image-IT.jpeg";
@@ -21,7 +21,7 @@ export default function SuperpowerTestimonial() {
       image: RetailHospitality,
     },
     {
-      quote: "IT &Technology", 
+      quote: "IT & Technology", 
       description:
         "Efficiently assess technical communication and foundational knowledge with Airuter. Filter candidates based on essential tech skills, saving valuable time for your technical hiring teams.",
       image: ITTechnology,
@@ -62,39 +62,40 @@ export default function SuperpowerTestimonial() {
     <div className="SuperpowerTestimonial-containers">
       <div className="SuperpowerTestimonial-contents">
         <div className="SuperpowerTestimonial-headers">
-          <p className="subtitles">We're Humble to Mention</p>
+          <p className="SuperpowerTestimonial-subtitles">Industry Solutions</p>
           <h2 className="SuperpowerTestimonial-titles">
-            Groundbreaking innovation for interviewees, as featured on
+            Tailored interview solutions for every industry
           </h2>
         </div>
 
-        <div
-          className="SuperpowerTestimonial-wrappers"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <div
-            className={`SuperpowerTestimonial-tracks ${
-              isPaused ? "paused" : ""
-            }`}
+        <div className="SuperpowerTestimonial-scroll">
+          <div 
+            className={`SuperpowerTestimonial-track ${isPaused ? "paused" : ""}`}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
           >
-            {[...testimonials, ...testimonials].map((testimonial, index) => (
-              <div key={index} className="SuperpowerTestimonial-cards">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="SuperpowerTestimonial-item">
                 <img
-                  alt="superpower-image"
-                  className="superpower-image"
                   src={testimonial.image}
+                  alt={`${testimonial.quote} image`}
+                  className="SuperpowerTestimonial-image"
                 />
-                <blockquote className="SuperpowerTestimonial-quotes">
-                  {testimonial.quote}
-                </blockquote>
-                <div className="SuperpowerTestimonial-authors">
-                  <div className="SuperpowerTestimonial-authors-infos">
-                    <p className="SuperpowerTestimonial-authors-names">
-                      {testimonial.description}
-                    </p>
-                  </div>
-                </div>
+                <h3 className="SuperpowerTestimonial-quote">{testimonial.quote}</h3>
+                <p className="SuperpowerTestimonial-description">{testimonial.description}</p>
+              </div>
+            ))}
+            
+            {/* Duplicate first few items for continuous scroll effect */}
+            {testimonials.slice(0, 4).map((testimonial, index) => (
+              <div key={`dup-${index}`} className="SuperpowerTestimonial-item">
+                <img
+                  src={testimonial.image}
+                  alt={`${testimonial.quote} image`}
+                  className="SuperpowerTestimonial-image"
+                />
+                <h3 className="SuperpowerTestimonial-quote">{testimonial.quote}</h3>
+                <p className="SuperpowerTestimonial-description">{testimonial.description}</p>
               </div>
             ))}
           </div>
