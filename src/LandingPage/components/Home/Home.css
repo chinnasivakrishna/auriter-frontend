@@ -685,3 +685,103 @@
     font-size: 0.875rem;
   }
 }
+
+.Home-containers {
+  color: #2D3748;
+  padding: 64px 32px;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.Home-contents {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Home-headers {
+  text-align: center;
+  margin-bottom: 64px;
+  width: 70%;
+}
+
+.Home-subtitles {
+  font-size: 1.125rem;
+  opacity: 0.8;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.Home-titles {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  margin: 0;
+  font-weight: 700;
+  color: #2D3748;
+}
+
+.Home-descriptions {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 16px 0;
+  font-weight: 500;
+}
+
+.Home-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  width: 100%;
+  margin-top: 48px;
+}
+
+.Home-feature-cards {
+  padding: 32px;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 6px rgba(107, 70, 193, 0.1);
+}
+
+.Home-feature-titles {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #2D3748;
+}
+
+.Home-feature-descriptions {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #4A5568;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .Home-containers {
+    padding: 32px 16px;
+  }
+
+  .Home-titles {
+    font-size: 1.75rem;
+  }
+
+  .Home-descriptions {
+    font-size: 1rem;
+  }
+
+  .Home-features {
+    grid-template-columns: 1fr;
+  }
+
+  .Home-feature-titles {
+    font-size: 1.125rem;
+  }
+
+  .Home-feature-descriptions {
+    font-size: 1rem;
+  }
+}

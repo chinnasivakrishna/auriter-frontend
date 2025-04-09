@@ -24,7 +24,7 @@
 
 .titles {
   font-size: 2.25rem;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.2;
   margin: 0;
   color: white;
@@ -64,7 +64,7 @@
 
 .feature-tag {
   font-weight: 700;
-  font-size: 18px;
+  font-size: 1.125rem;
   margin-bottom: 16px;
   color: #FFF176; /* Light yellow for visibility */
 }
@@ -78,6 +78,7 @@
   display: -webkit-box;
   -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
+  font-weight: 500;
 }
 
 .testimonials-authors {
@@ -94,7 +95,7 @@
 }
 
 .authors-names {
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1.125rem;
   margin: 0 0 4px 0;
 }
@@ -103,6 +104,7 @@
   opacity: 0.9;
   margin: 0;
   font-size: 1rem;
+  font-weight: 500;
 }
 
 .authors-location {
