@@ -54,7 +54,8 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  height: 350px;
+  height: 280px;
+  width: 300px;
   overflow: hidden;
 }
 
