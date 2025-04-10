@@ -46,7 +46,7 @@
 
 .carousels-tracks {
   display: flex;
-  animation: scroll 2400s linear infinite;
+  animation: scroll 3000s linear infinite;
   width: max-content; /* Ensure it can contain all cards */
 }
 
@@ -169,7 +169,7 @@
 @media (max-width: 480px) {
   .testimonials-cards {
     flex: 0 0 240px; /* Even smaller card width */
-    height: 400px;
+    height: 370px;
   }
   
   .testimonials-quotes {
