@@ -4,11 +4,11 @@
   --primary-dark: #553C9A;
   --text-dark: #2D3748;
   --text-medium: #4A5568;
-  --text-light: #E2E8F0;
+  --text-light: #ffffff;
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
+  --spacing-lg: 2rem; 
   --spacing-xl: 3rem;
   --border-radius-sm: 8px;
   --border-radius-md: 16px;
@@ -32,7 +32,7 @@
   overflow: hidden;
   border-radius: var(--border-radius-sm);
   margin-top: 10px; /* Add a small margin at the top */
-  margin-bottom: -80px; /* Push content to the top */
+  margin-bottom: -60px; /* Push content to the top */
 }
 
 .content-image {
@@ -58,11 +58,13 @@
   overflow: hidden;
 }
 .InterviewProcessContentBox h4 {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--text-light);
   display: flex;
   align-items: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5)  ;
 }
 
 /* Hero section with improved responsiveness */
@@ -276,7 +278,6 @@
 .InterviewProcessContent {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: var(--spacing-lg);
 }
 
 .InterviewProcessContainer h2 {

@@ -197,7 +197,7 @@ export default function Home() {
         <section className="InterviewProcessContainerSection">
         <div className="InterviewProcessContainer">
   <div className="InterviewProcessHeader">
-    <h3>AI is Redefining and Elevating the Interview Experience</h3>
+    <h3>AI is Redefining and Elevating the <br /> Interview Experience</h3>
   </div>
   
   <div className="InterviewProcessContentWrapper">
@@ -209,7 +209,6 @@ export default function Home() {
             <img src={image1} alt="Discovering Opportunities" className="content-image" loading="lazy" />
           </div>
           <h4>
-            <Search size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
             Discovering Opportunities
           </h4>
         </div>
@@ -220,7 +219,6 @@ export default function Home() {
             <img src={image2} alt="Resume & Profile Building" className="content-image" loading="lazy" />
           </div>
           <h4>
-            <Search size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
             Resume & Profile Building
           </h4> 
         </div>
@@ -231,7 +229,6 @@ export default function Home() {
             <img src={image3} alt="Live-Interview Support" className="content-image" loading="lazy" />
           </div>
           <h4>
-            <Search size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
             Live-Interview Support
           </h4>
         </div>
@@ -242,7 +239,6 @@ export default function Home() {
             <img src={image4} alt="Post-Interview Review" className="content-image" loading="lazy" />
           </div>
           <h4>
-            <Search size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
             Post-Interview Review
           </h4>
         </div>
