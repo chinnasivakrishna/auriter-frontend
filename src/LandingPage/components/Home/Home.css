@@ -24,7 +24,7 @@
 
 .content-image-container {
   width: 80%; /* Reduced from 100% to 80% */
-  max-width: 150px; /* Add max-width to limit the size */
+  max-width: 250px; /* Add max-width to limit the size */
   aspect-ratio: 1/1; /* This makes it a perfect square */
   display: flex;
   justify-content: center;
@@ -251,12 +251,12 @@
   gap: var(--spacing-lg);
 }
 
+/* Center-align the main heading for the interview process section */
 .InterviewProcessHeader {
   max-width: 100%;
   text-align: center;
   margin-bottom: var(--spacing-md);
 }
-
 
 .InterviewProcessHeader h3 {
   font-size: clamp(1.5rem, 3vw, 1.75rem);
@@ -264,8 +264,9 @@
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: var(--spacing-sm);
+  width: 100%;
+  text-align: center;
 }
-
 .InterviewProcessHeader .subtitle {
   font-size: 1.125rem;
   line-height: 1.5;
