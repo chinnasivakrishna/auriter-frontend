@@ -29,7 +29,7 @@
 }
 
 .faq-question {
-  padding: 1.5rem;
+  padding: 1rem;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -70,7 +70,7 @@
 
 .faq-item.active .faq-answer {
   max-height: 500px;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
 }
 
 /* Responsive styles */
