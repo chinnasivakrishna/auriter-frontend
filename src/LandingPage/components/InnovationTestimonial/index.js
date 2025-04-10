@@ -1,10 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./InnovationTestimonial.css";
 
 export default function InnovationTestimonial() {
   const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if we're on a mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const testimonials = [
     {
@@ -81,8 +98,8 @@ export default function InnovationTestimonial() {
     }
   ];
 
-  // Create a large array of repeated testimonials
-  const REPETITIONS = 100;
+  // Adjust number of repetitions based on screen size
+  const REPETITIONS = isMobile ? 50 : 100;
   const repeatedTestimonials = Array(REPETITIONS).fill().flatMap(() => testimonials);
 
   return (
@@ -90,8 +107,14 @@ export default function InnovationTestimonial() {
       <div className="testimonials-contents">
         <div className="testimonials-headers">
           <h2 className="titles">
-            Success Stories: How Airuter's AI<br />
-            Transformed Careers
+            {isMobile ? (
+              "Success Stories: How Airuter's AI Transformed Careers"
+            ) : (
+              <>
+                Success Stories: How Airuter's AI<br />
+                Transformed Careers
+              </>
+            )}
           </h2>
         </div>
 
@@ -99,6 +122,9 @@ export default function InnovationTestimonial() {
           className="carousels-wrappers"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          // For touch devices
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
         >
           <div
             className={`carousels-tracks ${
