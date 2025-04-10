@@ -66,8 +66,6 @@
   align-items: center;
 }
 
-
-
 /* Hero section with improved responsiveness */
 .hero {
   display: flex;
@@ -256,6 +254,7 @@
   max-width: 100%;
   text-align: center;
   margin-bottom: var(--spacing-md);
+  width: 100%;
 }
 
 .InterviewProcessHeader h3 {
@@ -267,6 +266,7 @@
   width: 100%;
   text-align: center;
 }
+
 .InterviewProcessHeader .subtitle {
   font-size: 1.125rem;
   line-height: 1.5;
@@ -338,8 +338,6 @@
   color: var(--text-dark);
   font-weight: 700;
 }
-
-
 
 .InterviewProcessList2 {
   display: flex;
