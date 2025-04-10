@@ -25,7 +25,7 @@
 /* Content image styles with improved responsiveness */
 .content-image-container {
   width: 100%;
-  height: 180px;
+  height: 200px; /* Increased from 180px */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,6 +55,7 @@
   display: flex;
   flex-direction: column;
   height: 280px;
+  width: 100%; /* Ensuring full width within the container */
   overflow: hidden;
 }
 
@@ -251,7 +252,7 @@
 
 .InterviewProcessContent {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); /* Increased from 300px */
   gap: var(--spacing-lg);
 }
 
@@ -302,6 +303,8 @@
 .InterviewProcess img {
   max-width: 90%;
   height: auto;
+  min-height: 450px; /* Increased height */
+  object-fit: contain; /* Added to maintain aspect ratio */
   border-radius: var(--border-radius-md);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -349,7 +352,6 @@
   color: var(--text-dark);
   font-weight: 700;
 }
-
 
 
 .InterviewProcessList2 {
@@ -785,6 +787,14 @@
   .Home-headers {
     width: 100%;
   }
+  
+  .content-image-container {
+    height: 220px; /* Increased height for mobile */
+  }
+  
+  .InterviewProcess img {
+    min-height: 320px; /* Adjusted for mobile */
+  }
 }
 
 @media (max-width: 480px) {
@@ -810,7 +820,7 @@
   }
   
   .content-image-container {
-    height: 150px;
+    height: 180px;
   }
   
   .testimonial-cards {
