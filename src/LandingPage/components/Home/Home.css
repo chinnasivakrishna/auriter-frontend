@@ -47,10 +47,8 @@
 
 /* Interview process content box with improved spacing */
 .InterviewProcessContentBox {
-  background-color: #F9FAFB;
   border-radius: var(--border-radius-md);
   padding: var(--spacing-md);
-  border-left: 4px solid var(--primary-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -68,10 +66,7 @@
   align-items: center;
 }
 
-.InterviewProcessContentBox:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(107, 70, 193, 0.15);
-}
+
 
 /* Hero section with improved responsiveness */
 .hero {

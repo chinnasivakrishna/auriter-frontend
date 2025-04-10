@@ -9,10 +9,10 @@ import demoVideo from "../Airuter.mp4";
 import interviewProcess from "../images/Airuter-Support-Interview Journey.png";
 import { Search, FileText, MessageCircle, Video } from 'lucide-react';
 import aitotaLogo from "../images/aitota__logo.png";
-import image1 from "../images/image1.jpeg";
-import image2 from "../images/image2.jpeg";
-import image3 from "../images/image3.jpeg";
-import image4 from "../images/image4.jpeg";
+import image1 from "../images/discovering1.png";
+import image2 from "../images/resumebbuilder2.png";
+import image3 from "../images/Live-Interview.png";
+import image4 from "../images/postinterview1.jpeg";
 
 // Import company logos
 import dailaiLogo from "../images/DailAi_Logo.png";
