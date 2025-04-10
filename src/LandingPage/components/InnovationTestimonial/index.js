@@ -99,7 +99,7 @@ export default function InnovationTestimonial() {
   ];
 
   // Adjust number of repetitions based on screen size
-  const REPETITIONS = isMobile ? 50 : 100;
+  const REPETITIONS =  100;
   const repeatedTestimonials = Array(REPETITIONS).fill().flatMap(() => testimonials);
 
   return (

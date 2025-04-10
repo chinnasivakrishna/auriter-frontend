@@ -113,7 +113,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: var(--spacing);
+  gap: var(--spacing-lg);
   width: 100%;
 }
 
@@ -704,6 +704,7 @@
   .metrics {
     justify-content: center;
     flex-wrap: wrap;
+    gap: var(--spacing);
   }
 
   .separator {
