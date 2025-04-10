@@ -56,6 +56,7 @@
   flex-direction: column;
   height: 280px;
   overflow: hidden;
+  width: 100%;
 }
 
 .InterviewProcessContentBox h4 {
@@ -236,24 +237,28 @@
   background-color: white;
   border-radius: var(--border-radius-xl);
   margin-bottom: 60px;
-  gap: clamp(1.5rem, 3vw, 3rem);
+  gap: clamp(1rem, 2vw, 2rem); /* Reduced gap to provide more space for content */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-  max-width: 1200px;
+  max-width: 1300px; /* Increased from 1200px */
   margin-left: auto;
   margin-right: auto;
 }
 
 .InterviewProcessText {
-  flex: 3;
+  flex: 4; /* Increased from 3 to 4 to give more space */
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+  width: 100%;
 }
 
 .InterviewProcessContent {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: var(--spacing-lg);
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .InterviewProcessHeader {
@@ -298,6 +303,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 300px;
 }
 
 .InterviewProcess img {
