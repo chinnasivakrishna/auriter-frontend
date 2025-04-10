@@ -46,7 +46,7 @@
 
 .carousels-tracks {
   display: flex;
-  animation: scroll 5000s linear infinite;
+  animation: scroll 10000s linear infinite;
   width: max-content; /* Ensure it can contain all cards */
 }
 

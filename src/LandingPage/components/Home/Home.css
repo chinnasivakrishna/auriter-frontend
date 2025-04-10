@@ -54,7 +54,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 350px;
   overflow: hidden;
 }
 
@@ -307,7 +307,6 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   border: 1px solid rgba(107, 70, 193, 0.1);
-  margin-top: 20px;
 }
 
 .InterviewProcess img:hover {
