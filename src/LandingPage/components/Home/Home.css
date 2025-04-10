@@ -25,7 +25,7 @@
 /* Content image styles with improved responsiveness */
 .content-image-container {
   width: 100%;
-  height: 200px; /* Increased from 180px */
+  height: 220px; /* Increased from 180px */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,8 +54,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  height: 280px;
-  width: 100%; /* Ensuring full width within the container */
+  height: 320px; /* Increased from 280px to accommodate larger image */
   overflow: hidden;
 }
 
@@ -252,7 +251,7 @@
 
 .InterviewProcessContent {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); /* Increased from 300px */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: var(--spacing-lg);
 }
 
@@ -301,14 +300,14 @@
 }
 
 .InterviewProcess img {
-  max-width: 90%;
+  max-width: 100%; /* Changed from 90% to 100% to increase the width */
   height: auto;
-  min-height: 450px; /* Increased height */
-  object-fit: contain; /* Added to maintain aspect ratio */
+  max-height: 500px; /* Added to increase the height */
   border-radius: var(--border-radius-md);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   border: 1px solid rgba(107, 70, 193, 0.1);
+  object-fit: contain; /* Ensures the image maintains its aspect ratio */
 }
 
 .InterviewProcess img:hover {
@@ -352,6 +351,7 @@
   color: var(--text-dark);
   font-weight: 700;
 }
+
 
 
 .InterviewProcessList2 {
@@ -787,14 +787,6 @@
   .Home-headers {
     width: 100%;
   }
-  
-  .content-image-container {
-    height: 220px; /* Increased height for mobile */
-  }
-  
-  .InterviewProcess img {
-    min-height: 320px; /* Adjusted for mobile */
-  }
 }
 
 @media (max-width: 480px) {
@@ -816,11 +808,11 @@
   
   .InterviewProcessContentBox {
     height: auto;
-    min-height: 280px;
+    min-height: 320px; /* Increased from 280px */
   }
   
   .content-image-container {
-    height: 180px;
+    height: 180px; /* Kept same as original for mobile */
   }
   
   .testimonial-cards {
