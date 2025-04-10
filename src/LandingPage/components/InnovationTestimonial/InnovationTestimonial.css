@@ -46,7 +46,7 @@
 
 .carousels-tracks {
   display: flex;
-  animation: scroll 3000s linear infinite;
+  animation: scroll 5000s linear infinite;
   width: max-content; /* Ensure it can contain all cards */
 }
 
@@ -65,7 +65,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
-  height: 370px;
+  height: 380px;
   display: flex;
   flex-direction: column;
   overflow: hidden; /* Prevent content from spilling out */
