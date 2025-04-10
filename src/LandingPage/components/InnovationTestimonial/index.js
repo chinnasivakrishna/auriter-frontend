@@ -107,14 +107,8 @@ export default function InnovationTestimonial() {
       <div className="testimonials-contents">
         <div className="testimonials-headers">
           <h2 className="titles">
-            {isMobile ? (
-              "Success Stories: How Airuter's AI Transformed Careers"
-            ) : (
-              <>
-                Success Stories: How Airuter's AI<br />
-                Transformed Careers
-              </>
-            )}
+              Airuter's AI Transforming Careers
+           
           </h2>
         </div>
 
