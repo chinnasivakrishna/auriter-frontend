@@ -46,7 +46,7 @@
 
 .carousels-tracks {
   display: flex;
-  animation: scroll 2000s linear infinite;
+  animation: scroll 2400s linear infinite;
   width: max-content; /* Ensure it can contain all cards */
 }
 
@@ -65,7 +65,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
-  height: 400px;
+  height: 370px;
   display: flex;
   flex-direction: column;
   overflow: hidden; /* Prevent content from spilling out */
@@ -169,7 +169,7 @@
 @media (max-width: 480px) {
   .testimonials-cards {
     flex: 0 0 240px; /* Even smaller card width */
-    height: 300px;
+    height: 400px;
   }
   
   .testimonials-quotes {
