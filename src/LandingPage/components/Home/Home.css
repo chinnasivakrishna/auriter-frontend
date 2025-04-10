@@ -23,14 +23,16 @@
 }
 
 .content-image-container {
-  width: 80%; /* Reduced from 100% to 80% */
-  max-width: 400px; /* Add max-width to limit the size */
-  aspect-ratio: 1/1; /* This makes it a perfect square */
+  width: 80%;
+  max-width: 400px;
+  aspect-ratio: 1/1;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   border-radius: var(--border-radius-sm);
+  margin-top: 10px; /* Add a small margin at the top */
+  margin-bottom: auto; /* Push content to the top */
 }
 
 .content-image {
@@ -50,12 +52,11 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  height: auto; /* Change from fixed 280px to auto */
-  min-height: 320px; /* Add min-height to ensure sufficient space */
+  height: auto;
+  min-height: 280px; /* Reduced from 320px to 280px */
   width: 100%;
   overflow: hidden;
 }
-
 .InterviewProcessContentBox h4 {
   font-size: 1.25rem;
   font-weight: 700;
@@ -412,6 +413,7 @@
   padding: clamp(3rem, 6vw, 4rem) 0;
   position: relative;
   width: 100%;
+  margin-bottom: 40px;
 }
 
 .testimonialsContainers::before {

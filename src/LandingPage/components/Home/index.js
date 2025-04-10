@@ -10,7 +10,7 @@ import interviewProcess from "../images/Airuter-Support-Interview Journey.png";
 import { Search, FileText, MessageCircle, Video } from 'lucide-react';
 import aitotaLogo from "../images/aitota__logo.png";
 import image1 from "../images/discovering1.png";
-import image2 from "../images/resumebbuilder2.png";
+import image2 from "../images/resumebuilder1.jpeg";
 import image3 from "../images/Live-Interview.png";
 import image4 from "../images/postinterview1.jpeg";
 
