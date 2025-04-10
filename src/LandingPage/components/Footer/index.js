@@ -20,22 +20,23 @@ const Footer = () => {
         </p>
         <ul className="social-icons">
           <li>
-            <FaInstagram />
+            <FaInstagram aria-label="Instagram" />
           </li>
           <li>
-            <FaFacebookF />
+            <FaFacebookF aria-label="Facebook" />
           </li>
           <li>
-            <FaXTwitter /> {/* Updated Twitter icon to X */}
+            <FaXTwitter aria-label="X" /> {/* Updated Twitter icon to X */}
           </li>
           <li>
-            <FaLinkedin />
+            <FaLinkedin aria-label="LinkedIn" />
           </li>
           <li>
-            <FaYoutube />
+            <FaYoutube aria-label="YouTube" />
           </li>
         </ul>
       </div>
+      
       {/* Office Container */}
       <div className="footer-section office">
         <h2>Address</h2>

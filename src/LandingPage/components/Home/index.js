@@ -198,11 +198,8 @@ export default function Home() {
           <div className="InterviewProcessContainer">
             <div className="InterviewProcessText">
               <div className="InterviewProcessHeader">
-                <p>AI INTERVIEW JOURNEY</p>
                 <h3>How AI Supports the Interview Journey</h3>
-                <p className="subtitle">
-                  Our AI-powered platform guides you through every phase of the hiring process
-                </p>
+                
               </div>
               
               <div className="InterviewProcessContent">
