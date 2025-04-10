@@ -46,7 +46,7 @@
 
 .carousels-tracks {
   display: flex;
-  animation: scroll 1600s linear infinite;
+  animation: scroll 2000s linear infinite;
   width: max-content; /* Ensure it can contain all cards */
 }
 
@@ -143,7 +143,7 @@
   .testimonials-cards {
     flex: 0 0 280px; /* Smaller card width for mobile */
     padding: 16px; /* Reduced padding */
-    height: 440px; /* Smaller height */
+    height: 500px; /* Smaller height */
     margin: 0 10px; /* Reduced margin */
   }
 

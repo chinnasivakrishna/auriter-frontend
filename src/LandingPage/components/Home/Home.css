@@ -108,13 +108,13 @@
   font-weight: 700;
 }
 
-/* Metrics section with improved alignment */
 .metrics {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: var(--spacing-lg);
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .metric {
@@ -703,12 +703,23 @@
 
   .metrics {
     justify-content: center;
-    flex-wrap: wrap;
-    gap: var(--spacing);
+    gap: var(--spacing-md);
+    padding: 0.5rem 0;
   }
-
-  .separator {
-    display: none;
+  
+  .metric {
+    background-color: rgba(107, 70, 193, 0.05);
+    border-radius: var(--border-radius-sm);
+    padding: 0.75rem 1rem;
+    min-width: 140px;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .metric:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(107, 70, 193, 0.1);
   }
 
   .button-container {
@@ -786,12 +797,33 @@
     font-size: 1.75rem;
   }
   
+  .metrics {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+  }
+  
+  .metric {
+    width: calc(50% - 0.5rem);
+    min-width: 0;
+    flex-direction: column;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+  }
+  
   .metric-value {
     font-size: 1.5rem;
+    margin-bottom: 0.25rem;
   }
   
   .metric-label {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+  
+  .separator {
+    display: none;
   }
   
   .InterviewProcessContentBox {

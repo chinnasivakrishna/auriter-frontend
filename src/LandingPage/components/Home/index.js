@@ -293,7 +293,6 @@ export default function Home() {
                 autoPlay 
                 playsInline
                 loop
-                muted
                 controls
                 aria-label="Demo of AI-powered interview assistant"
                 loading="lazy"
