@@ -19,7 +19,7 @@
 .testimonials-headers {
   text-align: center;
   margin-bottom: 48px;
-  width: 80%;
+  width: 100%; /* Changed from 80% to 100% for better mobile layout */
 }
 
 .subtitles {
@@ -41,11 +41,13 @@
   position: relative;
   overflow: hidden;
   padding: 20px 0;
+  width: 100%; /* Ensure it takes full width */
 }
 
 .carousels-tracks {
   display: flex;
   animation: scroll 1200s linear infinite;
+  width: max-content; /* Ensure it can contain all cards */
 }
 
 .carousels-tracks.paused {
@@ -53,46 +55,44 @@
 }
 
 .testimonials-cards {
-  flex: 0 0 400px; /* Slightly reduced width from 450px */
+  flex: 0 0 400px; /* Base width for desktop */
   margin: 0 20px;
-  padding: 24px; /* Slightly reduced padding from 32px */
+  padding: 24px;
   color: white;
   backdrop-filter: blur(10px);
   border-radius: 12px;
-  background: rgba(107, 70, 193, 0.2); /* Light purple background */
+  background: rgba(107, 70, 193, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
-  height: 350px; /* Fixed height reduced from 380px */
+  height: 350px;
   display: flex;
   flex-direction: column;
+  overflow: hidden; /* Prevent content from spilling out */
 }
 
 .feature-tag {
   font-weight: 700;
   font-size: 1.125rem;
-  margin-bottom: 12px; /* Reduced from 16px */
+  margin-bottom: 12px;
   color: #FFF176; /* Light yellow for visibility */
 }
-
-
 
 .testimonials-quotes {
   font-weight: 500;
   margin: 0 0 4px 0;
-  opacity: 0.4;
+  opacity: 0.9; /* Increased from 0.4 for better readability */
   font-size: 1rem;
   flex: 1;
+  overflow-y: auto; /* Allow scrolling if content is too long */
 }
-
-
 
 .testimonials-authors {
   display: flex;
   align-items: center;
   gap: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding-top: 12px; /* Reduced from 16px */
+  padding-top: 12px;
   margin-top: auto;
 }
 
@@ -106,16 +106,14 @@
   font-size: 1rem;
 }
 
-.authors-position {
+.authors-position, .authors-location {
   font-weight: 500;
   margin: 0 0 4px 0;
   font-size: 0.95rem;
 }
 
 .authors-location {
-  font-weight: 500;
-  margin: 0;
-  font-size: 0.95rem;
+  margin-bottom: 0;
 }
 
 @keyframes scroll {
@@ -127,26 +125,56 @@
   }
 }
 
-/* Responsive adjustments */
+/* Improved responsive adjustments */
 @media (max-width: 768px) {
   .testimonials-containers {
     padding: 32px 16px;
+    min-height: 500px; /* Reduced minimum height */
+  }
+
+  .testimonials-headers {
+    margin-bottom: 24px; /* Reduced margin */
   }
 
   .titles {
-    font-size: 1.75rem;
+    font-size: 1.5rem; /* Further reduced font size */
   }
 
   .testimonials-cards {
-    flex: 0 0 300px;
-    padding: 24px;
+    flex: 0 0 280px; /* Smaller card width for mobile */
+    padding: 16px; /* Reduced padding */
+    height: 320px; /* Smaller height */
+    margin: 0 10px; /* Reduced margin */
+  }
+
+  .feature-tag {
+    font-size: 1rem;
+    margin-bottom: 8px;
   }
 
   .testimonials-quotes {
-    font-size: 1.125rem;
+    font-size: 0.875rem; /* Smaller font size */
   }
   
+  .authors-names {
+    font-size: 0.9rem;
+  }
   
+  .authors-position, .authors-location {
+    font-size: 0.8rem;
+  }
+}
+
+/* Even smaller screens */
+@media (max-width: 480px) {
+  .testimonials-cards {
+    flex: 0 0 240px; /* Even smaller card width */
+    height: 300px;
+  }
+  
+  .testimonials-quotes {
+    font-size: 0.8rem;
+  }
 }
 
 /* Ensure smooth transitions */

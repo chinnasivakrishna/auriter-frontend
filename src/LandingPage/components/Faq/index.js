@@ -1,90 +1,27 @@
-// "use client";
-
-// import { useState } from "react";
-// import "./Faq.css";
-// export default function Faq() {
-//   const [expandedIndex, setExpandedIndex] = useState(null);
-
-//   const faqs = [
-//     {
-//       question: "Is interview transcription available?",
-//       answer: `In adherence to data privacy protection standards, Final Round AI does not retain interview transcriptions. `,
-//     },
-//     {
-//       question: "Is interview transcription available?",
-//       answer: `In adherence to data privacy protection standards, Final Round AI does not retain interview transcriptions. `,
-//     },
-//     {
-//       question: "Is interview transcription available?",
-//       answer: `In adherence to data privacy protection standards, Final Round AI does not retain interview transcriptions. `,
-//     },
-//     {
-//       question: "Is interview transcription available?",
-//       answer: `In adherence to data privacy protection standards, Final Round AI does not retain interview transcriptions. `,
-//     },
-//     {
-//       question: "Is interview transcription available?",
-//       answer: `In adherence to data privacy protection standards, Final Round AI does not retain interview transcriptions. `,
-//     },
-//     {
-//       question: "Is interview transcription available?",
-//       answer: `In adherence to data privacy protection standards, Final Round AI does not retain interview transcriptions. `,
-//     },
-//     {
-//       question: "Is interview transcription available?",
-//       answer: `In adherence to data privacy protection standards, Final Round AI does not retain interview transcriptions. `,
-//     },
-//     {
-//       question: "Is interview transcription available?",
-//       answer: `In adherence to data privacy protection standards, Final Round AI does not retain interview transcriptions. `,
-//     },
-//   ];
-
-//   const toggleFAQ = (index) => {
-//     setExpandedIndex(expandedIndex === index ? null : index);
-//   };
-
-//   return (
-//     <div className="faq-container">
-//       <div>
-//         <div className="InterviewProcessHeader">
-//           <p>From Day One to Final Rounds</p>
-//           <h2>
-//             A suite of AI tools to navigate through this difficult recruiting
-//             season
-//           </h2>
-//         </div>
-
-//         <div className="faq-list">
-//           {faqs.map((faq, index) => (
-//             <div key={index} className="faq-item">
-//               <button onClick={() => toggleFAQ(index)} className="faq-question">
-//                 <span>{faq.question}</span>
-//                 <span className="faq-icon">
-//                   {expandedIndex === index ? "−" : "+"}
-//                 </span>
-//               </button>
-
-//               {expandedIndex === index && (
-//                 <div className="faq-answer">
-//                   <p>{faq.answer}</p>
-//                 </div>
-//               )}
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Faq.css";
 
 export default function Faq() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if we're on a mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    // Initial check
+    checkMobile();
+    
+    // Add event listener for window resize
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const faqData = [
     {
@@ -110,17 +47,17 @@ export default function Faq() {
     {
       question: "Will I be charged after the free trial ends?",
       answer:
-        "No, you won’t be charged automatically. Since no credit card is required for the trial, you can explore Airuter risk-free.",
+        "No, you won't be charged automatically. Since no credit card is required for the trial, you can explore Airuter risk-free.",
     },
     {
       question: "Can I download the Interview Report later?",
       answer:
-        "Interview Reports must be viewed and saved immediately after the session. Once you leave the session without viewing it, it won’t be available later due to our privacy protocols.",
+        "Interview Reports must be viewed and saved immediately after the session. Once you leave the session without viewing it, it won't be available later due to our privacy protocols.",
     },
     {
       question: "Are there any limitations during the free trial period?",
       answer:
-        "None at all! You’ll get full access to every feature so you can evaluate the platform thoroughly before committing.",
+        "None at all! You'll get full access to every feature so you can evaluate the platform thoroughly before committing.",
     },
   ];
 
@@ -131,7 +68,7 @@ export default function Faq() {
   return (
     <>
       <div style={{ margin: "0px auto" }} className="InterviewProcessHeader">
-        
+        <h1 className="faq-heading">Frequently Asked Questions</h1>
       </div>
       <div className="faq-container">
         {faqData.map((item, index) => (
@@ -143,7 +80,7 @@ export default function Faq() {
               className="faq-question"
               onClick={() => toggleAccordion(index)}
             >
-              {item.question}
+              <span>{item.question}</span>
               <span className="faq-icon">
                 {activeIndex === index ? "−" : "+"}
               </span>

@@ -1,13 +1,37 @@
-/* Add these new styles for the content images */
+/* Base responsive container styles */
+:root {
+  --primary-color: #6B46C1;
+  --primary-dark: #553C9A;
+  --text-dark: #2D3748;
+  --text-medium: #4A5568;
+  --text-light: #E2E8F0;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 20px;
+  --border-radius-xl: 30px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Content image styles with improved responsiveness */
 .content-image-container {
   width: 100%;
-  height: 180px; /* Fixed height to make images square */
+  height: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: var(--spacing-sm);
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: var(--border-radius-sm);
 }
 
 .content-image {
@@ -21,24 +45,24 @@
   transform: scale(1.05);
 }
 
-/* Update the InterviewProcessContentBox to accommodate images */
+/* Interview process content box with improved spacing */
 .InterviewProcessContentBox {
   background-color: #F9FAFB;
-  border-radius: 16px;
-  padding: 1.5rem;
-  border-left: 4px solid #6B46C1;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  border-left: 4px solid var(--primary-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  height: 280px; /* Adjusted height for square images */
+  height: 280px;
   overflow: hidden;
 }
 
 .InterviewProcessContentBox h4 {
   font-size: 1.25rem;
-  font-weight: 700; /* Made all headings bold */
+  font-weight: 700;
   margin-bottom: 0.75rem;
-  color: #2D3748;
+  color: var(--text-dark);
   display: flex;
   align-items: center;
 }
@@ -48,29 +72,16 @@
   box-shadow: 0 10px 20px rgba(107, 70, 193, 0.15);
 }
 
-/* Make the content responsive */
-@media (max-width: 768px) {
-  .InterviewProcessContentBox {
-    height: auto;
-    min-height: 280px;
-  }
-  
-  .content-image-container {
-    margin-top: 0.5rem;
-    height: 150px; /* Smaller square for mobile */
-  }
-}
-
-/* Rest of your existing CSS remains unchanged */
+/* Hero section with improved responsiveness */
 .hero {
   display: flex;
-  flex-direction: row-reverse; /* Reverse the order: image first, then content */
+  flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem 10px;
-  margin: 0px auto;
+  padding: 6rem 2rem;
+  margin: 0 auto;
   max-width: 1200px;
-  gap: 2rem;
+  gap: var(--spacing-lg);
 }
 
 .hero-image-container {
@@ -78,6 +89,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 600px;
 }
 
 .hero-content {
@@ -85,22 +97,24 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 500px;
+  max-width: 550px;
 }
 
 .hero h1 {
-  font-size: 2.25rem;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
   line-height: 1.2;
-  margin-bottom: 2rem;
-  color: #2D3748; /* Dark gray */
-  font-weight: 700; /* Made hero heading bold */
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-dark);
+  font-weight: 700;
 }
 
+/* Metrics section with improved alignment */
 .metrics {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 2rem;
+  gap: var(--spacing-lg);
+  width: 100%;
 }
 
 .metric {
@@ -111,68 +125,80 @@
 }
 
 .metric-value {
-  font-size: 2rem; /* Increased from 1.5rem to 2rem */
-  font-weight: 700; /* Made slightly bolder for emphasis */
-  color: #6B46C1; /* Purple color */
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--primary-color);
 }
 
 .metric-label {
-  color: #4A5568; /* Medium gray */
+  color: var(--text-medium);
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
 }
 
 .separator {
   width: 1px;
   height: 40px;
-  background: #E2E8F0; /* Light gray */
+  background: var(--text-light);
 }
 
-/* New button container styles */
+/* Button container with improved alignment */
 .button-container {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-sm);
   margin: 1.7rem 0;
+  width: 100%;
+  max-width: 450px;
 }
 
 .cta-button {
-  background: #6B46C1; /* Purple color */
+  background: var(--primary-color);
   color: white;
   border: none;
-  padding: 1rem 2rem;
-  border-radius: 8px;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--border-radius-sm);
   font-size: 1.125rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
-  margin: 0; /* Remove margin since it's handled by container */
+  transition: background 0.2s, transform 0.2s;
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .try-free-button {
   background: transparent;
-  color: #6B46C1;
-  border: 1px solid #6B46C1;
-  padding: 0.75rem 1.5rem; /* Smaller padding */
-  border-radius: 8px;
-  font-size: 0.95rem; /* Smaller font */
-  font-weight: 500; /* Slightly less bold */
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .try-free-button:hover {
   background: rgba(107, 70, 193, 0.1);
   box-shadow: 0 2px 4px rgba(107, 70, 193, 0.1);
+  transform: translateY(-2px);
 }
 
 .cta-button:hover {
-  background: #553C9A; /* Darker purple */
+  background: var(--primary-dark);
   box-shadow: 0 4px 6px rgba(107, 70, 193, 0.2);
+  transform: translateY(-2px);
 }
 
 .subtitle {
-  color: #4A5568; /* Medium gray */
-  font-size: 1.125rem;
+  color: var(--text-medium);
+  font-size: clamp(0.95rem, 2vw, 1.125rem);
+  line-height: 1.6;
 }
 
+/* Demo image with improved responsiveness */
 .demo-image {
   width: 100%;
   max-width: 600px;
@@ -182,16 +208,23 @@
 .demo-image img {
   width: 100%;
   height: auto;
-  border-radius: 12px;
+  border-radius: var(--border-radius-md);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
+.demo-image img:hover {
+  transform: scale(1.02);
+}
+
+/* Interview process container section with improved layout */
 .InterviewProcessContainerSection {
   position: relative;
   top: auto;
   height: auto;
-  padding: 10px;
+  padding: 0 var(--spacing-sm);
   margin-bottom: 40px;
+  width: 100%;
 }
 
 .InterviewProcessContainer {
@@ -199,31 +232,34 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 4rem 3rem;
+  padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 3vw, 3rem);
   background-color: white;
-  border-radius: 30px;
+  border-radius: var(--border-radius-xl);
   margin-bottom: 60px;
-  gap: 3rem;
+  gap: clamp(1.5rem, 3vw, 3rem);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .InterviewProcessText {
   flex: 3;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--spacing-md);
 }
 
 .InterviewProcessContent {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--spacing-lg);
 }
 
 .InterviewProcessHeader {
   max-width: 100%;
   text-align: left;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-md);
 }
 
 .InterviewProcessHeader p {
@@ -236,25 +272,25 @@
 }
 
 .InterviewProcessHeader h3 {
-  font-size: 1.75rem;
+  font-size: clamp(1.5rem, 3vw, 1.75rem);
   line-height: 1.3;
-  font-weight: 700; /* Made all headings bold */
-  color: #2D3748;
-  margin-bottom: 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-sm);
 }
 
 .InterviewProcessHeader .subtitle {
   font-size: 1.125rem;
   line-height: 1.5;
-  color: #4A5568;
+  color: var(--text-medium);
   font-weight: normal;
 }
 
 .InterviewProcessContainer h2 {
-  font-size: 2.375rem;
+  font-size: clamp(1.75rem, 3.5vw, 2.375rem);
   letter-spacing: -0.0475rem;
   line-height: 110%;
-  font-weight: 700; /* Made all headings bold */
+  font-weight: 700;
 }
 
 .InterviewProcess {
@@ -265,9 +301,9 @@
 }
 
 .InterviewProcess img {
-  max-width: 90%; /* Decreased from 100% */
+  max-width: 90%;
   height: auto;
-  border-radius: 16px;
+  border-radius: var(--border-radius-md);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   border: 1px solid rgba(107, 70, 193, 0.1);
@@ -277,47 +313,18 @@
   transform: scale(1.02);
 }
 
-.separators {
-  max-width: 11vw;
-  height: 0.125rem;
-  width: 100%;
-  background-color: rgb(107 114 128 / 0.5);
-  margin-top: 50px;
-}
-
-.InterviewProcessList {
-  list-style: none;
-}
-
-.InterviewProcessList li:first-child {
-  font-size: 1.875rem;
-  letter-spacing: -0.0475rem;
-  line-height: 112%;
-  margin-bottom: 3rem;
-  font-weight: 700; /* Made all headings bold */
-  background: none;
-  text-align: center;
-}
-
-.InterviewProcessList li {
-  margin-bottom: 0.25rem;
-  padding: 1rem 2rem;
-  border-radius: 2rem;
-  background: #fff;
-  text-align: center;
-}
-
+/* Second interview process container with improved layout */
 .InterviewProcessContainer2 {
   position: relative;
   top: 0;
   display: flex;
   flex-direction: row;
-  padding: 60px 40px;
+  padding: clamp(30px, 5vw, 60px) clamp(20px, 4vw, 40px);
   background-color: white;
-  border-radius: 30px;
+  border-radius: var(--border-radius-xl);
   max-width: 1200px;
   margin: 0 auto;
-  gap: 40px;
+  gap: clamp(20px, 4vw, 40px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
@@ -332,60 +339,60 @@
 }
 
 .InterviewProcessHeaderContainer2 {
-  margin-bottom: 20px; /* Reduced margin to bring content closer */
+  margin-bottom: 20px;
 }
 
 .InterviewProcessHeaderContainer2 h2 {
-  margin-bottom: 20px; /* Reduced margin */
-  font-size: 2.375rem;
+  margin-bottom: 20px;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
   letter-spacing: -.0475rem;
   line-height: 1.2;
-  font-weight: 700; /* Made all headings bold */
+  color: var(--text-dark);
+  font-weight: 700;
 }
 
-.InterviewProcessHeader2 {
-  border-radius: 2rem;
-  background: #6B46C1;
-  display: flex;
-  justify-self: flex-start;
-  margin-bottom: 40px;
-}
 
-.InterviewProcessHeader2 h3 {
-  padding: 10px 20px;
-}
 
 .InterviewProcessList2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1.5rem; /* Reduced gap between items */
+  gap: var(--spacing-md);
   list-style: none;
 }
 
 .InterviewProcessList2 li {
-  margin-top: 10px; /* Reduced margin */
+  margin-top: 10px;
 }
 
-/* Make all h3 headings in the InterviewProcessList2 bold */
 .InterviewProcessList2 h3 {
   font-weight: 700;
-  margin-bottom: 8px; /* Add some space between heading and paragraph */
+  margin-bottom: 8px;
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  color: var(--text-dark);
+}
+
+.InterviewProcessList2 p {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  line-height: 1.6;
+  color: var(--text-medium);
 }
 
 .cta-button2 {
   padding: 15px 20px;
-  background-color: #6B46C1;
+  background-color: var(--primary-color);
   color: white;
   text-decoration: none;
   border-radius: 10px;
   transition: background 0.2s;
   display: inline-block;
   margin-top: 30px;
+  font-weight: 600;
+  text-align: center;
 }
 
 .cta-button2:hover {
-  background: #553C9A;
+  background: var(--primary-dark);
 }
 
 .InterviewProcessRight2 {
@@ -394,7 +401,7 @@
   max-width: 35.4rem;
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--border-radius-md);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -402,40 +409,22 @@
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: var(--border-radius-md);
   display: block;
 }
 
-.unmute-button {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.2s;
-}
-
-.unmute-button:hover {
-  background: rgba(0, 0, 0, 0.9);
-}
-
+/* Testimonials section with improved responsiveness */
 .testimonialsContainers {
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  background-color: #F7F9FE; /* Lighter background for better contrast */
-  padding: 4rem 0; /* Increased padding */
+  background-color: #F7F9FE;
+  padding: clamp(3rem, 6vw, 4rem) 0;
   position: relative;
+  width: 100%;
 }
 
-/* Add subtle background pattern */
 .testimonialsContainers::before {
   content: "";
   position: absolute;
@@ -449,73 +438,71 @@
   pointer-events: none;
 }
 
-/* Update testimonials styles */
+.testimonials-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-sm);
+  width: 100%;
+}
+
 .testimonials-container h1 {
-  font-size: 2.25rem;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 700;
-  color: #2D3748;
+  color: var(--text-dark);
   text-align: center;
-  margin-bottom: 3rem; /* Increased margin */
+  margin-bottom: var(--spacing-xl);
   line-height: 1.3;
-  padding: 0 1.5rem;
-  max-width: 900px; /* Limited width for better readability */
+  padding: 0 var(--spacing-md);
+  max-width: 900px;
 }
 
 .testimonials-scroll-wrapper {
   position: relative;
   overflow: hidden;
   white-space: nowrap;
-  padding: 20px 10px; /* Increased top/bottom padding */
+  padding: 20px 10px;
   margin-top: 20px;
-  width: 100%;
-}
-
-.testimonials-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem 0;
   width: 100%;
 }
 
 .testimonials-scroll-container {
   display: flex;
-  gap: 2.5rem; /* Increased gap between cards */
+  gap: 2.5rem;
   animation: scroll 2000s linear infinite;
   width: fit-content;
 }
 
 .testimonial-cards {
   flex-shrink: 0;
-  width: 400px;
-  height: 380px;
+  width: clamp(280px, 30vw, 400px);
+  height: clamp(350px, 40vw, 380px);
   background: white;
-  border-radius: 20px;
-  padding: 2rem; /* Increased padding */
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05); /* Enhanced shadow */
-  border: 1px solid rgba(107, 70, 193, 0.1); /* Subtle border */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(107, 70, 193, 0.1);
 }
 
 .testimonial-cards:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(107, 70, 193, 0.2); /* Enhanced shadow on hover */
+  box-shadow: 0 15px 30px rgba(107, 70, 193, 0.2);
 }
 
 .testimonial-header-tag {
   border-radius: 2rem;
-  padding: 0.75rem 1.25rem; /* Increased padding */
-  background: #6B46C1;
+  padding: 0.75rem 1.25rem;
+  background: var(--primary-color);
   display: inline-block;
   color: white;
   font-size: 0.875rem;
-  box-shadow: 0 4px 8px rgba(107, 70, 193, 0.3); /* Added shadow */
+  box-shadow: 0 4px 8px rgba(107, 70, 193, 0.3);
 }
 
 .testimonial-header-tag h3 {
@@ -539,25 +526,25 @@
   letter-spacing: -0.02rem;
   opacity: 0.8;
   font-weight: 600;
-  color: #4A5568;
-  font-size: 1rem;
+  color: var(--text-medium);
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
 }
 
 .testimonial-text {
-  font-size: 1.125rem;
-  color: #2D3748;
-  line-height: 1.6; /* Increased line height */
+  font-size: clamp(0.95rem, 1.8vw, 1.125rem);
+  color: var(--text-dark);
+  line-height: 1.6;
   height: 100%;
-  white-space: normal; /* Allow text to wrap */
+  white-space: normal;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 6; /* Limit to 6 lines */
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   margin: 0;
 }
 
 .testimonial-text b {
-  color: #6B46C1; /* Make bold text purple for emphasis */
+  color: var(--primary-color);
   font-weight: 700;
 }
 
@@ -566,7 +553,7 @@
   align-items: center;
   justify-content: flex-start;
   margin-top: 16px;
-  height: 50px; /* Fixed height for logo area */
+  height: 50px;
 }
 
 .company-logo {
@@ -574,13 +561,13 @@
   width: auto;
   max-width: 120px;
   object-fit: contain;
-  filter: grayscale(0); /* Remove grayscale filter */
-  opacity: 1; /* Full opacity */
+  filter: grayscale(0);
+  opacity: 1;
   transition: transform 0.3s ease;
 }
 
 .testimonial-cards:hover .company-logo {
-  transform: scale(1.05); /* Subtle scale on hover */
+  transform: scale(1.05);
 }
 
 @keyframes scroll {
@@ -592,7 +579,6 @@
   }
 }
 
-/* Add a pause on hover effect for the testimonial cards */
 .testimonials-scroll-container:hover {
   animation-play-state: paused;
 }
@@ -606,185 +592,10 @@
   scrollbar-width: none;
 }
 
-/* Add responsive styles for the testimonials section */
-@media (max-width: 768px) {
-  .testimonialsContainers {
-    padding: 3rem 0;
-  }
-  
-  .testimonials-container h1 {
-    font-size: 1.75rem;
-    padding: 0 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .testimonial-cards {
-    width: 300px;
-    height: 420px;
-    padding: 1.5rem;
-  }
-  
-  .testimonial-text {
-    font-size: 1rem;
-  }
-  
-  .testimonial-name {
-    font-size: 0.875rem;
-  }
-  
-  .company-logo-container {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    padding: 3rem 10px;
-    text-align: center;
-  }
-
-  .hero-content {
-    max-width: 100%;
-    align-items: center;
-    order: 2;
-  }
-
-  .hero h1 {
-    font-size: 2rem; /* Slightly reduced for mobile */
-  }
-
-  .hero-image-container {
-    order: 1;
-    margin-bottom: 2rem;
-  }
-
-  .metrics {
-    justify-content: center;
-  }
-
-  .metric {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .metric-value {
-    font-size: 1.75rem;
-  }
-
-  .separator {
-    display: none;
-  }
-
-  .demo-image {
-    width: 100%;
-    height: auto;
-  }
-
-  /* Updated mobile styles for buttons */
-  .button-container {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.75rem;
-  }
-  
-  .cta-button, .try-free-button {
-    width: 100%;
-  }
-
-  .InterviewProcessContainerSection {
-    position: static;
-    height: 100%;
-    padding: 10px;
-  }
-
-  .InterviewProcessContainer {
-    flex-direction: column;
-    padding: 2rem 1.5rem;
-    height: 100%;
-  }
-
-  .InterviewProcessText {
-    max-width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  .InterviewProcessContent {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .InterviewProcessHeader {
-    text-align: center;
-  }
-  
-  .InterviewProcessHeader h3 {
-    font-size: 1.5rem; /* Smaller on mobile */
-  }
-
-  .InterviewProcessContainer2 {
-    flex-direction: column;
-    padding: 30px 20px;
-    gap: 30px;
-  }
-  
-  .InterviewProcessHeaderContainer2 h2 {
-    font-size: 1.75rem; /* Smaller on mobile */
-  }
-
-  .InterviewProcessLeft2 {
-    width: 100%;
-    padding-right: 0;
-    margin-bottom: 20px;
-  }
-
-  .InterviewProcessRight2 {
-    width: 100%;
-    height: auto;
-    margin-top: 0;
-  }
-
-  .InterviewProcess {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .InterviewProcess img {
-    max-width: 100%;
-  }
-
-  .separators {
-    height: 3rem;
-    width: 0.125rem;
-    background-color: rgb(107 114 128 / 0.5);
-    margin-top: 10px;
-  }
-
-  .InterviewProcessList li:first-child {
-    margin-bottom: 1rem;
-  }
-  
-  .testimonial-cards {
-    width: 300px;
-    height: 420px;
-  }
-  
-  .company-logo-container {
-    justify-content: center;
-  }
-
-  .testimonial-text {
-    font-size: 1rem;
-  }
-
-  .testimonial-name {
-    font-size: 0.875rem;
-  }
-}
-
+/* Home containers with improved responsiveness */
 .Home-containers {
-  color: #2D3748;
-  padding: 64px 32px;
+  color: var(--text-dark);
+  padding: clamp(32px, 6vw, 64px) clamp(16px, 3vw, 32px);
   min-height: 600px;
   overflow: hidden;
 }
@@ -800,27 +611,27 @@
 
 .Home-headers {
   text-align: center;
-  margin-bottom: 64px;
-  width: 70%;
+  margin-bottom: clamp(32px, 6vw, 64px);
+  width: clamp(90%, 70%, 70%);
 }
 
 .Home-subtitles {
-  font-size: 1.125rem;
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
   opacity: 0.8;
   margin-bottom: 16px;
   font-weight: 500;
 }
 
 .Home-titles {
-  font-size: 2.25rem;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
   line-height: 1.2;
   margin: 0;
   font-weight: 700;
-  color: #2D3748;
+  color: var(--text-dark);
 }
 
 .Home-descriptions {
-  font-size: 1.125rem;
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
   line-height: 1.6;
   margin: 16px 0;
   font-weight: 500;
@@ -828,56 +639,180 @@
 
 .Home-features {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(16px, 3vw, 32px);
   width: 100%;
   margin-top: 48px;
 }
 
 .Home-feature-cards {
-  padding: 32px;
+  padding: clamp(20px, 3vw, 32px);
   background: white;
-  border-radius: 20px;
-  border: 1px solid #E2E8F0;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--text-light);
   box-shadow: 0 4px 6px rgba(107, 70, 193, 0.1);
 }
 
 .Home-feature-titles {
-  font-size: 1.25rem;
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
   font-weight: 700;
   margin-bottom: 16px;
-  color: #2D3748;
+  color: var(--text-dark);
 }
 
 .Home-feature-descriptions {
-  font-size: 1.125rem;
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
   line-height: 1.6;
-  color: #4A5568;
+  color: var(--text-medium);
   font-weight: 500;
 }
 
+/* Media queries for better responsiveness */
+@media (max-width: 992px) {
+  .InterviewProcessContainer {
+    padding: 3rem 2rem;
+  }
+  
+  .InterviewProcessContent {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .InterviewProcessList2 li {
+    margin-top: 5px;
+  }
+}
+
 @media (max-width: 768px) {
-  .Home-containers {
-    padding: 32px 16px;
+  .hero {
+    flex-direction: column;
+    padding: 3rem 1.5rem;
+    text-align: center;
   }
 
-  .Home-titles {
-    font-size: 1.75rem;
+  .hero-content {
+    max-width: 100%;
+    align-items: center;
+    order: 2;
   }
 
-  .Home-descriptions {
-    font-size: 1rem;
+  .hero-image-container {
+    order: 1;
+    margin-bottom: var(--spacing-lg);
+    max-width: 100%;
   }
 
-  .Home-features {
+  .metrics {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-button, .try-free-button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .InterviewProcessContainer {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+  }
+
+  .InterviewProcessText {
+    width: 100%;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .InterviewProcessContent {
     grid-template-columns: 1fr;
   }
 
-  .Home-feature-titles {
-    font-size: 1.125rem;
+  .InterviewProcessHeader {
+    text-align: center;
   }
 
-  .Home-feature-descriptions {
-    font-size: 1rem;
+  .InterviewProcessContainer2 {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .InterviewProcessLeft2 {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .InterviewProcessRight2 {
+    width: 100%;
+  }
+
+  .InterviewProcessHeaderContainer2 {
+    text-align: center;
+  }
+  
+  .InterviewProcessList2 {
+    text-align: center;
+  }
+
+  .testimonial-cards {
+    width: 300px;
+    height: auto;
+    min-height: 380px;
+  }
+  
+  .company-logo-container {
+    justify-content: center;
+  }
+
+  .Home-headers {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 2rem 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+  
+  .metric-value {
+    font-size: 1.5rem;
+  }
+  
+  .metric-label {
+    font-size: 0.875rem;
+  }
+  
+  .InterviewProcessContentBox {
+    height: auto;
+    min-height: 280px;
+  }
+  
+  .content-image-container {
+    height: 150px;
+  }
+  
+  .testimonial-cards {
+    width: 280px;
+    padding: 1.25rem;
+  }
+  
+  .testimonial-text {
+    font-size: 0.95rem;
+    -webkit-line-clamp: 5;
+  }
+  
+  .testimonialsContainers {
+    padding: 2rem 0;
   }
 }

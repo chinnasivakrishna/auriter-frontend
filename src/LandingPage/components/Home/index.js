@@ -95,21 +95,59 @@ export default function Home() {
     window.open(whatsappUrl, "_blank");
   };
 
-  // Optional: Check if we need to adjust for any gaps
+  // Calculate container width for proper scrolling animation
   useEffect(() => {
     const container = containerRef.current;
     if (container) {
       // This ensures the container width is properly calculated
-      const firstGroupWidth = container.children[0].offsetWidth * testimonials.length + 
-                              (4 * (testimonials.length - 1)); // account for gap
+      const testimonialCard = container.querySelector('.testimonial-cards');
+      if (testimonialCard) {
+        const cardWidth = testimonialCard.offsetWidth;
+        const cardMargin = parseInt(window.getComputedStyle(testimonialCard).marginRight);
+        const firstGroupWidth = (cardWidth + cardMargin) * testimonials.length;
+        
+        // Set a custom property that can be used in the CSS
+        document.documentElement.style.setProperty('--scroll-width', `${firstGroupWidth}px`);
+      }
+    }
+  }, []);
+
+  // Handle video playback
+  useEffect(() => {
+    if (videoRef.current) {
+      // Mute video by default for better autoplay experience
+      videoRef.current.muted = true;
       
-      // Set a custom property that can be used in the CSS
-      document.documentElement.style.setProperty('--scroll-width', `${firstGroupWidth}px`);
+      // Play video after load
+      const playVideo = () => {
+        if (videoRef.current) {
+          videoRef.current.play().catch(err => {
+            console.log('Video autoplay prevented:', err);
+          });
+        }
+      };
+      
+      // Handle visibility changes
+      const handleVisibilityChange = () => {
+        if (document.visibilityState === 'visible') {
+          playVideo();
+        } else if (videoRef.current) {
+          videoRef.current.pause();
+        }
+      };
+      
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+      playVideo();
+      
+      return () => {
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+      };
     }
   }, []);
 
   return (
-    <>
+    <div className="home-wrapper">
+      {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
           <h1>
@@ -136,7 +174,8 @@ export default function Home() {
           </div>
 
           <p className="subtitle">
-            Meet your AI hiring assistant – from resume creation to real-time video interview, Airuter empowers you to stand out and get hired.
+            Meet your AI hiring assistant – from resume creation to real-time video interview, 
+            Airuter empowers you to stand out and get hired.
           </p>
         </div>
         <div className="hero-image-container">
@@ -144,17 +183,26 @@ export default function Home() {
             <img
               src={demoImage}
               alt="Interview interface demo"
+              loading="eager"
             />
           </div>
         </div>
       </section>
+
+      {/* Companies Section */}
       <Companies />
-      <div style={{ position: "relative" }}>
+
+      {/* Interview Process Section */}
+      <div className="process-sections-container">
         <section className="InterviewProcessContainerSection">
           <div className="InterviewProcessContainer">
             <div className="InterviewProcessText">
               <div className="InterviewProcessHeader">
+                <p>AI INTERVIEW JOURNEY</p>
                 <h3>How AI Supports the Interview Journey</h3>
+                <p className="subtitle">
+                  Our AI-powered platform guides you through every phase of the hiring process
+                </p>
               </div>
               
               <div className="InterviewProcessContent">
@@ -164,7 +212,7 @@ export default function Home() {
                     Discovering Opportunities
                   </h4>
                   <div className="content-image-container">
-                    <img src={image1} alt="Discovering Opportunities" className="content-image" />
+                    <img src={image1} alt="Discovering Opportunities" className="content-image" loading="lazy" />
                   </div>
                 </div>
                 
@@ -174,7 +222,7 @@ export default function Home() {
                     Resume & Profile Building
                   </h4>
                   <div className="content-image-container">
-                    <img src={image2} alt="Resume & Profile Building" className="content-image" />
+                    <img src={image2} alt="Resume & Profile Building" className="content-image" loading="lazy" />
                   </div>
                 </div>
                 
@@ -184,7 +232,7 @@ export default function Home() {
                     Pre-Interview Confidence Boost
                   </h4>
                   <div className="content-image-container">
-                    <img src={image3} alt="Pre-Interview Confidence Boost" className="content-image" />
+                    <img src={image3} alt="Pre-Interview Confidence Boost" className="content-image" loading="lazy" />
                   </div>
                 </div>
                 
@@ -194,29 +242,29 @@ export default function Home() {
                     Live-Interview Support
                   </h4>
                   <div className="content-image-container">
-                    <img src={image4} alt="Live-Interview Support" className="content-image" />
+                    <img src={image4} alt="Live-Interview Support" className="content-image" loading="lazy" />
                   </div>
                 </div>
               </div>
             </div>
             
             <div className="InterviewProcess">
-              <img src={interviewProcess} alt="Interview journey visualization" />
+              <img 
+                src={interviewProcess} 
+                alt="Interview journey visualization" 
+                loading="lazy" 
+              />
             </div>
           </div>
         </section>
         
-        {/* Add spacing between sections */}
-        <div style={{ margin: "20px 0" }}></div>
-        
-        <section
-          className="InterviewProcessContainerSection"
-          style={{ marginBottom: "40px" }}
-        >
+        {/* AI Partner Section */}
+        <section className="InterviewProcessContainerSection">
           <div className="InterviewProcessContainer2">
             <div className="InterviewProcessLeft2">
               <div className="InterviewProcessHeaderContainer2">
-                <h2>AI-powered partner for every step of the hiring journey</h2>
+                
+                <h2>AI Powered partner for every step of the hiring journey</h2>
               </div>
               <div>
                 <ul className="InterviewProcessList2">
@@ -224,7 +272,8 @@ export default function Home() {
                     <div>
                       <h3>Ace Every Step of Your Interview Journey with AI</h3>
                       <p>
-                        From building standout resumes and preparing smarter to acing interviews with real-time guidance and post-interview insights.
+                        From building standout resumes and preparing smarter to acing interviews with real-time guidance 
+                        and post-interview insights.
                       </p>
                     </div>
                   </li>
@@ -237,6 +286,7 @@ export default function Home() {
                     </div>
                   </li>
                 </ul>
+                <a href="#contact" className="cta-button2">Get Started Today</a>
               </div>
             </div>
             <div className="InterviewProcessRight2">
@@ -246,14 +296,17 @@ export default function Home() {
                 autoPlay 
                 playsInline
                 loop
+                muted
                 controls
+                aria-label="Demo of AI-powered interview assistant"
+                loading="lazy"
               />
             </div>
           </div>
         </section>
       </div>
       
-      {/* testimonial */}
+      {/* Testimonials Section */}
       <section className="testimonialsContainers">
         <div className="testimonials-container">
           <h1>🚀 How Airuter's AI Transformed Hiring for Leading Companies!</h1>
@@ -280,6 +333,7 @@ export default function Home() {
                       className="company-logo"
                       src={testimonial.logo || "https://d12araoe7z5xxk.cloudfront.net/landing-page/images/questionBank/company1.png"}
                       alt={`${testimonial.name} logo`}
+                      loading="lazy"
                     />
                   </div>
                 </div>
@@ -289,13 +343,14 @@ export default function Home() {
         </div>
       </section>
       
+      {/* FAQ and Testimonial Sections */}
       <Faq />
-      <section style={{ padding: "10px" }}>
+      <section className="testimonial-section">
         <InovationTestimonial />
       </section>
-      <section>
+      <section className="superpower-section">
         <SuperpowerTestimonial />
       </section>
-    </>
+    </div>
   );
 }
