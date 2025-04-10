@@ -307,6 +307,7 @@
 }
 
 .InterviewProcess img {
+  margin-top: 60px;
   width: 100%;
   height: auto;
   border-radius: var(--border-radius-md);
