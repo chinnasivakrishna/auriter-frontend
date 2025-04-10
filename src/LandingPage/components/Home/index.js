@@ -226,20 +226,20 @@ export default function Home() {
                 <div className="InterviewProcessContentBox">
                   <h4>
                     <MessageCircle size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-                    Pre-Interview Confidence Boost
+                    Live-Interview Support
                   </h4>
                   <div className="content-image-container">
-                    <img src={image3} alt="Pre-Interview Confidence Boost" className="content-image" loading="lazy" />
+                    <img src={image3} alt="Live-Interview Support" className="content-image" loading="lazy" />
                   </div>
                 </div>
                 
                 <div className="InterviewProcessContentBox">
                   <h4>
                     <Video size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-                    Live-Interview Support
+                    Post-Interview Review
                   </h4>
                   <div className="content-image-container">
-                    <img src={image4} alt="Live-Interview Support" className="content-image" loading="lazy" />
+                    <img src={image4} alt="Post-Interview Review" className="content-image" loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -305,7 +305,7 @@ export default function Home() {
       {/* Testimonials Section */}
       <section className="testimonialsContainers">
         <div className="testimonials-container">
-          <h1>🚀 How Airuter's AI Transformed Hiring for Leading Companies!</h1>
+          <h1>Airuter's AI Transforming Hiring for Leading Companies!</h1>
           <div className="testimonials-scroll-wrapper">
             <div className="testimonials-scroll-container" ref={containerRef}>
               {repeatedTestimonials.map((testimonial, index) => (
