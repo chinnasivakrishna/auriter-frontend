@@ -307,7 +307,7 @@
 }
 
 .InterviewProcess img {
-  margin-top: 60px;
+  margin-top: var(--spacing-xl);
   width: 100%;
   height: auto;
   border-radius: var(--border-radius-md);
@@ -821,5 +821,8 @@
   
   .testimonialsContainers {
     padding: 2rem 0;
+  }
+  .InterviewProcess img {
+    margin-top: 0;
   }
 }
