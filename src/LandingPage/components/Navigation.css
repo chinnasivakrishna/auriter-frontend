@@ -40,7 +40,6 @@
 }
 
 .desktopNavList li {
-  color: #4A5568;
   cursor: pointer;
   transition: color 0.2s;
 }
