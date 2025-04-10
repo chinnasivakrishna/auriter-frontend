@@ -6,13 +6,13 @@
 }
 
 .heros-heading {
-  font-size: 2.25rem;
   text-align: center;
   color: #2D3748;
   max-width: 900px;
   margin: 0 auto 2rem;
-  font-weight: 500;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
   line-height: 1.2;
+  font-weight: 700;
 }
 
 .logos-scroll {
@@ -44,9 +44,7 @@
   transition: filter 0.3s ease;
 }
 
-.logo:hover {
-  filter: brightness(0) invert(0.4);
-}
+
 
 /* Company name styling */
 .company-name {

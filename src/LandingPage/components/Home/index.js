@@ -196,11 +196,12 @@ export default function Home() {
       <div className="process-sections-container">
         <section className="InterviewProcessContainerSection">
           <div className="InterviewProcessContainer">
-            <div className="InterviewProcessText">
-              <div className="InterviewProcessHeader">
+          <div className="InterviewProcessHeader">
                 <h3>AI is Redefining and Elevating the Interview Experience</h3>
                 
               </div>
+            <div className="InterviewProcessText">
+              
               
               <div className="InterviewProcessContent">
                 <div className="InterviewProcessContentBox">
