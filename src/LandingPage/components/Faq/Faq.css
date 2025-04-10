@@ -1,4 +1,5 @@
 .faq-container {
+  margin-top: 20px;
   max-width: 800px;
   margin: 2rem auto;
   padding: 0 1rem;
@@ -13,7 +14,6 @@
 }
 
 .faq-item {
-  margin-bottom: 1rem;
   border-radius: 12px;
   background: white;
   overflow: hidden;
@@ -85,7 +85,7 @@
   }
   
   .faq-item {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.25rem;
   }
   
   .faq-question {

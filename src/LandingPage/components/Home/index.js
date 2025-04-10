@@ -195,62 +195,63 @@ export default function Home() {
       {/* Interview Process Section */}
       <div className="process-sections-container">
         <section className="InterviewProcessContainerSection">
-        // From index.js - The complete InterviewProcessContainer structure
-<div className="InterviewProcessContainer">
-  <div className="InterviewProcessText">
-    <div className="InterviewProcessHeader">
-      <h3>AI is Redefining and Elevating the Interview Experience</h3>
-    </div>
-    
-    <div className="InterviewProcessContent">
-      <div className="InterviewProcessContentBox">
-        <h4>
-          <Search size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-          Discovering Opportunities
-        </h4>
-        <div className="content-image-container">
-          <img src={image1} alt="Discovering Opportunities" className="content-image" loading="lazy" />
-        </div>
-      </div>
-      
-      <div className="InterviewProcessContentBox">
-        <h4>
-          <FileText size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-          Resume & Profile Building
-        </h4>
-        <div className="content-image-container">
-          <img src={image2} alt="Resume & Profile Building" className="content-image" loading="lazy" />
-        </div>
-      </div>
-      
-      <div className="InterviewProcessContentBox">
-        <h4>
-          <MessageCircle size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-          Live-Interview Support
-        </h4>
-        <div className="content-image-container">
-          <img src={image3} alt="Live-Interview Support" className="content-image" loading="lazy" />
-        </div>
-      </div>
-      
-      <div className="InterviewProcessContentBox">
-        <h4>
-          <Video size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
-          Post-Interview Review
-        </h4>
-        <div className="content-image-container">
-          <img src={image4} alt="Post-Interview Review" className="content-image" loading="lazy" />
-        </div>
-      </div>
-    </div>
+        <div className="InterviewProcessContainer">
+  <div className="InterviewProcessHeader">
+    <h3>AI is Redefining and Elevating the Interview Experience</h3>
   </div>
   
-  <div className="InterviewProcess">
-    <img 
-      src={interviewProcess} 
-      alt="Interview journey visualization" 
-      loading="lazy" 
-    />
+  <div className="InterviewProcessContentWrapper">
+    <div className="InterviewProcessText">
+      <div className="InterviewProcessContent">
+        <div className="InterviewProcessContentBox">
+          <h4>
+            <Search size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
+            Discovering Opportunities
+          </h4>
+          <div className="content-image-container">
+            <img src={image1} alt="Discovering Opportunities" className="content-image" loading="lazy" />
+          </div>
+        </div>
+        
+        <div className="InterviewProcessContentBox">
+          <h4>
+            <FileText size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
+            Resume & Profile Building
+          </h4>
+          <div className="content-image-container">
+            <img src={image2} alt="Resume & Profile Building" className="content-image" loading="lazy" />
+          </div>
+        </div>
+        
+        <div className="InterviewProcessContentBox">
+          <h4>
+            <MessageCircle size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
+            Live-Interview Support
+          </h4>
+          <div className="content-image-container">
+            <img src={image3} alt="Live-Interview Support" className="content-image" loading="lazy" />
+          </div>
+        </div>
+        
+        <div className="InterviewProcessContentBox">
+          <h4>
+            <Video size={18} style={{marginRight: '10px', color: '#6B46C1'}} />
+            Post-Interview Review
+          </h4>
+          <div className="content-image-container">
+            <img src={image4} alt="Post-Interview Review" className="content-image" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div className="InterviewProcess">
+      <img 
+        src={interviewProcess} 
+        alt="Interview journey visualization" 
+        loading="lazy" 
+      />
+    </div>
   </div>
 </div>
         </section>
