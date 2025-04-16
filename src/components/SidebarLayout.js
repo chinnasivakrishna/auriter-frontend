@@ -132,7 +132,7 @@ const SidebarLayout = ({ onLogout, userRole }) => {
       {/* Sidebar */}
       <div className={`${sidebarClass} shadow-lg transition-all duration-300 ease-in-out ${isExpanded ? 'w-64' : 'w-20'} relative`}>
         {/* Logo */}
-        <div className={`flex items-center justify-between p-4 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+        <div className={`flex items-center  p-4 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
           <div 
             className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center overflow-hidden"
             onClick={() => navigate('/dashboard')}
@@ -141,7 +141,7 @@ const SidebarLayout = ({ onLogout, userRole }) => {
             <img src={Airuter} alt="Logo" className="w-full h-full object-cover" />
           </div>
           {isExpanded && (
-            <span className={`ml-3 font-semibold ${isDark ? 'text-white' : 'text-gray-700'} animate-fade-in`}>
+            <span className={`ml-5 font-bold text-2xl ${isDark ? 'text-white' : 'text-gray-700'} animate-fade-in`}>
               Airuter
             </span>
           )}
@@ -150,7 +150,7 @@ const SidebarLayout = ({ onLogout, userRole }) => {
         {/* Toggle button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className={`absolute -right-3 top-20 rounded-full p-2 shadow-md transition-colors ${
+          className={`absolute -right-3 top-8 rounded-full p-2 shadow-md transition-colors ${
             isDark 
               ? 'bg-gray-700 hover:bg-gray-600 text-white' 
               : 'bg-white hover:bg-gray-100 text-gray-800'

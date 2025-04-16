@@ -45,7 +45,8 @@ const JobListings = () => {
       });
       if (!response.ok) throw new Error('Failed to fetch jobs');
       const data = await response.json();
-      setJobs(data);
+      // Fix: Extract the jobs array from the response object
+      setJobs(data.jobs || []);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -99,7 +100,6 @@ const JobListings = () => {
 
   // Render company logo or fallback
   const renderCompanyLogo = (job) => {
-    console.log(job.logo);
     // Check if logo exists in job data
     if (job.logo) {
       return (
@@ -161,8 +161,21 @@ const JobListings = () => {
     return `${baseStyle} ${isDark ? 'bg-gray-700 text-gray-200' : 'bg-gray-100 text-gray-800'}`;
   };
 
-  // Calculate time since posting
-
+  // Format time since posting
+  const getTimeSincePosting = (createdAt) => {
+    const now = new Date();
+    const postedDate = new Date(createdAt);
+    const diffInHours = Math.floor((now - postedDate) / (1000 * 60 * 60));
+    
+    if (diffInHours < 1) return 'Just now';
+    if (diffInHours < 24) return `${diffInHours}h ago`;
+    
+    const diffInDays = Math.floor(diffInHours / 24);
+    if (diffInDays < 30) return `${diffInDays}d ago`;
+    
+    const diffInMonths = Math.floor(diffInDays / 30);
+    return `${diffInMonths}mo ago`;
+  };
 
   return (
     <div className={`max-w-7xl mx-auto px-4 py-6 ${colors.bg}`}>
@@ -313,6 +326,12 @@ const JobListings = () => {
                           <p className={`text-sm ${colors.textSecondary} truncate`}>{job.company}</p>
                         </div>
                       </div>
+                      <div className="flex items-center">
+                        <Clock size={14} className="mr-1 text-gray-400" />
+                        <span className={`text-xs ${colors.textMuted}`}>
+                          {getTimeSincePosting(job.createdAt)}
+                        </span>
+                      </div>
                     </div>
 
                     {/* Job details */}
@@ -376,7 +395,7 @@ const JobListings = () => {
           {/* Table View with Enhanced Styling */}
           {viewMode === 'table' && (
             <div className={`${colors.bgCard} shadow-md rounded-xl overflow-hidden`}>
-              <table className="min-w-full divide-y ${isDark ? 'divide-gray-700' : 'divide-gray-200'}">
+              <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead className={`${isDark ? 'bg-gray-800' : 'bg-gray-50'}`}>
                   <tr>
                     <th scope="col" className={`px-6 py-4 text-left text-xs font-medium ${colors.text} uppercase tracking-wider`}>Job</th>
@@ -387,7 +406,7 @@ const JobListings = () => {
                     <th scope="col" className={`px-6 py-4 text-left text-xs font-medium ${colors.text} uppercase tracking-wider hidden lg:table-cell`}>Skills</th>
                   </tr>
                 </thead>
-                <tbody className={`divide-y ${isDark ? 'divide-gray-700' : 'divide-gray-200'}`}>
+                <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                   {filteredJobs.map((job, idx) => (
                     <tr 
                       key={job._id} 
@@ -397,6 +416,9 @@ const JobListings = () => {
                     >
                       <td className={`px-6 py-4 ${colors.text}`}>
                         <div className="font-medium">{job.title}</div>
+                        <div className="text-xs text-gray-500 mt-1">
+                          {getTimeSincePosting(job.createdAt)}
+                        </div>
                       </td>
                       <td className="px-6 py-4 ">
                         <div className="flex items-center">
@@ -422,7 +444,7 @@ const JobListings = () => {
                         </span>
                       </td>
                       <td className="px-6 py-4 hidden lg:table-cell">
-                        <div className="flex flex-wrap">
+                        <div className="flex flex-wrap gap-2">
                           {job.skills.slice(0, 2).map((skill, index) => (
                             <span
                               key={index}

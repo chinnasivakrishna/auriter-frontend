@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Briefcase, Users, FileText, MessageSquare } from 'lucide-react';
+import { Home, Briefcase, Users, FileText, MessageSquare, Database } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 const RecruiterMenu = ({ isExpanded, currentPath, handleNavigate }) => {
@@ -10,7 +10,9 @@ const RecruiterMenu = ({ isExpanded, currentPath, handleNavigate }) => {
     { icon: Home, label: 'Dashboard', path: '/dashboard' },
     { icon: FileText, label: 'My Job Listings', path: '/my-listings' },
     { icon: Users, label: 'Candidates', path: '/candidates' },
-    { icon: MessageSquare, label: 'Chat', path: '/chat' }
+    { icon: MessageSquare, label: 'Chat', path: '/chat' },
+    { icon: Database, label: 'Datastore', path: '/datastore' },
+  
   ];
 
   return (

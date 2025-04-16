@@ -40,6 +40,8 @@ import MessagesContent from './components/Messages/MessagesContent';
 import InterviewResultsPage from './components/Candidates/InterviewResultsPage'; 
 import InterviewResults from './components/InterviewResults/InterviewResults';
 import CandidateProfile from './components/Candidates/CandidateProfile';
+import DatastoreContent from './components/DataStore/DatastoreContent';
+import JobPreviewPage from './components/Jobs/JobPreviewPage';
 // Job-related Components
 import JobDetail from './components/Jobs/JobDetail';
 import EditJobContent from './components/Jobs/EditJobContent';
@@ -178,6 +180,8 @@ const App = () => {
                       <Route path="/interview-resultss/:applicationId" element={<InterviewResults />} />
                       <Route path="/job-candidates/:jobId" element={<JobCandidatesContent />} />
                       <Route path="/company-profile" element={<CompanyProfile />} />
+                      <Route path="/datastore" element={<DatastoreContent />} />
+                      <Route path="/job-preview/:jobId" element={<JobPreviewPage />} />
                     </>
                   )}
                 </Route>

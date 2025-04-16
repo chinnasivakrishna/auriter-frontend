@@ -75,7 +75,7 @@ export default function SuperpowerTestimonial() {
         <div className="SuperpowerTestimonial-headers">
           <h2 className="SuperpowerTestimonial-titles">
           AI Is Redefining Hiring with Smart Video<br /> Screening Agent Across Industries
-          
+            
           </h2>
         </div>
 
