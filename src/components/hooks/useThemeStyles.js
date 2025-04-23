@@ -14,14 +14,21 @@ export const useThemeStyles = () => {
     text: isDark ? 'text-white' : 'text-gray-900',
     textSecondary: isDark ? 'text-gray-300' : 'text-gray-600',
     textMuted: isDark ? 'text-gray-400' : 'text-gray-500',
+    textHeading: isDark ? 'text-white' : 'text-gray-900',
     
     // Background colors
     bg: isDark ? 'bg-gray-900' : 'bg-gray-100',
     bgCard: isDark ? 'bg-gray-800' : 'bg-white',
     bgSection: isDark ? 'bg-gray-700' : 'bg-gray-50',
     
+    // Input field specific colors
+    bgInput: isDark ? 'bg-gray-700' : 'bg-white',
+    inputBorder: isDark ? 'border-gray-600' : 'border-gray-300',
+    inputPlaceholder: isDark ? 'placeholder-gray-400' : 'placeholder-gray-500',
+    inputFocus: isDark ? 'focus:border-purple-400 focus:ring-purple-500/50' : 'focus:border-purple-500 focus:ring-purple-500/50',
+    
     // Border colors
-    border: isDark ? 'border-gray-600' : 'border-gray-200',
+    border: isDark ? 'border-gray-600' : 'border-gray-300',
     
     // Brand colors with dark/light variants
     primary: isDark ? 'text-purple-400' : 'text-purple-600',
@@ -51,9 +58,9 @@ export const useThemeStyles = () => {
     heading: `font-bold ${colors.text} transition-colors duration-300`,
     paragraph: `${colors.textSecondary} transition-colors duration-300`,
     
-    // Form elements - Improved label styling
-    input: `${isDark ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white border-gray-300 text-gray-900'} 
-             rounded-lg focus:ring-purple-500 focus:border-purple-500 transition-colors duration-300`,
+    // Form elements - Improved for dark mode
+    input: `${colors.bgInput} ${colors.inputBorder} ${colors.text} ${colors.inputPlaceholder}
+             rounded-lg ${colors.inputFocus} focus:ring-2 transition-colors duration-300`,
     label: `block text-base font-medium ${colors.text} mb-2 transition-colors duration-300`,
     fieldLabel: `block text-lg font-semibold ${colors.text} mb-2 transition-colors duration-300`,
     sectionLabel: `block text-xl font-bold ${colors.text} mb-3 transition-colors duration-300`,
@@ -75,6 +82,14 @@ export const useThemeStyles = () => {
     
     // Enhanced focus styles
     focusRing: `focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50`,
+    
+    // Input fields specific styling
+    formControl: `w-full px-3 py-2 border rounded-md ${colors.bgInput} ${colors.text} ${colors.inputBorder} 
+                  ${colors.inputFocus} focus:ring-2 focus:outline-none transition-colors duration-300`,
+    
+    // Textarea fields
+    textarea: `w-full px-3 py-2 border rounded-md ${colors.bgInput} ${colors.text} ${colors.inputBorder}
+               ${colors.inputFocus} focus:ring-2 focus:outline-none transition-colors duration-300`,
   };
   
   // Utility function to combine classnames with theme awareness

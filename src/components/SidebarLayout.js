@@ -4,6 +4,7 @@ import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom';
 import Airuter from '../assets/airuter_logo.png';
 import SidebarMenu from './SidebarMenu';
 import RecruiterMenu from './Recruiter/RecruiterMenu';
+import AdminMenu from './Admin/AdminMenu';  // New admin menu
 import Cookies from "js-cookie";
 import { useTheme } from '../context/ThemeContext';
 
@@ -25,8 +26,13 @@ const SidebarLayout = ({ onLogout, userRole }) => {
   }, [location]);
 
   useEffect(() => {
+    if (userRole === 'admin') {
+      setUsername('Administrator');
+      return;
+    }
+    
     checkProfileStatus();
-    fetchUserData(); // Call auth API directly instead of profile
+    fetchUserData();
     
     // Fetch company profile if user is a recruiter
     if (userRole === 'recruiter') {
@@ -53,7 +59,6 @@ const SidebarLayout = ({ onLogout, userRole }) => {
     }
   };
 
-  // Simplified to directly fetch from auth API
   const fetchUserData = async () => {
     try {
       const response = await fetch('https://auriter-backen.onrender.com/api/auth/validate', {
@@ -93,12 +98,13 @@ const SidebarLayout = ({ onLogout, userRole }) => {
   };
 
   const handleLogoutClick = () => {
-    // Let the parent component handle everything
     onLogout();
   };
 
   const handleProfileClick = () => {
-    if (userRole === 'recruiter') {
+    if (userRole === 'admin') {
+      navigate('/admin/settings');
+    } else if (userRole === 'recruiter') {
       navigate('/company-profile');
     } else {
       navigate('/profile');
@@ -111,7 +117,14 @@ const SidebarLayout = ({ onLogout, userRole }) => {
 
   // Get page title from current path
   const getPageTitle = () => {
-    if (currentPath === '/dashboard') return 'Dashboard';
+    if (currentPath === '/dashboard' || currentPath === '/admin/dashboard') return 'Dashboard';
+    
+    // Handle admin paths
+    if (currentPath.startsWith('/admin/')) {
+      return currentPath.slice(7).split('-').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+      ).join(' ');
+    }
     
     // Remove leading slash and convert to title case
     return currentPath.slice(1).split('-').map(word => 
@@ -135,14 +148,14 @@ const SidebarLayout = ({ onLogout, userRole }) => {
         <div className={`flex items-center  p-4 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
           <div 
             className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center overflow-hidden"
-            onClick={() => navigate('/dashboard')}
+            onClick={() => navigate(userRole === 'admin' ? '/admin/dashboard' : '/dashboard')}
             style={{ cursor: 'pointer' }}
           >
             <img src={Airuter} alt="Logo" className="w-full h-full object-cover" />
           </div>
           {isExpanded && (
             <span className={`ml-5 font-bold text-2xl ${isDark ? 'text-white' : 'text-gray-700'} animate-fade-in`}>
-              Airuter
+              {'Airuter'}
             </span>
           )}
         </div>
@@ -160,7 +173,14 @@ const SidebarLayout = ({ onLogout, userRole }) => {
         </button>
 
         {/* Navigation items based on role */}
-        {userRole === 'recruiter' ? (
+        {userRole === 'admin' ? (
+          <AdminMenu
+            isExpanded={isExpanded}
+            currentPath={currentPath}
+            handleNavigate={handleNavigate}
+            isDark={isDark}
+          />
+        ) : userRole === 'recruiter' ? (
           <RecruiterMenu
             isExpanded={isExpanded}
             currentPath={currentPath}
@@ -229,7 +249,7 @@ const SidebarLayout = ({ onLogout, userRole }) => {
         {/* Navbar */}
         <div className={`${headerClass} shadow-md py-4 px-6 flex items-center justify-between`}>
           <div className="flex items-center">
-            {currentPath !== '/dashboard' && (
+            {(currentPath !== '/dashboard' && currentPath !== '/admin/dashboard') && (
               <div className={`mr-4 cursor-pointer ${hoverClass} ${isDark ? 'text-gray-200' : 'text-gray-600'} transition-colors duration-200 p-2 rounded-full`}>
                 <span className="font-semibold">
                   {getPageTitle()}
@@ -238,12 +258,14 @@ const SidebarLayout = ({ onLogout, userRole }) => {
             )}
           </div>
           <div className="flex items-center">
-            <div 
-              onClick={() => handleNavigate('/voice-assistant')}
-              className={`mr-4 cursor-pointer ${hoverClass} ${isDark ? 'text-gray-200' : 'text-gray-600'} transition-colors duration-200 p-2 rounded-full`}
-            >
-              <Mic size={20} />
-            </div>
+            {userRole !== 'admin' && (
+              <div 
+                onClick={() => handleNavigate('/voice-assistant')}
+                className={`mr-4 cursor-pointer ${hoverClass} ${isDark ? 'text-gray-200' : 'text-gray-600'} transition-colors duration-200 p-2 rounded-full`}
+              >
+                <Mic size={20} />
+              </div>
+            )}
             
             {/* Username/company display with avatar */}
             <div className="flex items-center mr-4">
@@ -251,16 +273,16 @@ const SidebarLayout = ({ onLogout, userRole }) => {
                 onClick={handleProfileClick}
                 className={`flex items-center cursor-pointer ${hoverClass} rounded-lg py-2 px-4`}
               >
-                <div className={`w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-medium overflow-hidden mr-3`}>
-                  {userRole === 'recruiter' && companyName ? 
+                <div className={`w-10 h-10 rounded-full ${userRole === 'admin' ? 'bg-red-600' : 'bg-purple-600'} flex items-center justify-center text-white font-medium overflow-hidden mr-3`}>
+                  {userRole === 'admin' ? 'A' : (userRole === 'recruiter' && companyName ? 
                     companyName.charAt(0).toUpperCase() : 
                     (username ? username.charAt(0).toUpperCase() : <User size={16} />)
-                  }
+                  )}
                 </div>
                 <div className="flex flex-col">
                   <span className={`${textLight} text-xs`}>Welcome</span>
                   <span className={`font-medium ${isDark ? 'text-white' : 'text-gray-800'}`}>
-                    {userRole === 'recruiter' && companyName ? companyName : (username || 'User')}
+                    {userRole === 'admin' ? 'Administrator' : (userRole === 'recruiter' && companyName ? companyName : (username || 'User'))}
                   </span>
                 </div>
               </div>
