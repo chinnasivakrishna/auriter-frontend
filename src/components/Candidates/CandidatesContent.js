@@ -53,7 +53,7 @@ const CandidatesContent = () => {
   const fetchApplications = async () => {
     try {
       setError('');
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       if (!token) throw new Error('Authentication token not found');
       const response = await fetch('https://auriter-backen.onrender.com/api/applications/company', {
         headers: { 'Authorization': `Bearer ${token}` }
@@ -77,7 +77,7 @@ const CandidatesContent = () => {
   
   const fetchAnalysis = async (application) => {
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       const response = await fetch(`https://auriter-backen.onrender.com/api/applications/${application._id}/analysis`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -95,7 +95,7 @@ const CandidatesContent = () => {
   
   const fetchInterviewData = async (application) => {
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       if (application.interviewRoomId) {
         const response = await fetch(`https://auriter-backen.onrender.com/api/interview/application/${application._id}`, {
           headers: { 'Authorization': `Bearer ${token}` }
@@ -119,7 +119,7 @@ const CandidatesContent = () => {
   const searchApplications = async () => {
     try {
       setError('');
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       if (!token) throw new Error('Authentication token not found');
       const params = new URLSearchParams({
         ...(searchTerm && { searchTerm }),
@@ -145,7 +145,7 @@ const CandidatesContent = () => {
   
   const handleStatusChange = async (applicationId, newStatus) => {
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       const response = await fetch(`https://auriter-backen.onrender.com/api/applications/${applicationId}/status`, {
         method: 'PATCH',
         headers: {
@@ -244,7 +244,7 @@ const CandidatesContent = () => {
   
   const handleInterviewSubmit = async () => {
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       const response = await fetch('https://auriter-backen.onrender.com/api/interview/schedule', {
         method: 'POST',
         headers: {

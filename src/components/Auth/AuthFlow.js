@@ -28,7 +28,7 @@ const AuthFlow = ({ onAuthSuccess }) => {
     
     if (token) {
       // Google auth callback
-      Cookies.set('token', token, { expires: 7 });
+      Cookies.set('usertoken', token, { expires: 7 });
       setAuthData(prev => ({
         ...prev,
         token: token,
@@ -72,7 +72,7 @@ const AuthFlow = ({ onAuthSuccess }) => {
       }
 
       if (data.token) {
-        Cookies.set('token', data.token, { expires: 7 });
+        Cookies.set('usertoken', data.token, { expires: 7 });
         
         if (!isLogin || data.requiresRole) {
           // Navigate to role selection page

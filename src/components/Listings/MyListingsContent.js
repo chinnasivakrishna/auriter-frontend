@@ -301,7 +301,7 @@ const MyListingsContent = () => {
   const fetchListings = async () => {
     try {
       setLoading(true);
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       const response = await fetch('https://auriter-backen.onrender.com/api/jobs/my-jobs', {
         headers: {
           'Authorization': `Bearer ${token}`
@@ -336,7 +336,7 @@ const MyListingsContent = () => {
     if (!deleteJobId) return;
 
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       const response = await fetch(`https://auriter-backen.onrender.com/api/jobs/${deleteJobId}`, {
         method: 'DELETE',
         headers: {
@@ -371,7 +371,7 @@ const MyListingsContent = () => {
 
   const handleToggleVisibility = async (jobId, newStatus) => {
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       const response = await fetch(`https://auriter-backen.onrender.com/api/jobs/${jobId}`, {
         method: 'PATCH',
         headers: {

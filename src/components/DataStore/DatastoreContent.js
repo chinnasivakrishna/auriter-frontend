@@ -177,7 +177,7 @@ const DatastoreContent = () => {
   const fetchDatastoreItems = async () => {
     try {
       setLoading(true);
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       if (!token) {
         throw new Error('Authentication token not found');
       }
@@ -267,7 +267,7 @@ const DatastoreContent = () => {
   const handleAddItem = async () => {
     try {
       setIsUploading(true);
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       
       if (!token) {
         throw new Error('Authentication token not found');
@@ -328,7 +328,7 @@ const DatastoreContent = () => {
 
   const handleDeleteItem = async (id) => {
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       
       await axios.delete(`https://auriter-backen.onrender.com/api/datastore/${id}`, {
         headers: {

@@ -28,7 +28,7 @@ const CandidateProfile = () => {
   const fetchApplicationDetails = async () => {
     try {
       setLoading(true);
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       if (!token) throw new Error('Authentication token not found');
 
       // Fetch application details
@@ -57,7 +57,7 @@ const CandidateProfile = () => {
 
   const handleStatusChange = async (newStatus) => {
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       const response = await fetch(`https://auriter-backen.onrender.com/api/applications/${applicationId}/status`, {
         method: 'PATCH',
         headers: {
@@ -75,7 +75,7 @@ const CandidateProfile = () => {
 
   const handleDownloadResume = async () => {
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       const response = await fetch(`https://auriter-backen.onrender.com/api/applications/${applicationId}/resume`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -97,7 +97,7 @@ const CandidateProfile = () => {
 
   const handleInterviewSubmit = async () => {
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       const response = await fetch('https://auriter-backen.onrender.com/api/interview/schedule', {
         method: 'POST',
         headers: {

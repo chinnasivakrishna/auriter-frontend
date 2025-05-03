@@ -35,7 +35,7 @@ const PostJobsContent = () => {
 
   const fetchCompanyProfile = async () => {
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       if (!token) return;
 
       const response = await fetch('https://auriter-backen.onrender.com/api/company/profile', {
@@ -123,7 +123,7 @@ const PostJobsContent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       
       if (!token) {
         throw new Error('Authentication token not found. Please log in again.');
@@ -181,7 +181,7 @@ const PostJobsContent = () => {
   const generateJobDetails = async () => {
     try {
       setIsGenerating(true);
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       
       if (!token) {
         throw new Error('Authentication token not found. Please log in again.');

@@ -58,7 +58,7 @@ const VoiceInteraction = () => {
 
   const fetchVoiceHistory = async () => {
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       if (!token) {
         setError('Authentication required');
         return;
@@ -171,7 +171,7 @@ const VoiceInteraction = () => {
       setLoading(true);
       setError(null);
 
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       if (!token) {
         setError('Authentication required');
         return;

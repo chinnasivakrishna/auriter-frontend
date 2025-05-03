@@ -43,7 +43,7 @@ const InterviewResultsPage = () => {
   const fetchRecordings = async () => {
     try {
       setLoading(true);
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       if (!token) throw new Error('Authentication token not found');
       
       if (!roomId) {
@@ -89,7 +89,7 @@ const InterviewResultsPage = () => {
 
   const fetchAnalysis = async (roomId) => {
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       const response = await fetch(`https://auriter-backen.onrender.com/api/interview/analysis/${roomId}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });

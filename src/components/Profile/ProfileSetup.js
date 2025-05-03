@@ -23,7 +23,7 @@ const ProfileSetup = ({ onComplete, onSkip }) => {
       setLoading(true);
       const response = await fetch('https://auriter-backen.onrender.com/api/profile', {
         headers: {
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         }
       });
       if (!response.ok) throw new Error('Failed to fetch profile');
@@ -44,7 +44,7 @@ const ProfileSetup = ({ onComplete, onSkip }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         },
         body: JSON.stringify({ 
           isComplete: false
@@ -75,7 +75,7 @@ const ProfileSetup = ({ onComplete, onSkip }) => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         },
         body: JSON.stringify({ ...formData, isComplete: true })
       });

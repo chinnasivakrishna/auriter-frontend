@@ -39,7 +39,7 @@ const ResumeUpload = ({ onBack }) => {
     const formData = new FormData();
     formData.append('resume', file);
     
-    const token = Cookies.get('token');
+    const token = Cookies.get('usertoken');
     if (!token) {
       setError('Authentication token not found. Please log in again.');
       setUploading(false);

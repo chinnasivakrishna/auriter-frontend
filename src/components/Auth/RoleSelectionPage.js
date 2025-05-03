@@ -160,14 +160,14 @@ const RoleSelectionPage = ({ onAuthSuccess }) => {
     const params = new URLSearchParams(location.search);
     const stateToken = location.state?.token;
     const queryToken = params.get('token');
-    const cookieToken = Cookies.get('token');
+    const cookieToken = Cookies.get('usertoken');
     
     if (stateToken) {
       setToken(stateToken);
     } else if (queryToken) {
       setToken(queryToken);
       // Also set the token in cookies for future use
-      Cookies.set('token', queryToken, { expires: 7 });
+      Cookies.set('usertoken', queryToken, { expires: 7 });
     } else if (cookieToken) {
       setToken(cookieToken);
     } else {

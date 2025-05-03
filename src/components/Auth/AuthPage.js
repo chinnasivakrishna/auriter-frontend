@@ -46,7 +46,7 @@ const AuthPage = ({ onAuthSuccess }) => {
       }
 
       if (data.token) {
-        Cookies.set('token', data.token, { expires: 7 });
+        Cookies.set('usertoken', data.token, { expires: 7 });
         
         if (!isLogin && data.requiresRole) {
           setShowRoleSelection(true);
@@ -71,7 +71,7 @@ const AuthPage = ({ onAuthSuccess }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         },
         body: JSON.stringify({ role }),
       });
@@ -95,7 +95,7 @@ const AuthPage = ({ onAuthSuccess }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         },
         body: JSON.stringify({
           role: 'recruiter',

@@ -42,7 +42,7 @@ const CompanyProfile = () => {
       setLoading(true);
       const response = await fetch('https://auriter-backen.onrender.com/api/company/profile', {
         headers: {
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         }
       });
       
@@ -109,7 +109,7 @@ const CompanyProfile = () => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         },
         body: JSON.stringify(companyData)
       });

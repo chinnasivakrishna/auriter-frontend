@@ -46,7 +46,7 @@ const JobsAppliedContent = () => {
       setLoading(true);
       const response = await fetch('https://auriter-backen.onrender.com/api/jobs-applied/my-applications', {
         headers: {
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         }
       });
       

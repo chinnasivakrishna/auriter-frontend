@@ -40,7 +40,7 @@ const JobListings = () => {
     try {
       const response = await fetch('https://auriter-backen.onrender.com/api/jobs', {
         headers: {
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         }
       });
       if (!response.ok) throw new Error('Failed to fetch jobs');

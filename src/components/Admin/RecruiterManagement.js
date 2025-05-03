@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Filter, Plus, Pencil, Trash2, Eye, X, Mail } from 'lucide-react';
+import { Search, Filter, Plus, Pencil, Trash2, Eye, X, Mail, LogIn } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
@@ -15,7 +15,8 @@ const RecruiterManagement = () => {
   const [currentRecruiter, setCurrentRecruiter] = useState(null);
   const [showDetailView, setShowDetailView] = useState(false);
   const navigate = useNavigate();
-  
+  const [impersonating, setImpersonating] = useState(false);
+
   // New filter states
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState({
@@ -108,6 +109,60 @@ const RecruiterManagement = () => {
         ...prev,
         [name]: value
       }));
+    }
+  };
+
+  const handleLoginAsUser = async (userId) => {
+    try {
+      setImpersonating(true);
+      const adminToken = Cookies.get('admintoken');
+      
+      console.log("Before impersonation - existing token:", Cookies.get('usertoken'));
+      
+      const response = await axios.post(
+        `https://auriter-backen.onrender.com/api/admin/users/${userId}/impersonate`,
+        {},
+        { headers: { Authorization: `Bearer ${adminToken}` } }
+      );
+      
+      if (response.data.success) {
+        const token = response.data.token;
+        const userData = response.data.user;
+        
+        
+        // Remove existing cookies with various configurations to ensure clean state
+        Cookies.remove('token');
+        Cookies.remove('token', { path: '/' });
+        Cookies.remove('user');
+        Cookies.remove('user', { path: '/' });
+        
+        // Set cookies with various options to ensure compatibility
+        Cookies.set('usertoken', token, { 
+          path: '/',
+          sameSite: 'lax',  // Try 'lax' instead of 'strict'
+          expires: 1        // 1 day
+        });
+        
+        Cookies.set('user', JSON.stringify(userData), { 
+          path: '/',
+          sameSite: 'lax',
+          expires: 1
+        });
+        
+        // Double-check cookie was set
+        console.log("After setting - token cookie:", Cookies.get('token1'));
+        console.log("After setting - user cookie:", Cookies.get('user'));
+        
+        // Open a new window with special handling
+        const newWindow = window.open('/dashboard', '_blank');      
+        
+        toast.success(`Successfully logged in as ${userData.name}`);
+      }
+    } catch (error) {
+      console.error('Error during user impersonation:', error);
+      toast.error(error.response?.data?.message || error.message || 'Failed to login as user');
+    } finally {
+      setImpersonating(false);
     }
   };
 
@@ -231,37 +286,6 @@ const RecruiterManagement = () => {
 
  
 
-  const redirectToRecruiterDashboard = async (recruiterId) => {
-    try {
-      const token = Cookies.get('admintoken');
-      
-      // Get recruiter credentials and generate a login token
-      const response = await axios.post(
-        'https://auriter-backen.onrender.com/api/admin/recruiters/login-as-recruiter',
-        { recruiterId },
-        { 
-          headers: { Authorization: `Bearer ${token}` } 
-        }
-      );
-      
-      if (response.data.success) {
-        // Set the recruiter token and user data in cookies
-        Cookies.set('token', response.data.token, { 
-          path: '/',
-        });
-        
-        Cookies.set('user', JSON.stringify(response.data.user), {
-          path: '/',
-        });
-        
-        // Redirect to the recruiter dashboard
-        window.location.href = '/dashboard';
-      }
-    } catch (error) {
-      console.error('Error accessing recruiter dashboard:', error);
-      toast.error('Could not access recruiter dashboard');
-    }
-  };
 
   // Filter logic
   const handleFilterChange = (e) => {
@@ -594,12 +618,13 @@ const RecruiterManagement = () => {
                           >
                             <Eye className="h-4 w-4 text-blue-600" />
                           </button>
-                          <button
-                            onClick={() => redirectToRecruiterDashboard(recruiter._id)}
-                            className="px-2 py-1 bg-blue-600 text-white text-xs rounded hover:bg-blue-700"
-                            title="Login as this recruiter"
+                          <button 
+                            className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded text-blue-600"
+                            onClick={() => handleLoginAsUser(recruiter._id)}
+                            title="Login as User"
+                            disabled={impersonating}
                           >
-                            Login
+                            <LogIn className="h-4 w-4" />
                           </button>
                         </div>
                       </td>

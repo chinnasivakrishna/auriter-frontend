@@ -82,7 +82,7 @@ const ChatContent = () => {
   const fetchChatHistory = async () => {
     console.log('Fetching chat history');
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       if (!token) {
         setError('Authentication required');
         return;
@@ -186,7 +186,7 @@ const ChatContent = () => {
     setTranscriptMessage("");
 
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       const response = await fetch('https://auriter-backen.onrender.com/api/chat/message', {
         method: 'POST',
         headers: {
@@ -352,7 +352,7 @@ const ChatContent = () => {
     setTranscriptMessage("");
 
     try {
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       if (!token) {
         setError('Authentication required');
         return;

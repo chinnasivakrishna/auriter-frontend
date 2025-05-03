@@ -20,7 +20,7 @@ const LinkedInForm = ({ onBack }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         },
         body: JSON.stringify(credentials)
       });

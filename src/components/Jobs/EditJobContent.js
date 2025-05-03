@@ -39,7 +39,7 @@ const EditJobContent = () => {
     const fetchJob = async () => {
       try {
         setLoading(true);
-        const token = Cookies.get('token');
+        const token = Cookies.get('usertoken');
         const response = await fetch(`https://auriter-backen.onrender.com/api/jobs/${jobId}`, {
           method: 'GET',
           headers: {
@@ -118,7 +118,7 @@ const EditJobContent = () => {
         benefits: formState.benefits.split('\n').filter(item => item.trim() !== '')
       };
       
-      const token = Cookies.get('token');
+      const token = Cookies.get('usertoken');
       const response = await fetch(`https://auriter-backen.onrender.com/api/jobs/${jobId}`, {
         method: 'PATCH',
         headers: {

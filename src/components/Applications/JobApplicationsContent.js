@@ -12,7 +12,7 @@ const JobApplicationsContent = ({ jobId }) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const token = Cookies.get('token');
+        const token = Cookies.get('usertoken');
         
         // Fetch job details
         const jobResponse = await fetch(`https://auriter-backen.onrender.com/api/jobs/${jobId}`, {

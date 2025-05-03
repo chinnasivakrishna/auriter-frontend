@@ -42,7 +42,7 @@ const JobDetail = () => {
       try {
         const response = await fetch(`https://auriter-backen.onrender.com/api/jobs/${jobId}`, {
           headers: {
-            'Authorization': `Bearer ${Cookies.get('token')}`
+            'Authorization': `Bearer ${Cookies.get('usertoken')}`
           }
         });
         if (!response.ok) throw new Error('Failed to fetch job details');
@@ -59,7 +59,7 @@ const JobDetail = () => {
       try {
         const response = await fetch('https://auriter-backen.onrender.com/api/profile', {
           headers: {
-            'Authorization': `Bearer ${Cookies.get('token')}`
+            'Authorization': `Bearer ${Cookies.get('usertoken')}`
           }
         });
         if (response.ok) {
@@ -184,7 +184,7 @@ const JobDetail = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         },
         body: JSON.stringify(requestData)
       });
@@ -265,7 +265,7 @@ const JobDetail = () => {
       const response = await fetch(`https://auriter-backen.onrender.com/api/applications/${jobId}`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         },
         body: formData
       });

@@ -44,7 +44,7 @@ const SidebarLayout = ({ onLogout, userRole }) => {
     try {
       const response = await fetch('https://auriter-backen.onrender.com/api/company/profile', {
         headers: {
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         }
       });
       
@@ -63,7 +63,7 @@ const SidebarLayout = ({ onLogout, userRole }) => {
     try {
       const response = await fetch('https://auriter-backen.onrender.com/api/auth/validate', {
         headers: {
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         }
       });
       
@@ -82,7 +82,7 @@ const SidebarLayout = ({ onLogout, userRole }) => {
     try {
       const response = await fetch('https://auriter-backen.onrender.com/api/profile/status', {
         headers: {
-          'Authorization': `Bearer ${Cookies.get('token')}`
+          'Authorization': `Bearer ${Cookies.get('usertoken')}`
         }
       });
       const data = await response.json();

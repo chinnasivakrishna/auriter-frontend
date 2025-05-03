@@ -27,7 +27,7 @@ const ImpersonationHandler = () => {
           const recruiterData = response.data.recruiter;
           
           // Set cookies for impersonation
-          Cookies.set('token', token, { path: '/' });
+          Cookies.set('usertoken', token, { path: '/' });
           Cookies.set('user', JSON.stringify({
             _id: recruiterData._id,
             name: recruiterData.name,
